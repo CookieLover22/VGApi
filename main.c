@@ -25,7 +25,7 @@ int main(void)
 
   UB_VGA_FillScreen(VGA_COL_BLACK);
   UB_VGA_SetPixel(10,10,10);
-
+  UB_VGA_SetPixel(100,100,10);
 
 
 
