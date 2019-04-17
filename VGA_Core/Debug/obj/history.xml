@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc 4.9.2 x86_64-w64-mingw32 -mcpu=cortex-m4 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F407VG -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -I..\..\..\..\..\Users\danie\OneDrive - Stichting Hogeschool Utrecht\VGA_core_M4\cmsis -I..\..\..\..\..\Users\danie\OneDrive - Stichting Hogeschool Utrecht -I..\..\..\..\..\Users\danie\OneDrive - Stichting Hogeschool Utrecht\VGA_core_M4\cmsis_boot -I..\..\..\..\..\Users\danie\OneDrive - Stichting Hogeschool Utrecht\VGA_core_M4\cmsis_lib -I..\..\..\..\..\Users\danie\OneDrive - Stichting Hogeschool Utrecht\VGA_core_M4\ub_lib -I..\..\..\..\..\Users\danie\OneDrive - Stichting Hogeschool Utrecht\VGA_core_M4\cmsis_lib\include -I..\..\..\..\..\Users\danie\OneDrive - Stichting Hogeschool Utrecht\VGA_core_M4">
+      <target file="stm32f4xx_gpio.o" lastModified="16a269f9bbc">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_gpio.c" lastModified="16a269ab80c"/>
+      </target>
+      <target file="stm32_ub_vga_screen.o" lastModified="16a269f9df2">
+         <source file="..\..\..\ub_lib\stm32_ub_vga_screen.c" lastModified="16a269ab8ae"/>
+      </target>
+      <target file="stm32f4xx_dma.o" lastModified="16a269f9d64">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_dma.c" lastModified="16a269ab792"/>
+      </target>
+      <target file="stm32f4xx_tim.o" lastModified="16a269f9f76">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_tim.c" lastModified="16a269ab87b"/>
+      </target>
+      <target file="system_stm32f4xx.o" lastModified="16a269f9c46">
+         <source file="..\..\..\cmsis_boot\system_stm32f4xx.c" lastModified="16a269ab637"/>
+      </target>
+      <target file="startup_stm32f4xx.o" lastModified="16a269f9a06">
+         <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="16a269ab684"/>
+      </target>
+      <target file="main.o" lastModified="16a269f9a92">
+         <source file="..\..\..\main.c" lastModified="16a269ab47a"/>
+      </target>
+      <target file="stm32f4xx_rcc.o" lastModified="16a269f9b34">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_rcc.c" lastModified="16a269ab84b"/>
+      </target>
+      <target file="misc.o" lastModified="16a269f9e6b">
+         <source file="..\..\..\cmsis_lib\source\misc.c" lastModified="16a269ab76f"/>
+      </target>
+   </processor>
+</history>
