@@ -15,6 +15,8 @@
 #include <math.h>
 #include <time.h>
 
+int wait = 1;
+
 int main(void)
 {
 
@@ -61,7 +63,13 @@ int main(void)
 	  }
 	  */
 
-	  while(GPIO_ReadOutputDataBit (GPIOB, GPIO_Pin_12)) //wacht tot VSYNC laag wordt
+	  while (wait) {
+		  if (!GPIO_ReadOutputDataBit (GPIOB, GPIO_Pin_12) && wait == 1) wait = 0;
+		  if (GPIO_ReadOutputDataBit (GPIOB, GPIO_Pin_12)) wait = 1;
+	  }
+	  wait = 2;
+
+
 	  UB_VGA_FillScreen(VGA_COL_BLACK);
 
 	  k++;
