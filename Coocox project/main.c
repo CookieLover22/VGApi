@@ -75,7 +75,6 @@ int main(void)
 			  richting =1;
 		  else
 			  startpunt[1]++;
-
 	  }
 	  else
 	  {
