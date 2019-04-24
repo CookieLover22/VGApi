@@ -49,6 +49,7 @@ int main(void)
 
   while(1)
   {
+	  /*
 	  while(1) //dit is een delay
 	  {
 		  l++;
@@ -58,16 +59,11 @@ int main(void)
 			  break;
 		  }
 	  }
-	  //UB_VGA_FillScreen(VGA_COL_BLACK);
-	  while(1)
-	  {
-		  l++;
-		  if(l>500000)
-		  {
-			  l=0;
-			  break;
-		  }
-	  }
+	  */
+
+	  while(GPIO_ReadOutputDataBit (GPIOB, GPIO_Pin_12)) //wacht tot VSYNC laag wordt
+	  UB_VGA_FillScreen(VGA_COL_BLACK);
+
 	  k++;
 	  if(richting == 0)
 	  {
