@@ -32,19 +32,69 @@ int main(void)
   int getalY = rand() % VGA_DISPLAY_Y;
   int i=0;
   int j=0;
+  int k=0;
+  int l=0;
   int startpunt[] = {10,100};
   int eindpunt[] = {100,100};
   int breedte = 100;
-  int kleur = 10;
-  for(i=startpunt[0];i<eindpunt[0];i++)
+  int kleur = 255;
+  int richting =0;
+  /*for(i=startpunt[0];i<eindpunt[0];i++)
   {
 	  for(j=0;j<breedte;j++)
 	  {
 		  UB_VGA_SetPixel(j+startpunt[1],i,kleur);
 	  }
-  }
+  }*/
+
   while(1)
   {
+	  while(1)
+	  {
+		  l++;
+		  if(l>500000)
+		  {
+			  l=0;
+			  break;
+		  }
+	  }
+	  UB_VGA_FillScreen(VGA_COL_BLACK);
+	  while(1)
+	  {
+		  l++;
+		  if(l>500000)
+		  {
+			  l=0;
+			  break;
+		  }
+	  }
+	  k++;
+	  if(richting == 0)
+	  {
+		  if((startpunt[1]-breedte)>VGA_DISPLAY_X)
+			  richting =1;
+		  else
+	  	  startpunt[1]++;
+
+	  }
+	  else
+	  {
+		  if(startpunt[1]<0)
+			  richting =0;
+		  else
+			  startpunt[1]--;
+	  }
+	  if(k>255)
+		  k=0;
+	  //int kleur = 255;
+	  for(i=startpunt[0];i<eindpunt[0];i++)
+	  {
+		  for(j=0;j<breedte;j++)
+		  {
+			  UB_VGA_SetPixel(j+startpunt[1],i,k);
+		  }
+	  }
+
 
 	  /*getalX = rand() % VGA_DISPLAY_X;
 	  getalY = rand() % VGA_DISPLAY_Y;
