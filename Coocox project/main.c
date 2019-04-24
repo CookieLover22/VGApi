@@ -49,7 +49,7 @@ int main(void)
 
   while(1)
   {
-	  while(1)
+	  while(1) //dit is een delay
 	  {
 		  l++;
 		  if(l>500000)
