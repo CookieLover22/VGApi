@@ -58,7 +58,7 @@ int main(void)
 			  break;
 		  }
 	  }
-	  UB_VGA_FillScreen(VGA_COL_BLACK);
+	  //UB_VGA_FillScreen(VGA_COL_BLACK);
 	  while(1)
 	  {
 		  l++;
@@ -71,10 +71,10 @@ int main(void)
 	  k++;
 	  if(richting == 0)
 	  {
-		  if((startpunt[1]-breedte)>VGA_DISPLAY_X)
+		  if((startpunt[1]+breedte)>VGA_DISPLAY_X)
 			  richting =1;
 		  else
-	  	  startpunt[1]++;
+			  startpunt[1]++;
 
 	  }
 	  else
