@@ -15,6 +15,8 @@
 #include <math.h>
 #include <time.h>
 
+#define DEBUG
+
 int wait = 1;
 
 int main(void)
@@ -62,13 +64,18 @@ int main(void)
 		  }
 	  }
 	  */
-
+#ifdef DEBUG
+	  //pinnetje hier
+#endif
 	  while (wait) {
 		  if (!GPIO_ReadOutputDataBit (GPIOB, GPIO_Pin_12) && wait == 1) wait = 0;
 		  if (GPIO_ReadOutputDataBit (GPIOB, GPIO_Pin_12)) wait = 1;
 	  }
 	  wait = 2;
 
+#ifdef DEBUG
+	  //!pinnetje hier
+#endif
 
 	  UB_VGA_FillScreen(VGA_COL_BLACK);
 
