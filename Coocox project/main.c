@@ -30,13 +30,13 @@ int main(void)
   //UB_VGA_SetPixel(10,10,10);
   //UB_VGA_SetPixel(100,100,10);
   //srand (time(NULL));
-  int getalX = rand() % VGA_DISPLAY_X;
-  int getalY = rand() % VGA_DISPLAY_Y;
+  //int getalX = rand() % VGA_DISPLAY_X;
+  //int getalY = rand() % VGA_DISPLAY_Y;
   int i=0;
   int j=0;
   int k=0;
   int l=0;
-  int startpunt[] = {10,100};
+  int startpunt[] = {10,200};
   int eindpunt[] = {100,100};
   int breedte = 100;
   int kleur = 255;

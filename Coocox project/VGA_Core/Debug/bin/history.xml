@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=VGA_Core.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\VGA_Core -TC:\CooCox\CoIDE\configuration\ProgramData\VGA_Core/arm-gcc-link.ld -g -L..\..\.. -lm">
-      <target file="VGA_Core.elf" lastModified="16a4f2a081d">
-         <source file="..\obj\startup_stm32f4xx.o" lastModified="16a4f29c0d1"/>
-         <source file="..\obj\main.o" lastModified="16a4f29c6fe"/>
-         <source file="..\obj\stm32f4xx_rcc.o" lastModified="16a4f29ccea"/>
-         <source file="..\obj\stm32f4xx_gpio.o" lastModified="16a4f29d250"/>
-         <source file="..\obj\system_stm32f4xx.o" lastModified="16a4f29d5c0"/>
-         <source file="..\obj\stm32f4xx_dma.o" lastModified="16a4f29db62"/>
-         <source file="..\obj\stm32_ub_vga_screen.o" lastModified="16a4f29e27d"/>
-         <source file="..\obj\misc.o" lastModified="16a4f29eaf8"/>
-         <source file="..\obj\stm32f4xx_tim.o" lastModified="16a4f29f81c"/>
+      <target file="VGA_Core.elf" lastModified="16a4f37b811">
+         <source file="..\obj\startup_stm32f4xx.o" lastModified="16a4f2f4ab6"/>
+         <source file="..\obj\main.o" lastModified="16a4f37b085"/>
+         <source file="..\obj\stm32f4xx_rcc.o" lastModified="16a4f2f55a4"/>
+         <source file="..\obj\stm32f4xx_gpio.o" lastModified="16a4f2f5a52"/>
+         <source file="..\obj\system_stm32f4xx.o" lastModified="16a4f2f5de8"/>
+         <source file="..\obj\stm32f4xx_dma.o" lastModified="16a4f2f61ac"/>
+         <source file="..\obj\stm32_ub_vga_screen.o" lastModified="16a4f2f658e"/>
+         <source file="..\obj\misc.o" lastModified="16a4f2f6862"/>
+         <source file="..\obj\stm32f4xx_tim.o" lastModified="16a4f2f6f79"/>
       </target>
    </processor>
 </history>

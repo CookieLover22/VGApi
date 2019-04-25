@@ -20,17 +20,22 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
+<part id="2"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/danie/source/repos/VGApi/Coocox project/main.c" title="main.c" tooltip="C:/Users/danie/source/repos/VGApi/Coocox project/main.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/kayah/OneDrive/HU/6D/SOFTON/VGApi/VGApi/Coocox project/main.c" title="main.c" tooltip="C:/Users/kayah/OneDrive/HU/6D/SOFTON/VGApi/VGApi/Coocox project/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/VGA_Core/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="734" selectionTopPixel="41"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="815" selectionTopPixel="1090"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_vga_screen.c" partName="stm32_ub_vga_screen.c" path="C:/Users/danie/source/repos/VGApi/Coocox project/ub_lib/stm32_ub_vga_screen.c" title="stm32_ub_vga_screen.c" tooltip="C:/Users/danie/source/repos/VGApi/Coocox project/ub_lib/stm32_ub_vga_screen.c" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_vga_screen.c" partName="stm32_ub_vga_screen.c" path="C:/Users/kayah/OneDrive/HU/6D/SOFTON/VGApi/VGApi/Coocox project/ub_lib/stm32_ub_vga_screen.c" title="stm32_ub_vga_screen.c" tooltip="C:/Users/kayah/OneDrive/HU/6D/SOFTON/VGApi/VGApi/Coocox project/ub_lib/stm32_ub_vga_screen.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/VGA_Core/ub_lib/stm32_ub_vga_screen.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="2045"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_vga_screen.h" partName="stm32_ub_vga_screen.h" path="C:/Users/kayah/OneDrive/HU/6D/SOFTON/VGApi/VGApi/Coocox project/ub_lib/stm32_ub_vga_screen.h" title="stm32_ub_vga_screen.h" tooltip="C:/Users/kayah/OneDrive/HU/6D/SOFTON/VGApi/VGApi/Coocox project/ub_lib/stm32_ub_vga_screen.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/VGA_Core/ub_lib/stm32_ub_vga_screen.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="506" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -38,15 +43,16 @@
 <viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
 <expanded>
 <element path="/VGA_Core"/>
+<element path="/VGA_Core/cmsis"/>
+<element path="/VGA_Core/cmsis_lib"/>
+<element path="/VGA_Core/cmsis_lib/include"/>
+<element path="/VGA_Core/cmsis_lib/source"/>
 <element path="/VGA_Core/ub_lib"/>
 </expanded>
 <selection>
 <element path="/VGA_Core/ub_lib/stm32_ub_vga_screen.h"/>
 </selection>
 </viewState>
-</view>
-<view id="org.coocox.component.ui.ComponentView" partName="Components">
-<viewState/>
 </view>
 <view id="org.coocox.codebugger.trace.ui.traceview" partName="Semihosting">
 <viewState/>
@@ -62,7 +68,7 @@
 </view>
 </views>
 <perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="org.coocox.builder.perspective.CoBuilder">
-<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<perspective editorAreaTrimState="1" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.coocox.builder.ui.PerspectiveCoBuilder" id="org.coocox.builder.perspective.CoBuilder" label="CooCox CoBuilder"/>
 <alwaysOnActionSet id="org.coocox.component.ui.actionSet"/>
 <alwaysOnActionSet id="org.coocox.welcome.ui.actionSet"/>
@@ -88,24 +94,32 @@
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showPeripheralsAction"/>
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showVariablesAction"/>
 <hide_menu_item_id id="org.coocox.builder.ui.openProjectExplorerAction"/>
-<hide_menu_item_id id="org.coocox.codebugger.trace.actions.ShowTraceControlAction"/>
 <hide_menu_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
+<hide_menu_item_id id="org.coocox.codebugger.trace.actions.ShowTraceControlAction"/>
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showRegistersAction"/>
 <hide_toolbar_item_id id="org.eclipse.cdt.debug.internal.ui.actions.ToggleInstructionStepModeAction"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
-<view id="org.coocox.component.ui.ComponentView"/>
 <view id="org.coocox.builder.ui.views.ProjectView"/>
-<view id="org.eclipse.ui.console.ConsoleView"/>
-<fastViewBars/>
+<fastViewBars>
+<fastViewBar fastViewLocation="1024" id="org.eclipse.ui.internal.ViewStack@7c79e6" orientation="256" selectedTabId="org.eclipse.ui.console.ConsoleView" style="1">
+<fastViews>
+<view id="org.eclipse.ui.console.ConsoleView" ratio="0.3"/>
+</fastViews>
+</fastViewBar>
+</fastViewBars>
 <layout>
 <mainWindow>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@1d99ec7">
-<folder activePageID="org.coocox.component.ui.ComponentView" appearance="2" expanded="2">
-<page content="org.coocox.component.ui.ComponentView" label="Components"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<folder appearance="2" expanded="2">
+<page content="org.coocox.component.ui.ComponentView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@7c79e6" ratio="0.74960876" ratioLeft="479" ratioRight="160" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1d99ec7">
+<folder appearance="2" expanded="0">
+<page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1434" ratioRight="478" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1d99ec7">
@@ -114,16 +128,13 @@
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1d9354c" ratio="0.7698289" ratioLeft="495" ratioRight="148" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1d99ec7">
-<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@513bc7" ratio="0.21966527" ratioLeft="420" ratioRight="1492" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1d99ec7">
+<folder appearance="2" expanded="2">
+<page content="org.coocox.builder.ui.exampleView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info part="org.coocox.builder.ui.exampleView" ratio="0.21966527" ratioLeft="420" ratioRight="1492" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1d99ec7"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@2bb5f2" ratio="0.71983916" ratioLeft="1074" ratioRight="418" relationship="2" relative="org.coocox.builder.ui.exampleView">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@2bb5f2" ratio="0.71983916" ratioLeft="1074" ratioRight="418" relationship="2" relative="org.eclipse.ui.internal.ViewStack@513bc7">
 <folder appearance="2" expanded="2">
 <page content="org.coocox.component.ui.Help" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
@@ -133,13 +144,18 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.4490446" ratioLeft="423" ratioRight="519" relationship="4" relative="org.coocox.builder.ui.exampleView"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@4741b8" ratio="0.36942676" ratioLeft="348" ratioRight="594" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1d99ec7">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@15dfddb" ratio="0.4490446" ratioLeft="423" ratioRight="519" relationship="4" relative="org.eclipse.ui.internal.ViewStack@513bc7">
 <folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">
 <page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 </presentation>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.2496318" ratioLeft="339" ratioRight="1019" relationship="2" relative="org.eclipse.ui.internal.ViewStack@15dfddb"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@4741b8" ratio="0.5340206" ratioLeft="259" ratioRight="226" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1d99ec7">
+<folder appearance="2" expanded="0">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </mainWindow>
@@ -243,16 +259,7 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser">
-<subPage horizontalPosition="0" selectedItemId="511" subPageIndex="2" verticalPosition="300"/>
-</editor>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Demo_35/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Demo_35/ub_lib/stm32_ub_vga_screen.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Demo_35/ub_lib/stm32_ub_vga_screen.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Demo_35/ub_lib/stm32_ub_vga_screen.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Demo_35/ub_lib/stm32_ub_vga_screen.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Demo_35/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Demo_35/ub_lib/stm32_ub_vga_screen.h"/>
 <editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
 <org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="2" verticalPosition="12"/>
 </editor>
@@ -266,143 +273,147 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/VGA_Core/ub_lib/stm32_ub_vga_screen.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/VGA_Core/ub_lib/stm32_ub_vga_screen.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/VGA_Core/ub_lib/stm32_ub_vga_screen.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/VGA_Core/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/VGA_Core/ub_lib/stm32_ub_vga_screen.h"/>
 </editors>
-<item historyLabel="stm32_ub_vga_screen.h" index="3">
-<position info="not_deleted" x="937" y="12"/>
-</item>
-<item historyLabel="stm32_ub_vga_screen.c" index="2">
-<position info="not_deleted" x="2195" y="17"/>
-</item>
-<item historyLabel="main.c" index="1">
-<position info="not_deleted" x="843" y="0"/>
-</item>
-<item historyLabel="stm32_ub_vga_screen.h" index="3">
-<position info="not_deleted" x="937" y="12"/>
-</item>
-<item historyLabel="main.c" index="1">
-<position info="not_deleted" x="961" y="0"/>
-</item>
-<item historyLabel="stm32_ub_vga_screen.h" index="3">
-<position info="not_deleted" x="937" y="12"/>
-</item>
-<item historyLabel="stm32_ub_vga_screen.c" index="2">
-<position info="not_deleted" x="2641" y="15"/>
-</item>
-<item historyLabel="stm32_ub_vga_screen.h" index="3">
-<position info="not_deleted" x="937" y="12"/>
-</item>
-<item historyLabel="main.c" index="1">
-<position info="not_deleted" x="959" y="0"/>
-</item>
-<item historyLabel="stm32_ub_vga_screen.h" index="3">
-<position info="not_deleted" x="1013" y="11"/>
-</item>
-<item historyLabel="stm32_ub_vga_screen.c" index="2">
-<position info="not_deleted" x="2641" y="15"/>
-</item>
-<item historyLabel="main.c" index="1">
-<position info="not_deleted" x="961" y="0"/>
-</item>
-<item historyLabel="stm32_ub_vga_screen.c" index="2">
-<position info="not_deleted" x="2641" y="15"/>
-</item>
-<item historyLabel="Repository" index="0"/>
-<item historyLabel="stm32_ub_vga_screen.c" index="2">
-<position info="not_deleted" x="2641" y="15"/>
-</item>
-<item historyLabel="main.c" index="1">
-<position info="not_deleted" x="961" y="0"/>
-</item>
-<item historyLabel="stm32_ub_vga_screen.h" index="4">
-<position info="not_deleted" x="1013" y="11"/>
-</item>
-<item historyLabel="stm32_ub_vga_screen.c" index="5">
-<position info="not_deleted" x="2641" y="15"/>
-</item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="929" y="0"/>
-</item>
-<item historyLabel="stm32_ub_vga_screen.h" index="7">
-<position info="not_deleted" x="968" y="0"/>
-</item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="1107" y="0"/>
-</item>
-<item historyLabel="main.c" index="6">
+<item historyLabel="main.c" index="0">
 <position info="not_deleted" x="1007" y="0"/>
 </item>
-<item historyLabel="main.c" index="6">
+<item historyLabel="main.c" index="0">
 <position/>
 </item>
-<item historyLabel="main.c" index="6">
+<item historyLabel="main.c" index="0">
 <position info="not_deleted" x="1024" y="0"/>
 </item>
-<item historyLabel="Configuration" index="8"/>
-<item historyLabel="main.c" index="6">
+<item historyLabel="Configuration" index="1"/>
+<item historyLabel="main.c" index="0">
 <position info="not_deleted" x="1041" y="0"/>
 </item>
-<item historyLabel="Configuration" index="8"/>
-<item historyLabel="main.c" index="6">
+<item historyLabel="Configuration" index="1"/>
+<item historyLabel="main.c" index="0">
 <position info="not_deleted" x="1041" y="0"/>
 </item>
-<item historyLabel="main.c" index="6">
+<item historyLabel="main.c" index="0">
 <position/>
 </item>
-<item historyLabel="welcome" index="9"/>
-<item historyLabel="main.c" index="10">
+<item historyLabel="welcome" index="2"/>
+<item historyLabel="main.c" index="3">
 <position info="not_deleted" x="623" y="0"/>
 </item>
-<item historyLabel="stm32_ub_vga_screen.h" index="11"/>
-<item historyLabel="main.c" index="10">
+<item historyLabel="stm32_ub_vga_screen.h" index="4"/>
+<item historyLabel="main.c" index="3">
 <position info="not_deleted" x="623" y="0"/>
 </item>
-<item historyLabel="stm32_ub_vga_screen.c" index="12"/>
-<item historyLabel="main.c" index="10">
+<item historyLabel="stm32_ub_vga_screen.c" index="5"/>
+<item historyLabel="main.c" index="3">
 <position info="not_deleted" x="623" y="0"/>
 </item>
-<item historyLabel="stm32_ub_vga_screen.c" index="13">
+<item historyLabel="stm32_ub_vga_screen.c" index="6">
 <position info="not_deleted" x="1917" y="0"/>
 </item>
-<item historyLabel="main.c" index="10">
+<item historyLabel="main.c" index="3">
 <position info="not_deleted" x="623" y="0"/>
 </item>
-<item historyLabel="main.c" index="10">
+<item historyLabel="main.c" index="3">
 <position info="not_deleted" x="561" y="0"/>
 </item>
-<item historyLabel="stm32_ub_vga_screen.c" index="13">
+<item historyLabel="stm32_ub_vga_screen.c" index="6">
 <position info="not_deleted" x="1917" y="0"/>
 </item>
-<item historyLabel="main.c" index="10">
+<item historyLabel="main.c" index="3">
 <position info="not_deleted" x="561" y="0"/>
 </item>
-<item historyLabel="stm32_ub_vga_screen.c" index="13">
+<item historyLabel="stm32_ub_vga_screen.c" index="6">
 <position info="not_deleted" x="1917" y="0"/>
 </item>
-<item historyLabel="main.c" index="10">
+<item historyLabel="main.c" index="3">
 <position info="not_deleted" x="561" y="0"/>
 </item>
-<item historyLabel="stm32_ub_vga_screen.c" index="13">
+<item historyLabel="stm32_ub_vga_screen.c" index="6">
 <position info="not_deleted" x="3367" y="98"/>
 </item>
-<item historyLabel="main.c" index="10">
+<item historyLabel="main.c" index="3">
 <position info="not_deleted" x="561" y="0"/>
 </item>
-<item historyLabel="stm32_ub_vga_screen.h" index="14">
+<item historyLabel="stm32_ub_vga_screen.h" index="7">
 <position info="not_deleted" x="1954" y="0"/>
 </item>
-<item historyLabel="main.c" index="10">
+<item historyLabel="main.c" index="3">
 <position info="not_deleted" x="561" y="0"/>
 </item>
-<item historyLabel="stm32_ub_vga_screen.h" index="15">
+<item historyLabel="stm32_ub_vga_screen.h" index="8">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="605" y="0"/>
+</item>
+<item historyLabel="main.c" index="3">
+<position info="not_deleted" x="734" y="0"/>
+</item>
+<item historyLabel="stm32_ub_vga_screen.c" index="9">
 <position info="not_deleted" x="0" y="0"/>
 </item>
 <item historyLabel="main.c" index="10">
-<position info="not_deleted" x="605" y="0"/>
+<position info="not_deleted" x="751" y="0"/>
+</item>
+<item historyLabel="stm32_ub_vga_screen.c" index="9">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 <item historyLabel="main.c" index="10">
-<position info="not_deleted" x="734" y="0"/>
+<position/>
 </item>
-<item active="true" historyLabel="stm32_ub_vga_screen.c" index="16">
+<item historyLabel="stm32_ub_vga_screen.c" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="10">
+<position/>
+</item>
+<item historyLabel="stm32_ub_vga_screen.c" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="10">
+<position/>
+</item>
+<item historyLabel="main.c" index="10">
+<position/>
+</item>
+<item historyLabel="stm32_ub_vga_screen.c" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="10">
+<position/>
+</item>
+<item historyLabel="stm32_ub_vga_screen.c" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="10">
+<position info="not_deleted" x="1326" y="0"/>
+</item>
+<item historyLabel="main.c" index="10">
+<position info="not_deleted" x="1489" y="0"/>
+</item>
+<item historyLabel="main.c" index="10">
+<position info="not_deleted" x="1394" y="0"/>
+</item>
+<item historyLabel="main.c" index="10">
+<position info="not_deleted" x="899" y="0"/>
+</item>
+<item historyLabel="stm32_ub_vga_screen.h" index="11">
+<position info="not_deleted" x="506" y="0"/>
+</item>
+<item historyLabel="stm32_ub_vga_screen.c" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="10">
+<position info="not_deleted" x="815" y="0"/>
+</item>
+<item historyLabel="stm32_ub_vga_screen.c" index="9">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="10">
+<position info="not_deleted" x="815" y="0"/>
+</item>
+<item active="true" historyLabel="stm32_ub_vga_screen.c" index="9">
 <position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
@@ -412,47 +423,47 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_vga_screen.c" tooltip="VGA_Core/ub_lib/stm32_ub_vga_screen.c">
-<persistable path="/VGA_Core/ub_lib/stm32_ub_vga_screen.c"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_vga_screen.h" tooltip="VGA_Core/ub_lib/stm32_ub_vga_screen.h">
 <persistable path="/VGA_Core/ub_lib/stm32_ub_vga_screen.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f4xx.c" tooltip="VGA_Core/cmsis_boot/system_stm32f4xx.c">
-<persistable path="/VGA_Core/cmsis_boot/system_stm32f4xx.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_vga_screen.c" tooltip="VGA_Core/ub_lib/stm32_ub_vga_screen.c">
+<persistable path="/VGA_Core/ub_lib/stm32_ub_vga_screen.c"/>
 </file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="platform.h" tooltip="C:\CooCox\CoIDE\workspace\keywordspottingtest\Source\mbed\platform\platform.h">
-<persistable uri="file:/C:/CooCox/CoIDE/workspace/keywordspottingtest/Source/mbed/platform/platform.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="lcd.c" tooltip="convolutie_stp/Sources/lcd.c">
+<persistable path="/convolutie_stp/Sources/lcd.c"/>
 </file>
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mbed_preprocessor.h" tooltip="C:\CooCox\CoIDE\workspace\keywordspottingtest\Source\mbed\platform\mbed_preprocessor.h">
-<persistable path="C:\CooCox\CoIDE\workspace\keywordspottingtest\Source\mbed\platform\mbed_preprocessor.h" project="keywordspottingtest"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="keys.c" tooltip="convolutie_stp/Sources/keys.c">
+<persistable path="/convolutie_stp/Sources/keys.c"/>
 </file>
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mbed_toolchain.h" tooltip="C:\CooCox\CoIDE\workspace\keywordspottingtest\Source\mbed\platform\mbed_toolchain.h">
-<persistable path="C:\CooCox\CoIDE\workspace\keywordspottingtest\Source\mbed\platform\mbed_toolchain.h" project="keywordspottingtest"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f4xx.c" tooltip="convolutie_stp/cmsis_boot/startup/startup_stm32f4xx.c">
+<persistable path="/convolutie_stp/cmsis_boot/startup/startup_stm32f4xx.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="local_NN.h" tooltip="keywordspottingtest/source/local_NN/local_NN.h">
-<persistable path="/keywordspottingtest/source/local_NN/local_NN.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="adc.c" tooltip="convolutie_stp/Sources/adc.c">
+<persistable path="/convolutie_stp/Sources/adc.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="nn.cpp" tooltip="keywordspottingtest/source/NN/nn.cpp">
-<persistable path="/keywordspottingtest/source/NN/nn.cpp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.h" tooltip="convolutie_stp/main.h">
+<persistable path="/convolutie_stp/main.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="nn.h" tooltip="keywordspottingtest/source/NN/nn.h">
-<persistable path="/keywordspottingtest/source/NN/nn.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="kayastuff.h" tooltip="uc_methods/kayastuff.h">
+<persistable path="/uc_methods/kayastuff.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mbed.h" tooltip="keywordspottingtest/lib shit/mbed.h">
-<persistable path="/keywordspottingtest/lib shit/mbed.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="kayastuff.c" tooltip="uc_methods/kayastuff.c">
+<persistable path="/uc_methods/kayastuff.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mfcc.h" tooltip="keywordspottingtest/source/MFCC/mfcc.h">
-<persistable path="/keywordspottingtest/source/MFCC/mfcc.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="studentstuff.h" tooltip="uc_methods/ports/source/studentstuff.h">
+<persistable path="/uc_methods/ports/source/studentstuff.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ds_cnn.h" tooltip="keywordspottingtest/source/NN/DS_DNN/ds_cnn.h">
-<persistable path="/keywordspottingtest/source/NN/DS_DNN/ds_cnn.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="uart.c" tooltip="uc_methods/ports/source/uart.c">
+<persistable path="/uc_methods/ports/source/uart.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="keywordspottingtest/main.c">
-<persistable path="/keywordspottingtest/main.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="uart.h" tooltip="uc_methods/ports/header/uart.h">
+<persistable path="/uc_methods/ports/header/uart.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mfcc.cpp" tooltip="keywordspottingtest/source/MFCC/mfcc.cpp">
-<persistable path="/keywordspottingtest/source/MFCC/mfcc.cpp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f4xx.c" tooltip="uc_methods/cmsis_boot/startup/startup_stm32f4xx.c">
+<persistable path="/uc_methods/cmsis_boot/startup/startup_stm32f4xx.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="delay.c" tooltip="uc_methods/ports/source/delay.c">
+<persistable path="/uc_methods/ports/source/delay.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_gpio.h" tooltip="testlcd/cmsis_lib/include/stm32f4xx_gpio.h">
 <persistable path="/testlcd/cmsis_lib/include/stm32f4xx_gpio.h"/>
