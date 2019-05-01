@@ -6,7 +6,13 @@
 /// Based upon http://ilab.usc.edu/wiki/index.php/HSV_And_H2SV_Color_Space#HSV_Transformation_C_.2F_C.2B.2B_Code_2
 /// </summary>
 
-void HsvToRgb(double h, double S, double V, out int r, out int g, out int b)
+#include "main.h"
+#include "stm32_ub_vga_screen.h"
+#include <math.h>
+
+
+
+void HsvToRgb(double h, double S, double V, int* r, int* g, int* b)
 {
   // ######################################################################
   // T. Nathan Mundhenk
@@ -97,9 +103,9 @@ void HsvToRgb(double h, double S, double V, out int r, out int g, out int b)
         break;
     }
   }
-  r = Clamp((int)(R * 255.0));
-  g = Clamp((int)(G * 255.0));
-  b = Clamp((int)(B * 255.0));
+  *r = Clamp((int)(R * 255.0));
+  *g = Clamp((int)(G * 255.0));
+  *b = Clamp((int)(B * 255.0));
 }
 
 /// <summary>
