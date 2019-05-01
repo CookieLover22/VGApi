@@ -34,27 +34,31 @@ int main(void)
   char RGB;
   double i;
   double j;
+  double k;
 
   while(1)
   {
-	  for(j=0;j<1;j+=0.001)
+	  for (k = 1; k > 0; k-=0.1)
 	  {
-		  for(i = 0; i<640; i ++)
+
+		  for(j=0;j<1;j+=0.001)
 		  {
-			  HsvToRgb(i, j, 1, &R, &G, &B);
-			  R >>= 5;
-			  G >>= 5;
-			  B >>= 6;
-			  RGB = R;
-			  RGB <<= 3;
-			  RGB += G;
-			  RGB <<= 2;
-			  RGB += B;
-			  //RGB = (R*6/256)*36 + (G*6/256)*6 + (B*6/256);
-			  UB_VGA_SetPixel(i/2 ,j*240,RGB);
+			  for(i = 0; i<360; i += 0.89)
+			  {
+				  HsvToRgb(i, j, k, &R, &G, &B);
+				  R >>= 5;
+				  G >>= 5;
+				  B >>= 6;
+				  RGB = R;
+				  RGB <<= 3;
+				  RGB += G;
+				  RGB <<= 2;
+				  RGB += B;
+				  //RGB = (R*6/256)*36 + (G*6/256)*6 + (B*6/256);
+				  UB_VGA_SetPixel(i*0.89 ,j*240,RGB);
+			  }
 		  }
   	  }
-	  while(1);
   }
 }
 
