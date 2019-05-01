@@ -3,22 +3,31 @@ typedef struct command
 {
 	char arg[8][20];	
 
-} Message_struct;
+} UART_struct;
 
-Message_struct bericht[10];
+UART_struct bericht[10];
 
 bericht[2].arg[5] = "hallo"
 
 //logic to IO
 
+union typeorx
+{
+	uint16_t
+}
+
 typedef struct pixel
 {
-	char x;	
-	char y;	
-	char colour;	
+	uint8_t command : 1;
+	uint16_t x 	: 9;	
+	uint8_t y	: 8;	
+	uint8_t color	: 8;	
 
 } Pixel_struct;
 
 Pixel_struct pixel[1000];
 
-pixel[2].arg[5] = "hallo"
+pixel[2].command = 1;
+pixel[2].x 	 = 32;
+pixel[2].y 	 = 100;
+pixel[2].color 	 = 10;
