@@ -1,0 +1,24 @@
+//front to logic
+typedef struct command
+{
+	char arg[8][20];	
+
+} Message_struct;
+
+Message_struct bericht[10];
+
+bericht[2].arg[5] = "hallo"
+
+//logic to IO
+
+typedef struct pixel
+{
+	char x;	
+	char y;	
+	char colour;	
+
+} Pixel_struct;
+
+Pixel_struct pixel[1000];
+
+pixel[2].arg[5] = "hallo"
