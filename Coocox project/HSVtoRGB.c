@@ -6,10 +6,20 @@
 /// Based upon http://ilab.usc.edu/wiki/index.php/HSV_And_H2SV_Color_Space#HSV_Transformation_C_.2F_C.2B.2B_Code_2
 /// </summary>
 
-#include "main.h"
+//#include "main.h"
 #include "stm32_ub_vga_screen.h"
 #include <math.h>
+#include "stm32f4xx.h"
 
+/// <summary>
+/// Clamp a value to 0-255
+/// </summary>
+int Clamp(int i)
+{
+  if (i < 0) return 0;
+  if (i > 255) return 255;
+  return i;
+}
 
 
 void HsvToRgb(double h, double S, double V, int* r, int* g, int* b)
@@ -32,7 +42,7 @@ void HsvToRgb(double h, double S, double V, int* r, int* g, int* b)
   else
   {
     double hf = H / 60.0;
-    int i = (int)Math.Floor(hf);
+    int i = (int)floor(hf);
     double f = hf - i;
     double pv = V * (1 - S);
     double qv = V * (1 - S * f);
@@ -108,12 +118,3 @@ void HsvToRgb(double h, double S, double V, int* r, int* g, int* b)
   *b = Clamp((int)(B * 255.0));
 }
 
-/// <summary>
-/// Clamp a value to 0-255
-/// </summary>
-int Clamp(int i)
-{
-  if (i < 0) return 0;
-  if (i > 255) return 255;
-  return i;
-}
