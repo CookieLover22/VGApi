@@ -41,16 +41,24 @@ int main(void)
 	  for (k = 1; k > 0; k-=0.2)
 	  {
 
-		  for(j=0;j<1;j+=0.001)
+		  for(j=0;j<1;j+=(1.0/240))
 		  {
 			  for(i = 0; i<360; i += 0.89)
 			  {
 				  //if(fmod(i, 1)<1)
 				  {
 					  HsvToRgb(i, j, k, &R, &G, &B);
+
+					  //eve interpoleren(ofzo)
 					  if (R%32 <16 && fmod(j*240+fmod(i,2)-0.5,2)>1 && R>16) R-=16;
 					  if (G%32 <16 && fmod(j*240+fmod(i,2)-0.5,2)>1 && G>16) G-=16;
 					  if (B%64 <32 && fmod(j*240+fmod(i,2)-0.5,2)>1 && B>32) B-=32;
+
+					  //de test hier onder werkt niet zo goed
+					  //if (fmod(j*240,R%32)<1 && R>16) R-=16;
+					  //if (fmod(j*240,G%32)<1 && G>16) G-=16;
+					  //if (fmod(j*240,B%64)<1 && B>32) B-=32;
+
 					  R >>= 5;
 					  G >>= 5;
 					  B >>= 6;
