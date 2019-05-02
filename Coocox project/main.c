@@ -42,7 +42,7 @@ int main(void)
 
   while(1)
   {
-	  UB_VGA_FillScreen(0);
+	  UB_VGA_FillScreen(255);
 
 	  for (k = 1; k > 0; k-=0.001)
 	  {
