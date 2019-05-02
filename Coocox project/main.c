@@ -27,8 +27,6 @@ int main(void)
 	UB_VGA_Screen_Init(); // Init VGA-Screen
 
   UB_VGA_FillScreen(VGA_COL_BLACK);
-  UB_VGA_SetPixel(10,10,10);
-  UB_VGA_SetPixel(100,100,10);
 
   int R;
   int G;
@@ -37,7 +35,7 @@ int main(void)
   float i;
   float j;
   float k;
-  float interlace;
+  float interlace = 0;
 
 
   while(1)
@@ -54,12 +52,16 @@ int main(void)
 				  //if(fmod(i, 1)<1)
 				  {
 					  HsvToRgb(i/320*360, j/240, k, &R, &G, &B);
+					  //R = 		(int)i*256/320;
+					  //G = 255;
+					  //B = 255 - (int)i*256/320;
 					  dither (i, j, &R, &G, &B, &RGB);
+					  //RGB=55;
 				  }
 				  UB_VGA_SetPixel(i ,j,RGB);
 			  }
 		  }
-		  //while(1); //hierdoor stopt ie meteen met tekenen
+		  while(1); //hierdoor stopt ie meteen met tekenen
   	  }
   }
 }
