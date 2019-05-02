@@ -59,7 +59,7 @@ int main(void)
 					  //if (fmod(j*240,G%32)<1 && G>16) G-=16;
 					  //if (fmod(j*240,B%64)<1 && B>32) B-=32;
 
-
+					  //de fout wordt verspreid over de volgende twee pixels
 					  if (R + Rerror[0]/2 < 256) R += Rerror[0]/2;
 					  if (G + Gerror[0]/2 < 256) G += Gerror[0]/2;
 					  if (B + Berror[0]/2 < 256) B += Berror[0]/2;
@@ -84,7 +84,7 @@ int main(void)
 				  UB_VGA_SetPixel(i*0.89 ,j*240,RGB);
 			  }
 		  }
-		  while(1); //hierdoor stopt ie meteen met tekenen
+		  //while(1); //hierdoor stopt ie meteen met tekenen
   	  }
   }
 }
