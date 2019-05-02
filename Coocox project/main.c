@@ -41,27 +41,31 @@ int main(void)
   while(1)
   {
 
-	  for (k = 1; k > 0; k-=0.01)
+	  for (k = 1; k > 0; k-=0.001)
 	  {
-		  if (interlace > INTERLACELINES) interlace = 0;
-		  else interlace++;
-		  for(j=interlace;j<240;j+=(1.0*INTERLACELINES))
+		  ditherbuffercleaner();
+
+		  //if (interlace > INTERLACELINES) interlace = 0;
+		  //else interlace++;
+		  for(j=0;j<240;j++)//for(j=interlace;j<240;j+=(1.0*INTERLACELINES))
 		  {
+
 			  for(i = 0; i<320; i ++)
 			  {
 				  //if(fmod(i, 1)<1)
-				  {
-					  HsvToRgb(i/320*360, j/240, k, &R, &G, &B);
-					  //R = 		(int)i*256/320;
-					  //G = 255;
-					  //B = 255 - (int)i*256/320;
-					  dither (i, j, &R, &G, &B, &RGB);
-					  //RGB=55;
-				  }
+
+				  HsvToRgb(i/320*360, j/240, k, &R, &G, &B);
+				  //R =		(int)i*256/320;
+				  //G = 0;
+				  //B = 255 - (int)i*256/320;
+				  dither (i, j, &R, &G, &B, &RGB);
+				  //RGB=55;
+
 				  UB_VGA_SetPixel(i ,j,RGB);
 			  }
 		  }
 		  //while(1); //hierdoor stopt ie meteen met tekenen
+
   	  }
   }
 }

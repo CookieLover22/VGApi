@@ -23,7 +23,7 @@
          <include file="..\..\..\ub_lib\stm32_ub_vga_screen.h"/>
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
       </source>
-      <source file="..\..\..\dithering.c" lastModified="16a79213fae">
+      <source file="..\..\..\dithering.c" lastModified="16a795399b2">
       </source>
       <source file="..\..\..\cmsis_boot\system_stm32f4xx.h" lastModified="16a2af88ee2">
       </source>
@@ -62,7 +62,7 @@
       <source file="..\..\..\cmsis_lib\source\misc.c" lastModified="16a2af88ef1">
          <include file="..\..\..\cmsis_lib\include\misc.h"/>
       </source>
-      <source file="..\..\..\main.h" lastModified="16a791e442f">
+      <source file="..\..\..\main.h" lastModified="16a795be8ca">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
       </source>
       <source file="..\..\..\cmsis_lib\include\stm32f4xx_dma.h" lastModified="16a2af88ee6">

@@ -21,6 +21,7 @@
 
 extern void HsvToRgb(float h, float S, float V, int* r, int* g, int* b);
 extern void dither (int x, int y, int *R, int *G, int *B, char * RGB);
+extern void ditherbuffercleaner();
 
-#define INTERLACELINES 1
+#define INTERLACELINES 1 //1 = no interlace
 
