@@ -38,7 +38,7 @@ int main(void)
 
   while(1)
   {
-	  for (k = 1; k > 0; k-=0.1)
+	  for (k = 1; k > 0; k-=0.2)
 	  {
 
 		  for(j=0;j<1;j+=0.001)
