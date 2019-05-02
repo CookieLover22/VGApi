@@ -41,7 +41,7 @@ int main(void)
   while(1)
   {
 
-	  for (k = 1; k > 0; k-=0.001)
+	  for (k = 1; k > 0; k-=0.01)
 	  {
 		  if (interlace > INTERLACELINES) interlace = 0;
 		  else interlace++;
@@ -61,7 +61,7 @@ int main(void)
 				  UB_VGA_SetPixel(i ,j,RGB);
 			  }
 		  }
-		  while(1); //hierdoor stopt ie meteen met tekenen
+		  //while(1); //hierdoor stopt ie meteen met tekenen
   	  }
   }
 }
