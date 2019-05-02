@@ -39,7 +39,7 @@ int main(void)
 
   while(1)
   {
-	  for (k = 1; k > 0; k-=0.2)
+	  for (k = 1; k > 0; k-=0.01)
 	  {
 
 		  for(j=0;j<1;j+=(1.0/240))
