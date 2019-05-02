@@ -35,6 +35,7 @@ int main(void)
   float i;
   float j;
   float k;
+  char Rerror, Gerror, Berror;
 
   while(1)
   {
@@ -48,16 +49,23 @@ int main(void)
 				  //if(fmod(i, 1)<1)
 				  {
 					  HsvToRgb(i, j, k, &R, &G, &B);
-
-					  //eve interpoleren(ofzo)
-					  if (R%32 <16 && fmod(j*240+fmod(i,2)-0.5,2)>1 && R>16) R-=16;
-					  if (G%32 <16 && fmod(j*240+fmod(i,2)-0.5,2)>1 && G>16) G-=16;
-					  if (B%64 <32 && fmod(j*240+fmod(i,2)-0.5,2)>1 && B>32) B-=32;
+					  //eve ditheren
+					  //if (R%32 <16 && fmod(j*240+fmod(i,2)-0.5,2)>1 && R>16) R-=16;
+					  //if (G%32 <16 && fmod(j*240+fmod(i,2)-0.5,2)>1 && G>16) G-=16;
+					  //if (B%64 <32 && fmod(j*240+fmod(i,2)-0.5,2)>1 && B>32) B-=32;
 
 					  //de test hier onder werkt niet zo goed
 					  //if (fmod(j*240,R%32)<1 && R>16) R-=16;
 					  //if (fmod(j*240,G%32)<1 && G>16) G-=16;
 					  //if (fmod(j*240,B%64)<1 && B>32) B-=32;
+
+					  R += Rerror;
+					  G += Gerror;
+					  B += Berror;
+
+					  Rerror = R%32;
+					  Gerror = G%32;
+					  Berror = B%64;
 
 					  R >>= 5;
 					  G >>= 5;
