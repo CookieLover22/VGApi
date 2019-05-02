@@ -42,7 +42,9 @@ int main(void)
 
   while(1)
   {
-	  for (k = 1; k > 0; k-=0.01)
+	  UB_VGA_FillScreen(0);
+
+	  for (k = 1; k > 0; k-=0.001)
 	  {
 		  if (interlace > INTERLACELINES) interlace = 0;
 		  else interlace++;
