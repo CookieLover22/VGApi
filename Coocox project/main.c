@@ -13,7 +13,7 @@
 #include "main.h"
 #include "stm32_ub_vga_screen.h"
 #include <math.h>
-extern void HsvToRgb(double h, double S, double V, int* r, int* g, int* b);
+extern void HsvToRgb(float h, float S, float V, int* r, int* g, int* b);
 
 int main(void)
 {
@@ -32,9 +32,9 @@ int main(void)
   int G;
   int B;
   char RGB;
-  double i;
-  double j;
-  double k;
+  float i;
+  float j;
+  float k;
 
   while(1)
   {
@@ -45,19 +45,26 @@ int main(void)
 		  {
 			  for(i = 0; i<360; i += 0.89)
 			  {
-				  HsvToRgb(i, j, k, &R, &G, &B);
-				  R >>= 5;
-				  G >>= 5;
-				  B >>= 6;
-				  RGB = R;
-				  RGB <<= 3;
-				  RGB += G;
-				  RGB <<= 2;
-				  RGB += B;
-				  //RGB = (R*6/256)*36 + (G*6/256)*6 + (B*6/256);
+				  //if(fmod(i, 1)<1)
+				  {
+					  HsvToRgb(i, j, k, &R, &G, &B);
+					  if (R%32 <16 && fmod(j*240+fmod(i,2)-0.5,2)>1 && R>16) R-=16;
+					  if (G%32 <16 && fmod(j*240+fmod(i,2)-0.5,2)>1 && G>16) G-=16;
+					  if (B%64 <32 && fmod(j*240+fmod(i,2)-0.5,2)>1 && B>32) B-=32;
+					  R >>= 5;
+					  G >>= 5;
+					  B >>= 6;
+					  RGB = R;
+					  RGB <<= 3;
+					  RGB += G;
+					  RGB <<= 2;
+					  RGB += B;
+					  //RGB = (R*6/256)*36 + (G*6/256)*6 + (B*6/256);
+				  }
 				  UB_VGA_SetPixel(i*0.89 ,j*240,RGB);
 			  }
 		  }
+		  while(1); //hierdoor stopt ie meteen met tekenen
   	  }
   }
 }

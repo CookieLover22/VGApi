@@ -22,17 +22,17 @@ int Clamp(int i)
 }
 
 
-void HsvToRgb(double h, double S, double V, int* r, int* g, int* b)
+void HsvToRgb(float h, float S, float V, int* r, int* g, int* b)
 {
   // ######################################################################
   // T. Nathan Mundhenk
   // mundhenk@usc.edu
   // C/C++ Macro HSV to RGB
 
-  double H = h;
+  float H = h;
   while (H < 0) { H += 360; };
   while (H >= 360) { H -= 360; };
-  double R, G, B;
+  float R, G, B;
   if (V <= 0)
     { R = G = B = 0; }
   else if (S <= 0)
@@ -41,12 +41,12 @@ void HsvToRgb(double h, double S, double V, int* r, int* g, int* b)
   }
   else
   {
-    double hf = H / 60.0;
+    float hf = H / 60.0;
     int i = (int)floor(hf);
-    double f = hf - i;
-    double pv = V * (1 - S);
-    double qv = V * (1 - S * f);
-    double tv = V * (1 - S * (1 - f));
+    float f = hf - i;
+    float pv = V * (1 - S);
+    float qv = V * (1 - S * f);
+    float tv = V * (1 - S * (1 - f));
     switch (i)
     {
 
