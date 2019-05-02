@@ -17,3 +17,10 @@
 
 //--------------------------------------------------------------
 #endif // __STM32F4_UB_MAIN_H
+
+
+extern void HsvToRgb(float h, float S, float V, int* r, int* g, int* b);
+extern void dither (int x, int y, int *R, int *G, int *B, char * RGB);
+
+#define INTERLACELINES 6
+

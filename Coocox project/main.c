@@ -13,9 +13,9 @@
 #include "main.h"
 #include "stm32_ub_vga_screen.h"
 #include <math.h>
-extern void HsvToRgb(float h, float S, float V, int* r, int* g, int* b);
 
-#define INTERLACELINES 6
+
+
 
 int main(void)
 {
@@ -37,57 +37,26 @@ int main(void)
   float i;
   float j;
   float k;
-  char Rerror[2], Gerror[2], Berror[2];
   float interlace;
+
 
   while(1)
   {
-	  UB_VGA_FillScreen(255);
 
 	  for (k = 1; k > 0; k-=0.001)
 	  {
 		  if (interlace > INTERLACELINES) interlace = 0;
 		  else interlace++;
-		  for(j=interlace/240;j<1;j+=(1.0/(240/INTERLACELINES)))
+		  for(j=interlace;j<240;j+=(1.0*INTERLACELINES))
 		  {
-			  for(i = 0; i<360; i += 0.89)
+			  for(i = 0; i<320; i ++)
 			  {
 				  //if(fmod(i, 1)<1)
 				  {
-					  HsvToRgb(i, j, k, &R, &G, &B);
-					  //eve ditheren
-					  //if (R%32 <16 && fmod(j*240+fmod(i,2)-0.5,2)>1 && R>16) R-=16;
-					  //if (G%32 <16 && fmod(j*240+fmod(i,2)-0.5,2)>1 && G>16) G-=16;
-					  //if (B%64 <32 && fmod(j*240+fmod(i,2)-0.5,2)>1 && B>32) B-=32;
-
-					  //de test hier onder werkt niet zo goed
-					  //if (fmod(j*240,R%32)<1 && R>16) R-=16;
-					  //if (fmod(j*240,G%32)<1 && G>16) G-=16;
-					  //if (fmod(j*240,B%64)<1 && B>32) B-=32;
-
-					  //de fout wordt verspreid over de volgende twee pixels
-					  if (R + Rerror[0]/2 < 256) R += Rerror[0]/2;
-					  if (G + Gerror[0]/2 < 256) G += Gerror[0]/2;
-					  if (B + Berror[0]/2 < 256) B += Berror[0]/2;
-
-					  Rerror[0] = R%32 + Rerror[1];
-					  Rerror[1] = R%32;
-					  Gerror[0] = G%32 + Gerror[1];
-					  Gerror[1] = G%32;
-					  Berror[0] = B%64 + Berror[1];
-					  Berror[1] = B%64;
-
-					  R >>= 5;
-					  G >>= 5;
-					  B >>= 6;
-					  RGB = R;
-					  RGB <<= 3;
-					  RGB += G;
-					  RGB <<= 2;
-					  RGB += B;
-					  //RGB = (R*6/256)*36 + (G*6/256)*6 + (B*6/256);
+					  HsvToRgb(i/320*360, j/240, k, &R, &G, &B);
+					  dither (i, j, &R, &G, &B, &RGB);
 				  }
-				  UB_VGA_SetPixel(i*0.89 ,j*240,RGB);
+				  UB_VGA_SetPixel(i ,j,RGB);
 			  }
 		  }
 		  //while(1); //hierdoor stopt ie meteen met tekenen

@@ -1,34 +1,37 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m4 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F407VG -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project\cmsis_boot -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project\cmsis_lib\include -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project\cmsis_lib -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project\cmsis -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project\ub_lib">
-      <target file="stm32f4xx_gpio.o" lastModified="16a77be459b">
+      <target file="stm32f4xx_gpio.o" lastModified="16a78c02b00">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_gpio.c" lastModified="16a2af88ef4"/>
       </target>
-      <target file="stm32_ub_vga_screen.o" lastModified="16a77be4778">
+      <target file="stm32_ub_vga_screen.o" lastModified="16a78c02ddd">
          <source file="..\..\..\ub_lib\stm32_ub_vga_screen.c" lastModified="16a2af88efe"/>
       </target>
-      <target file="stm32f4xx_dma.o" lastModified="16a77be46d0">
+      <target file="stm32f4xx_dma.o" lastModified="16a78c02d07">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_dma.c" lastModified="16a2af88ef2"/>
       </target>
-      <target file="stm32f4xx_tim.o" lastModified="16a77be49d2">
+      <target file="stm32f4xx_tim.o" lastModified="16a78c030b6">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_tim.c" lastModified="16a2af88efa"/>
       </target>
-      <target file="system_stm32f4xx.o" lastModified="16a77be461d">
+      <target file="system_stm32f4xx.o" lastModified="16a78c02baf">
          <source file="..\..\..\cmsis_boot\system_stm32f4xx.c" lastModified="16a2af88ee1"/>
       </target>
-      <target file="startup_stm32f4xx.o" lastModified="16a77be41cb">
+      <target file="startup_stm32f4xx.o" lastModified="16a78c02713">
          <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="16a2af88ed5"/>
       </target>
-      <target file="main.o" lastModified="16a782112fc">
-         <source file="..\..\..\main.c" lastModified="16a78210f4d"/>
+      <target file="main.o" lastModified="16a78c027f6">
+         <source file="..\..\..\main.c" lastModified="16a78aca298"/>
       </target>
-      <target file="HSVtoRGB.o" lastModified="16a77be4469">
+      <target file="HSVtoRGB.o" lastModified="16a78c02a28">
          <source file="..\..\..\HSVtoRGB.c" lastModified="16a777c3481"/>
       </target>
-      <target file="stm32f4xx_rcc.o" lastModified="16a77be43c3">
+      <target file="dithering.o" lastModified="16a78e29b1d">
+         <source file="..\..\..\dithering.c" lastModified="16a78e2977f"/>
+      </target>
+      <target file="stm32f4xx_rcc.o" lastModified="16a78c02927">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_rcc.c" lastModified="16a2af88ef6"/>
       </target>
-      <target file="misc.o" lastModified="16a77be481b">
+      <target file="misc.o" lastModified="16a78c02e8d">
          <source file="..\..\..\cmsis_lib\source\misc.c" lastModified="16a2af88ef1"/>
       </target>
    </processor>
