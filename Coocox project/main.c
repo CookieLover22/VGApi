@@ -15,6 +15,8 @@
 #include <math.h>
 extern void HsvToRgb(float h, float S, float V, int* r, int* g, int* b);
 
+#define INTERLACELINES 6
+
 int main(void)
 {
 
@@ -36,13 +38,15 @@ int main(void)
   float j;
   float k;
   char Rerror[2], Gerror[2], Berror[2];
+  float interlace;
 
   while(1)
   {
 	  for (k = 1; k > 0; k-=0.01)
 	  {
-
-		  for(j=0;j<1;j+=(1.0/240))
+		  if (interlace > INTERLACELINES) interlace = 0;
+		  else interlace++;
+		  for(j=interlace/240;j<1;j+=(1.0/(240/INTERLACELINES)))
 		  {
 			  for(i = 0; i<360; i += 0.89)
 			  {
