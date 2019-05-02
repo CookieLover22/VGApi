@@ -35,7 +35,7 @@ int main(void)
   float i;
   float j;
   float k;
-  char Rerror, Gerror, Berror;
+  char Rerror[2], Gerror[2], Berror[2];
 
   while(1)
   {
@@ -59,13 +59,17 @@ int main(void)
 					  //if (fmod(j*240,G%32)<1 && G>16) G-=16;
 					  //if (fmod(j*240,B%64)<1 && B>32) B-=32;
 
-					  if (R + Rerror < 256) R += Rerror;
-					  if (G + Gerror < 256) G += Gerror;
-					  if (B + Berror < 256) B += Berror;
 
-					  Rerror = R%32;
-					  Gerror = G%32;
-					  Berror = B%64;
+					  if (R + Rerror[0]/2 < 256) R += Rerror[0]/2;
+					  if (G + Gerror[0]/2 < 256) G += Gerror[0]/2;
+					  if (B + Berror[0]/2 < 256) B += Berror[0]/2;
+
+					  Rerror[0] = R%32 + Rerror[1];
+					  Rerror[1] = R%32;
+					  Gerror[0] = G%32 + Gerror[1];
+					  Gerror[1] = G%32;
+					  Berror[0] = B%64 + Berror[1];
+					  Berror[1] = B%64;
 
 					  R >>= 5;
 					  G >>= 5;
