@@ -59,9 +59,9 @@ int main(void)
 					  //if (fmod(j*240,G%32)<1 && G>16) G-=16;
 					  //if (fmod(j*240,B%64)<1 && B>32) B-=32;
 
-					  R += Rerror;
-					  G += Gerror;
-					  B += Berror;
+					  if (R + Rerror < 256) R += Rerror;
+					  if (G + Gerror < 256) G += Gerror;
+					  if (B + Berror < 256) B += Berror;
 
 					  Rerror = R%32;
 					  Gerror = G%32;
