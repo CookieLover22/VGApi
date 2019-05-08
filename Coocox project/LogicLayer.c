@@ -56,10 +56,8 @@ int API_Qreader(UART_Q_info * readQ, UART_struct * readCommand)
 int API_Qreader_stealth(UART_Q_info * readQ, UART_struct * readCommand)
 {
 	if (readQ->last_read_Q_member == readQ) return EMPTYQ;
-	if (readQ->last_read_Q_member < readQ->Q_size - 1) readQ->last_read_Q_member++;
-	else readQ->last_read_Q_member = 0;
 
-	readCommand = readQ->Q_members[readQ->last_read_Q_member];
+	readCommand = readQ->Q_members[readQ->last_read_Q_member+1];
 
 	return NOERROR;
 }
