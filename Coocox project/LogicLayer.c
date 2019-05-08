@@ -29,7 +29,7 @@ int API_Qwriter(UART_Q_info * writeQ, UART_command * writeCommand)
 	if (writeQ->last_written_Q_member < writeQ->Q_size - 1) writeQ->last_written_Q_member++;
 	else writeQ->last_written_Q_member = 0;
 
-	writeQ->Q_members[writeQ->last_written_Q_member];
+	writeQ->Q_members[writeQ->last_written_Q_member] = *writeCommand;
 
 	return NOERROR;
 
@@ -37,14 +37,36 @@ int API_Qwriter(UART_Q_info * writeQ, UART_command * writeCommand)
 
 /*!Deze functie leest het oudste lid naar de Q en returnt een errorcode.
  * Het adres van de Q (van API_Qinit()) wordt meegegeven aan de functie.
+ * Deze functie verwijderd het zojuist gelezen lid.
  */
-int API_Qreader(UART_Q_info *, UART_struct *)
+int API_Qreader(UART_Q_info * readQ, UART_struct * readCommand)
 {
+	if (readQ->last_read_Q_member == readQ) return EMPTYQ;
+	if (readQ->last_read_Q_member < readQ->Q_size - 1) readQ->last_read_Q_member++;
+	else readQ->last_read_Q_member = 0;
 
+	readCommand = readQ->Q_members[readQ->last_read_Q_member];
+
+	return NOERROR;
+}
+/*!Deze functie leest het oudste lid naar de Q en returnt een errorcode.
+ * Het adres van de Q (van API_Qinit()) wordt meegegeven aan de functie.
+ * Deze functie verwijderd niet het zojuist gelezen lid.
+ */
+int API_Qreader_stealth(UART_Q_info * readQ, UART_struct * readCommand)
+{
+	if (readQ->last_read_Q_member == readQ) return EMPTYQ;
+	if (readQ->last_read_Q_member < readQ->Q_size - 1) readQ->last_read_Q_member++;
+	else readQ->last_read_Q_member = 0;
+
+	readCommand = readQ->Q_members[readQ->last_read_Q_member];
+
+	return NOERROR;
 }
 
 int API_functionpicker()
 {
+
 	switch(expression)
 	{
 

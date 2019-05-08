@@ -2,7 +2,7 @@
 //functieprototypes
 int API_Qinit(int Qsize);
 int API_Qwriter(UART_Q_info * writeQ, UART_command * writeCommand);
-int API_Qreader(UART_Q_info *, UART_struct *);
+int API_Qreader(UART_Q_info * readQ, UART_struct * readCommand);
 
 
 //==========================

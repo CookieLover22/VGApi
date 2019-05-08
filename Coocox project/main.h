@@ -23,7 +23,8 @@
 
 enum error
 {
-	NOERROR,
-	QSIZEERROR,
+	NOERROR, 	//! Geeft aan dat er niks aan de hand is
+	QSIZEERROR, //! De gegeven Qsize is te klein!
+	EMPTYQ		//! De Queue is al helemaal uitgelezen
 
 };
