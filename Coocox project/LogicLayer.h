@@ -3,6 +3,7 @@
 int API_Qinit(int Qsize);
 int API_Qwriter(UART_Q_info * writeQ, UART_command * writeCommand);
 int API_Qreader(UART_Q_info * readQ, UART_struct * readCommand);
+int API_Qreader_stealth(UART_Q_info * readQ, UART_struct * readCommand);
 
 
 //==========================
