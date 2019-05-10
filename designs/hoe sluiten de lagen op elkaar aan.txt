@@ -3,11 +3,11 @@ typedef struct command
 {
 	char arg[8][20];	
 
-} UART_struct;
+} COMMAND;
 
-UART_struct bericht[10];
+COMMAND commands[10];
 
-bericht[2].arg[5] = "hallo"
+commands[2].arg[5] = "hallo"
 
 //logic to IO
 
