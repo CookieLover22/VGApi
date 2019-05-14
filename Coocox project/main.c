@@ -49,14 +49,14 @@ int main(void)
   API_clearscreen(0);
   char b = 'C';
   API_draw_char(20,100,254,b,0,0,0,0);
-  char *text = "WAT EEN KUT ruk OPDRACHT !@#$%^&*() gaat deze zin verder op de volgende regel?";
+  char *text = "WAT EEN HOERE OPDRACHT !@#$%^&*() gaat deze zin verder op de volgende regel?";
 
   API_draw_text(0,200,232,text,0,0,0,0);
   text = "Mooi dat doet tie. Nou blij?";
   API_draw_text(0,216,232,text,0,0,1,0);
   API_draw_rectangle(0,0,50,50,10,0,0,0);
 
-  API_draw_line(50,50,100,100,10,0,0);
+  API_draw_line(50,50,100,100,10,32,0);
   API_draw_line(150,150,100,100,40,0,0);
 
   API_draw_line(50,150,100,100,80,0,0);
