@@ -4,7 +4,7 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "bitmap.h"
 int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 {
 	  int k=0;
@@ -46,22 +46,64 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 int draw_lineX (int x_1, int y_1, int x_2, int y_2, int color, int weight, int reserved)
 {
 	  double a;
-
+	  int i=0;
+	  int dikte = weight;
 	  a = (y_2 - y_1) / (x_2 - x_1);
+	  //double b = abs(a);
 	  if(a!=0)
-		  y_1 = a * x_1 + (x_1 - (a * y_1));
+		 ;
 	  else
 	  {
 		  a=0;
+		  dikte = dikte/1.5;
 		  //color = 10;
 	  }
 	  while (x_1 < x_2)
 		{
 		  UB_VGA_SetPixel(x_1,y_1,color);
-		  UB_VGA_SetPixel(x_1,(y_1+a),color);
-		  UB_VGA_SetPixel(x_1+a,(y_1+a),color);
-		  UB_VGA_SetPixel(x_1+a,(y_1+a+a),color);
-		  UB_VGA_SetPixel(x_1+a+a,(y_1+a+a),color);
+		  if(dikte>1)
+		  {
+			  if(a==0)
+			  {
+				  for(i=1;i<=dikte;i++)
+				  {
+					  UB_VGA_SetPixel(x_1,y_1+i,color);
+				  }
+			  }
+			  else
+			  {
+				  while(1)
+				  {
+					  if(i*2+2>dikte)
+						  break;
+					  if(y_2-y_1>0)
+						  UB_VGA_SetPixel(x_1+(a*i),(y_1-a-(a*i)),color);
+					  else
+						  UB_VGA_SetPixel(x_1+(a*i),(y_1+a+(a*i)),color);
+					  if(i*2+3>dikte)
+						  break;
+					  i++;
+					  if(y_2-y_1>0)
+						  UB_VGA_SetPixel(x_1+(a*i),(y_1-(a*i)),color);
+					  else
+						  UB_VGA_SetPixel(x_1+(a*i),(y_1+(a*i)),color);
+				  }
+			  }
+			  i=0;
+		  }
+		  //for(i=0;i<=weight;i++)
+		 // {
+		//	if(i % 2 == 0)
+		//		UB_VGA_SetPixel(x_1+(a*i),(y_1+a+(a*i)),color);
+		//		//printf("%d is even.", number);
+		//	else
+		//		 UB_VGA_SetPixel(x_1+a,(y_1+a),color);
+		//		//printf("%d is odd.", number);
+		  //}
+		  //UB_VGA_SetPixel(x_1,(y_1+a),color);
+		  //UB_VGA_SetPixel(x_1+a,(y_1+a),color);
+		  //UB_VGA_SetPixel(x_1+a,(y_1+a+a),color);
+		 // UB_VGA_SetPixel(x_1+a+a,(y_1+a+a),color);
 		  y_1 += a;
 		  x_1++;
 		}
@@ -72,18 +114,50 @@ int draw_lineX (int x_1, int y_1, int x_2, int y_2, int color, int weight, int r
 int draw_lineY (int x_1, int y_1, int x_2, int y_2, int color, int weight, int reserved)
 {
   double a;
-
+  int i=0;
+  int dikte = weight;
   a = (x_2 - x_1) / (y_2 - y_1);
   if(a!=0)
 	  y_1 = a * y_1 + (y_1 - (a * x_1));
   else
   {
 	  a=0;
+	  dikte = dikte/1.5;
 	  //color = 10;
   }
   while (y_1 < y_2)
     {
 	  UB_VGA_SetPixel(x_1,y_1,color);
+	  if(dikte>1)
+	  {
+		  if(a==0)
+		  {
+			  for(i=1;i<=dikte;i++)
+			  {
+				  UB_VGA_SetPixel(x_1+i,y_1,color);
+			  }
+		  }
+		  else
+		  {
+			  while(1)
+			  {
+				  if(i*2+2>dikte)
+					  break;
+				  if(y_2-y_1>0)
+					  UB_VGA_SetPixel(x_1-a-(a*i),(y_1+(a*i)),color);
+				  else
+					  UB_VGA_SetPixel(x_1+a+(a*i),(y_1+(a*i)),color);
+				  if(i*2+3>dikte)
+					  break;
+				  i++;
+				  if(y_2-y_1>0)
+					  UB_VGA_SetPixel(x_1-(a*i),(y_1+(a*i)),color);
+				  else
+					  UB_VGA_SetPixel(x_1+(a*i),(y_1+(a*i)),color);
+			  }
+		  }
+		  i=0;
+	  }
       x_1 += a;
       y_1++;
     }

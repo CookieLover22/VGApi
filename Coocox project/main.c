@@ -20,6 +20,7 @@ int main(void)
 
 	SystemInit(); // System speed to 168MHz
 
+
 	API_Qinit(&front_to_logic_Q, 20); //Q initialiseren
 
 	UB_VGA_Screen_Init(); // Init VGA-Screen
