@@ -1,13 +1,6 @@
 
-#include "stm32_ub_vga_screen.h"
-#include <math.h>
-#include <time.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include "font8x8_basic.h"
-//#include "aztech_font.h"
-//#include "bubblesstandard_font.h"
-#include "Minimum+1_font.h"
+
+
 int API_draw_bitmap(int x_lup, int y_lup, int bm_nr);
 int API_draw_text (int x_lup, int y_lup, int color, char text[100], char *fontname, int fontsize, int fontsytle, int reserved);
 int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname, int fontsize, int fontsytle, int reserved);

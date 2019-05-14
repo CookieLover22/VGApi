@@ -9,6 +9,14 @@
          <include file="..\..\..\cmsis_lib\include\misc.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_dma.h"/>
       </source>
+      <source file="..\..\..\IO Layer\IO_draw.c" lastModified="16ab6e5d8c2">
+         <include file="..\..\..\IO Layer\IO_draw.h"/>
+         <include file="..\..\..\ub_lib\stm32_ub_vga_screen.h"/>
+         <include file="..\..\..\IO Layer\bitmap.h"/>
+         <include file="..\..\..\IO Layer\font8x8_basic.h"/>
+         <include file="..\..\..\IO Layer\Minimum+1_font.h"/>
+         <include file="..\..\..\ub_lib\stm32_ub_vga_screen.h"/>
+      </source>
       <source file="..\..\..\cmsis\core_cmInstr.h" lastModified="16a7265f470">
       </source>
       <source file="..\..\..\cmsis\core_cm4.h" lastModified="16a7265f46a">

@@ -718,8 +718,8 @@ Linker script and memory map
  *(vtable)
  *(.data*)
  .data          0x20000000     0x2b9c ..\obj\IO_draw.o
-                0x20000000                font8x8_basic
-                0x20000400                pikachu
+                0x20000000                pikachu
+                0x2000279c                font8x8_basic
  *fill*         0x20002b9c        0x4 
  .data.impure_data
                 0x20002ba0      0x428 c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm-none-eabi/4.8.3/../../../../arm-none-eabi/lib/armv7e-m\libg.a(lib_a-impure.o)
@@ -795,29 +795,29 @@ LOAD c:/program files (x86)/gnu tools arm embedded/4.8 2013q4/bin/../lib/gcc/arm
 END GROUP
 OUTPUT(VGA_Core.elf elf32-littlearm)
 
-.debug_info     0x00000000     0x5483
+.debug_info     0x00000000     0x548c
  .debug_info    0x00000000       0xed ..\obj\startup_stm32f4xx.o
  .debug_info    0x000000ed      0x285 ..\obj\main.o
  .debug_info    0x00000372      0xc21 ..\obj\stm32f4xx_rcc.o
- .debug_info    0x00000f93      0x6a4 ..\obj\IO_draw.o
- .debug_info    0x00001637      0x5d6 ..\obj\stm32f4xx_gpio.o
- .debug_info    0x00001c0d      0x566 ..\obj\system_stm32f4xx.o
- .debug_info    0x00002173      0x718 ..\obj\stm32f4xx_dma.o
- .debug_info    0x0000288b      0xaa7 ..\obj\stm32_ub_vga_screen.o
- .debug_info    0x00003332      0x51c ..\obj\misc.o
- .debug_info    0x0000384e     0x1c35 ..\obj\stm32f4xx_tim.o
+ .debug_info    0x00000f93      0x6ad ..\obj\IO_draw.o
+ .debug_info    0x00001640      0x5d6 ..\obj\stm32f4xx_gpio.o
+ .debug_info    0x00001c16      0x566 ..\obj\system_stm32f4xx.o
+ .debug_info    0x0000217c      0x718 ..\obj\stm32f4xx_dma.o
+ .debug_info    0x00002894      0xaa7 ..\obj\stm32_ub_vga_screen.o
+ .debug_info    0x0000333b      0x51c ..\obj\misc.o
+ .debug_info    0x00003857     0x1c35 ..\obj\stm32f4xx_tim.o
 
-.debug_abbrev   0x00000000      0xdbc
+.debug_abbrev   0x00000000      0xde7
  .debug_abbrev  0x00000000       0xb0 ..\obj\startup_stm32f4xx.o
  .debug_abbrev  0x000000b0      0x112 ..\obj\main.o
  .debug_abbrev  0x000001c2      0x1e3 ..\obj\stm32f4xx_rcc.o
- .debug_abbrev  0x000003a5      0x15c ..\obj\IO_draw.o
- .debug_abbrev  0x00000501      0x1a3 ..\obj\stm32f4xx_gpio.o
- .debug_abbrev  0x000006a4      0x136 ..\obj\system_stm32f4xx.o
- .debug_abbrev  0x000007da      0x155 ..\obj\stm32f4xx_dma.o
- .debug_abbrev  0x0000092f      0x1c1 ..\obj\stm32_ub_vga_screen.o
- .debug_abbrev  0x00000af0      0x145 ..\obj\misc.o
- .debug_abbrev  0x00000c35      0x187 ..\obj\stm32f4xx_tim.o
+ .debug_abbrev  0x000003a5      0x187 ..\obj\IO_draw.o
+ .debug_abbrev  0x0000052c      0x1a3 ..\obj\stm32f4xx_gpio.o
+ .debug_abbrev  0x000006cf      0x136 ..\obj\system_stm32f4xx.o
+ .debug_abbrev  0x00000805      0x155 ..\obj\stm32f4xx_dma.o
+ .debug_abbrev  0x0000095a      0x1c1 ..\obj\stm32_ub_vga_screen.o
+ .debug_abbrev  0x00000b1b      0x145 ..\obj\misc.o
+ .debug_abbrev  0x00000c60      0x187 ..\obj\stm32f4xx_tim.o
 
 .debug_aranges  0x00000000      0x718
  .debug_aranges
@@ -853,17 +853,17 @@ OUTPUT(VGA_Core.elf elf32-littlearm)
  .debug_ranges  0x00000360       0x30 ..\obj\misc.o
  .debug_ranges  0x00000390      0x2e8 ..\obj\stm32f4xx_tim.o
 
-.debug_line     0x00000000     0x22b8
+.debug_line     0x00000000     0x22ba
  .debug_line    0x00000000       0xaa ..\obj\startup_stm32f4xx.o
  .debug_line    0x000000aa      0x17c ..\obj\main.o
  .debug_line    0x00000226      0x562 ..\obj\stm32f4xx_rcc.o
- .debug_line    0x00000788      0x350 ..\obj\IO_draw.o
- .debug_line    0x00000ad8      0x307 ..\obj\stm32f4xx_gpio.o
- .debug_line    0x00000ddf      0x19d ..\obj\system_stm32f4xx.o
- .debug_line    0x00000f7c      0x3a4 ..\obj\stm32f4xx_dma.o
- .debug_line    0x00001320      0x35e ..\obj\stm32_ub_vga_screen.o
- .debug_line    0x0000167e      0x20d ..\obj\misc.o
- .debug_line    0x0000188b      0xa2d ..\obj\stm32f4xx_tim.o
+ .debug_line    0x00000788      0x352 ..\obj\IO_draw.o
+ .debug_line    0x00000ada      0x307 ..\obj\stm32f4xx_gpio.o
+ .debug_line    0x00000de1      0x19d ..\obj\system_stm32f4xx.o
+ .debug_line    0x00000f7e      0x3a4 ..\obj\stm32f4xx_dma.o
+ .debug_line    0x00001322      0x35e ..\obj\stm32_ub_vga_screen.o
+ .debug_line    0x00001680      0x20d ..\obj\misc.o
+ .debug_line    0x0000188d      0xa2d ..\obj\stm32f4xx_tim.o
 
 .debug_str      0x00000000     0x2679
  .debug_str     0x00000000      0x13e ..\obj\startup_stm32f4xx.o

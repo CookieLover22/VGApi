@@ -5,6 +5,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "bitmap.h"
+#include "font8x8_basic.h"
+//#include "aztech_font.h"
+//#include "bubblesstandard_font.h"
+#include "Minimum+1_font.h"
+#include "stm32_ub_vga_screen.h"
+
+
 int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 {
 	  int k=0;
