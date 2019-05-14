@@ -147,7 +147,7 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
     char *bitmap;
     if(fontsytle==0)
     {
-    	bitmap = font8x8_basic[letter];
+    	bitmap = font8x8_basic[(int)letter];
         for (x=x_lup; x < (x_lup+8); x++)
         {
             for (y=y_lup; y < (y_lup+8); y++)

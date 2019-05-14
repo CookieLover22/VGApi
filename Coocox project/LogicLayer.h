@@ -18,7 +18,7 @@ typedef struct
 	union Argument arg [ARGAMOUNT];
 	//char arg[ARGAMOUNT][ARGLENGTH];
 
-} UART_command;
+} COMMAND;
 
 /*!Dit is de struct met info over de Queue. Deze wordt teruggegeven door de API_Qinit functie
  *
@@ -34,14 +34,14 @@ typedef struct
 	 */
 	int last_read_Q_member;
 
-	UART_command* Q_members;
+	COMMAND* Q_members;
 
-} UART_Q_info;
+} Q_INFO;
 
 
 //==========================
 //functieprototypes
-int API_Qinit			(UART_Q_info * initQ, int Qsize);
-int API_Qwriter			(UART_Q_info * writeQ, UART_command * writeCommand);
-int API_Qreader			(UART_Q_info * readQ,  UART_command * readCommand);
-int API_Qreader_stealth	(UART_Q_info * readQ,  UART_command * readCommand);
+int API_Qinit			(Q_INFO * initQ, int Qsize);
+int API_Qwriter			(Q_INFO * writeQ, COMMAND * writeCommand);
+int API_Qreader			(Q_INFO * readQ,  COMMAND * readCommand);
+int API_Qreader_stealth	(Q_INFO * readQ,  COMMAND * readCommand);

@@ -1,5 +1,4 @@
 #include <main.h>
-#include <string.h>
 
 
 
@@ -13,10 +12,10 @@ void LOGIC_errorhandler(int error)
  *  Het aantal leden van deze Queue wordt meegegeven en de
  *  functie geeft het adres van de Queue terug.
  */
-int API_Qinit(UART_Q_info * initQ, int Qsize)
+int API_Qinit(Q_INFO * initQ, int Qsize)
 {
 	if(Qsize < 1) return QSIZEERROR;
-	UART_command initCommand[Qsize];
+	COMMAND initCommand[Qsize];
 
 	initQ->Q_size = Qsize;
 	initQ->last_written_Q_member = 0;
@@ -28,9 +27,9 @@ int API_Qinit(UART_Q_info * initQ, int Qsize)
 
 /*!Deze functie schrijft een nieuw lid in de Q en returnt een errorcode.
  * Het adres van de Q (van API_Qinit()) wordt meegegeven aan de functie.
- * Ook wordt de UART_command struct die in de Q moet komen meegegeven
+ * Ook wordt de COMMAND struct die in de Q moet komen meegegeven
  */
-int API_Qwriter(UART_Q_info * writeQ, UART_command * writeCommand)
+int API_Qwriter(Q_INFO * writeQ, COMMAND * writeCommand)
 {
 
 
@@ -55,7 +54,7 @@ int API_Qwriter(UART_Q_info * writeQ, UART_command * writeCommand)
  * Het adres van de Q (van API_Qinit()) wordt meegegeven aan de functie.
  * Deze functie verwijderd het zojuist gelezen lid.
  */
-int API_Qreader(UART_Q_info * readQ, UART_command * readCommand)
+int API_Qreader(Q_INFO * readQ, COMMAND * readCommand)
 {
 	if (readQ->last_read_Q_member == readQ->last_written_Q_member) return EMPTYQ;
 	if (readQ->last_read_Q_member < readQ->Q_size - 1) readQ->last_read_Q_member++;
@@ -69,7 +68,7 @@ int API_Qreader(UART_Q_info * readQ, UART_command * readCommand)
  * Het adres van de Q (van API_Qinit()) wordt meegegeven aan de functie.
  * Deze functie verwijderd niet het zojuist gelezen lid.
  */
-int API_Qreader_stealth(UART_Q_info * readQ, UART_command * readCommand)
+int API_Qreader_stealth(Q_INFO * readQ, COMMAND * readCommand)
 {
 	if (readQ->last_read_Q_member == readQ->last_written_Q_member) return EMPTYQ;
 
@@ -81,7 +80,7 @@ int API_Qreader_stealth(UART_Q_info * readQ, UART_command * readCommand)
 int LOGIC_functionpicker()
 {
 	int error = 0;
-	UART_command command_struct;
+	COMMAND command_struct;
 
 	error = API_Qreader(&front_to_logic_Q, &command_struct);
 	if (error) LOGIC_errorhandler(error);
@@ -131,14 +130,14 @@ int LOGIC_functionpicker()
 
 	if (!strcmp(command_struct.arg[0].text, "tekst"))
 	{
-		API_draw_text(	command_struct.arg[1],
-						command_struct.arg[2],
-						command_struct.arg[3],
-						command_struct.arg[4],
-						command_struct.arg[5],
-						command_struct.arg[6],
-						command_struct.arg[7],
-						command_struct.arg[8]);
+		API_draw_text(	command_struct.arg[1].num,
+						command_struct.arg[2].num,
+						command_struct.arg[3].num,
+						command_struct.arg[4].text,
+						command_struct.arg[5].text,
+						command_struct.arg[6].num,
+						command_struct.arg[7].num,
+						command_struct.arg[8].num);
 	}
 
 	if (!strcmp(command_struct.arg[0].text, "wacht"))
