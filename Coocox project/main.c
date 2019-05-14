@@ -14,10 +14,10 @@
 #include "stm32_ub_vga_screen.h"
 #include <math.h>
 #include <time.h>
+//#include <IO_draw.h>
 
 int main(void)
 {
-
 	//  uint32_t n;
 
 	SystemInit(); // System speed to 168MHz
@@ -38,7 +38,7 @@ int main(void)
   int eindpunt[] = {100,100};
   int breedte = 100;
   int kleur = 255;
-  int richting =0;
+  int richting = 0;
   /*for(i=startpunt[0];i<eindpunt[0];i++)
   {
 	  for(j=0;j<breedte;j++)
@@ -46,8 +46,35 @@ int main(void)
 		  UB_VGA_SetPixel(j+startpunt[1],i,kleur);
 	  }
   }*/
+  API_clearscreen(0);
+  char b = 'C';
+  API_draw_char(20,100,254,b,0,0,0,0);
+  char *text = "WAT EEN KUT ruk OPDRACHT !@#$%^&*() gaat deze zin verder op de volgende regel?";
+
+  API_draw_text(0,200,232,text,0,0,0,0);
+  text = "Mooi dat doet tie. Nou blij?";
+  API_draw_text(0,216,232,text,0,0,1,0);
+  API_draw_rectangle(0,0,50,50,10,0,0,0);
+
+  API_draw_line(50,50,100,100,10,0,0);
+  API_draw_line(150,150,100,100,40,0,0);
+
+  API_draw_line(50,150,100,100,80,0,0);
+  API_draw_line(150,50,100,100,120,0,0);
+
+  API_draw_line(50,100,100,100,160,0,0);
+  API_draw_line(150,100,100,100,200,0,0);
+
+  API_draw_line(100,50,100,100,240,0,0);
+  API_draw_line(100,150,100,100,255,0,0);
+
+  API_draw_bitmap(180,30,1);
 
   while(1)
+  {
+	  //
+  }
+  /*while(1)
   {
 	  while(1)
 	  {
@@ -84,15 +111,21 @@ int main(void)
 			  startpunt[1]--;
 	  }
 	  if(k>255)
-		  k=0;
+		  k=0;*/
 	  //int kleur = 255;
-	  for(i=startpunt[0];i<eindpunt[0];i++)
+	  //API_draw_bitmap(startpunt[1],30,0);
+
+	  //uint16_t blub;
+
+	  //char * blub ="nog eens blub";
+	  //sprintf();
+	  /*for(i=startpunt[0];i<eindpunt[0];i++)
 	  {
 		  for(j=0;j<breedte;j++)
 		  {
 			  UB_VGA_SetPixel(j+startpunt[1],i,k);
 		  }
-	  }
+	  }*/
 
 
 	  /*getalX = rand() % VGA_DISPLAY_X;
@@ -106,7 +139,7 @@ int main(void)
 			  i=0;
 			  break;
 		  }
-	  }*/
+	  }
 
-  }
+  }*/
 }
