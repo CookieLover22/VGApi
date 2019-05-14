@@ -77,6 +77,8 @@ int API_Qreader_stealth(Q_INFO * readQ, COMMAND * readCommand)
 	return NOERROR;
 }
 
+
+
 /*!Deze functie zet het argument dat meegegeven om in een kleur.
  * Als de kleur niet bestaat of als het argument geen kleur is
  * wordt UNDEFINEDCOLOR gereturnt.
@@ -95,10 +97,9 @@ int LOGIC_colorpicker(union Argument* color_arg)
 	return UNDEFINEDCOLOR;
 }
 
-int LOGIC_functionpicker()
+int LOGIC_functionpicker(COMMAND command_struct) //DIT IS BEWUST NIET EEN POINTER. de data in de Q wordt zo niet aangepast
 {
 	int error = 0;
-	COMMAND command_struct;
 
 	error = API_Qreader(&front_to_logic_Q, &command_struct);
 	if (error) return error;
@@ -145,6 +146,7 @@ int LOGIC_functionpicker()
 
 	if (!strcmp(command_struct.arg[0].text, "lijn"))
 	{
+		error = LOGIC_colorpicker(&command_struct.arg[7]);
 		API_draw_line(	command_struct.arg[1].num,
 						command_struct.arg[2].num,
 						command_struct.arg[3].num,
@@ -152,15 +154,25 @@ int LOGIC_functionpicker()
 						command_struct.arg[5].num,
 						command_struct.arg[6].num,
 						command_struct.arg[7].num);
+		return error;
 	}
 
 	if (!strcmp(command_struct.arg[0].text, "rechthoek"))
 	{
-		return COMMANDERROR;
+		error = LOGIC_colorpicker(&command_struct.arg[5]);
+		API_draw_rectangle(	command_struct.arg[1].num,
+							command_struct.arg[2].num,
+							command_struct.arg[3].num,
+							command_struct.arg[4].num,
+							command_struct.arg[5].num,
+							command_struct.arg[6].num,
+							command_struct.arg[7].num,
+							command_struct.arg[8].num);
 	}
 
 	if (!strcmp(command_struct.arg[0].text, "tekst"))
 	{
+		error = LOGIC_colorpicker(&command_struct.arg[7]);
 		API_draw_text(	command_struct.arg[1].num,
 						command_struct.arg[2].num,
 						command_struct.arg[3].num,
@@ -169,6 +181,7 @@ int LOGIC_functionpicker()
 						command_struct.arg[6].num,
 						command_struct.arg[7].num,
 						command_struct.arg[8].num);
+		return error;
 	}
 
 	if (!strcmp(command_struct.arg[0].text, "wacht"))
@@ -180,3 +193,12 @@ int LOGIC_functionpicker()
 	return COMMANDERROR;
 }
 
+int API_perform(Q_INFO * performQ) //naam onder voorbehoud
+{
+	int error = NOERROR;
+	COMMAND performCommand;
+
+	error =API_Qreader(performQ, &performCommand);
+	error = LOGIC_functionpicker(performCommand);
+	return error;
+}
