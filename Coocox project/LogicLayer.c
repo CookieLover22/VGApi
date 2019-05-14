@@ -77,13 +77,31 @@ int API_Qreader_stealth(Q_INFO * readQ, COMMAND * readCommand)
 	return NOERROR;
 }
 
+/*!Deze functie zet het argument dat meegegeven om in een kleur.
+ * Als de kleur niet bestaat of als het argument geen kleur is
+ * wordt UNDEFINEDCOLOR gereturnt.
+ */
+int LOGIC_colorpicker(union Argument* color_arg)
+{
+	if (strcmp(color_arg->text, "zwart"))  {color_arg->num = VGA_COL_BLACK; 	return NOERROR; }
+	if (strcmp(color_arg->text, "blauw"))  {color_arg->num = VGA_COL_BLUE; 		return NOERROR; }
+	if (strcmp(color_arg->text, "groen"))  {color_arg->num = VGA_COL_GREEN; 	return NOERROR; }
+	if (strcmp(color_arg->text, "rood"))   {color_arg->num = VGA_COL_RED; 		return NOERROR; }
+	if (strcmp(color_arg->text, "wit"))    {color_arg->num = VGA_COL_WHITE; 	return NOERROR; }
+	if (strcmp(color_arg->text, "cyaan"))  {color_arg->num = VGA_COL_CYAN; 		return NOERROR; }
+	if (strcmp(color_arg->text, "magenta")){color_arg->num = VGA_COL_MAGENTA; 	return NOERROR; }
+	if (strcmp(color_arg->text, "geel"))   {color_arg->num = VGA_COL_YELLOW;  	return NOERROR; }
+
+	return UNDEFINEDCOLOR;
+}
+
 int LOGIC_functionpicker()
 {
 	int error = 0;
 	COMMAND command_struct;
 
 	error = API_Qreader(&front_to_logic_Q, &command_struct);
-	if (error) LOGIC_errorhandler(error);
+	if (error) return error;
 
 	int i;
 	for (i = 0; i < ARGAMOUNT; i++)
@@ -98,34 +116,47 @@ int LOGIC_functionpicker()
 		}
 	}
 
+
+
 	if (!strcmp(command_struct.arg[0].text, "bitmap"))
 	{
-
+		API_draw_bitmap(command_struct.arg[1].num,
+						command_struct.arg[2].num,
+						command_struct.arg[3].num);
 	}
 
 	if (!strcmp(command_struct.arg[0].text, "clearscherm"))
 	{
+		error = LOGIC_colorpicker(&command_struct.arg[1]);
+		API_clearscreen(command_struct.arg[1].num);
 
+		return error;
 	}
 
 	if (!strcmp(command_struct.arg[0].text, "driehoek"))
 	{
-
+		return COMMANDERROR;
 	}
 
 	if (!strcmp(command_struct.arg[0].text, "ellips"))
 	{
-
+		return COMMANDERROR;
 	}
 
 	if (!strcmp(command_struct.arg[0].text, "lijn"))
 	{
-
+		API_draw_line(	command_struct.arg[1].num,
+						command_struct.arg[2].num,
+						command_struct.arg[3].num,
+						command_struct.arg[4].num,
+						command_struct.arg[5].num,
+						command_struct.arg[6].num,
+						command_struct.arg[7].num);
 	}
 
 	if (!strcmp(command_struct.arg[0].text, "rechthoek"))
 	{
-
+		return COMMANDERROR;
 	}
 
 	if (!strcmp(command_struct.arg[0].text, "tekst"))
@@ -142,7 +173,7 @@ int LOGIC_functionpicker()
 
 	if (!strcmp(command_struct.arg[0].text, "wacht"))
 	{
-
+		return COMMANDERROR;
 	}
 
 	//als dit deel van de functie bereikt wordt is het commando niet herkend

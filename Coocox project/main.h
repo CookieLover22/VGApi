@@ -46,7 +46,9 @@ enum error
 	EMPTYQ,
 	//! De Queue is vol
 	FULLQ,
-	//! Het gestuurde commando wordt niet herkend
-	COMMANDERROR
+	//! Het gestuurde commando wordt niet herkend (LOGIC_functionpicker)
+	COMMANDERROR,
+	//! Geeft aan dat het meegegeven argument geen (gedefinieerde) kleur is (LOGIC_colorpicker)
+	UNDEFINEDCOLOR
 
 };
