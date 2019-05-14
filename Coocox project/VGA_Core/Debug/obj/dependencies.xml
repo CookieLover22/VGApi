@@ -56,7 +56,8 @@
       <source file="..\..\..\cmsis_lib\source\misc.c" lastModified="16a2af88ef1">
          <include file="..\..\..\cmsis_lib\include\misc.h"/>
       </source>
-      <source file="..\..\..\main.h" lastModified="16a981f963a">
+      <source file="..\..\..\main.h" lastModified="16ab66880b9">
+         <include file="..\..\..\LogicLayer.h"/>
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
       </source>
       <source file="..\..\..\cmsis_lib\include\stm32f4xx_dma.h" lastModified="16a2af88ee6">
@@ -64,7 +65,7 @@
       </source>
       <source file="..\..\..\cmsis\core_cmFunc.h" lastModified="16a2af892b8">
       </source>
-      <source file="..\..\..\main.c" lastModified="16a96a6d71e">
+      <source file="..\..\..\main.c" lastModified="16ab66cbbd5">
          <include file="..\..\..\main.h"/>
          <include file="..\..\..\ub_lib\stm32_ub_vga_screen.h"/>
       </source>
@@ -81,6 +82,8 @@
       </source>
       <source file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h" lastModified="16a2af88eed">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
+      </source>
+      <source file="..\..\..\LogicLayer.h" lastModified="16ab66f0351">
       </source>
    </includePath>
 </dependencies>

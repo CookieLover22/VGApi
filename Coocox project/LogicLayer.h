@@ -7,7 +7,7 @@
  */
 typedef struct
 {
-	char arg[8][20];
+	char arg[ARGAMOUNT][ARGLENGTH];
 
 } UART_command;
 

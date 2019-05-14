@@ -1,5 +1,15 @@
 #include <main.h>
-#include <LogicLayer.h>
+#include <string.h>
+
+#define ARGAMOUNT 10
+#define ARGLENGTH 20
+
+
+void LOGIC_errorhandler(int error)
+{
+
+}
+
 
 /*! Deze functie genereert de Queue die gebruikt kan worden.
  *  Het aantal leden van deze Queue wordt meegegeven en de
@@ -70,25 +80,73 @@ int API_Qreader_stealth(UART_Q_info * readQ, UART_command * readCommand)
 	return NOERROR;
 }
 
-int API_functionpicker()
+int LOGIC_functionpicker()
 {
-	/*
-	switch(expression)
+	int error = 0;
+	UART_command command_struct;
+
+	error = API_Qreader(&front_to_logic_Q, &command_struct);
+	if (error) LOGIC_errorhandler(error);
+
+	int i;
+	for (i = 0; i < ARGAMOUNT; i++)
+	{
+		// de volgende if checkt of het eerste character van het commando een getal is.
+		// als dat zo is wordt hij omgezet
+		if (command_struct.arg[i][0] >= 48 || command_struct.arg[i][0] <= 57)
+		{
+			atoi(command_struct.arg[i]);
+		}
+	}
+
+	if (!strcmp(command_struct.arg[0], "bitmap"))
 	{
 
-	   case constant-expression  :
-	      statement(s);
-	      break;
+	}
 
-	   case constant-expression  :
-	      statement(s);
-	      break;
-
-	   // you can have any number of case statements
-	   default :
-	   statement(s);
+	if (!strcmp(command_struct.arg[0], "clearscherm"))
+	{
 
 	}
-	*/
-	return 0;
+
+	if (!strcmp(command_struct.arg[0], "driehoek"))
+	{
+
+	}
+
+	if (!strcmp(command_struct.arg[0], "ellips"))
+	{
+
+	}
+
+	if (!strcmp(command_struct.arg[0], "lijn"))
+	{
+
+	}
+
+	if (!strcmp(command_struct.arg[0], "rechthoek"))
+	{
+
+	}
+
+	if (!strcmp(command_struct.arg[0], "tekst"))
+	{
+		API_draw_text(	command_struct.arg[1],
+						command_struct.arg[2],
+						command_struct.arg[3],
+						command_struct.arg[4],
+						command_struct.arg[5],
+						command_struct.arg[6],
+						command_struct.arg[7],
+						command_struct.arg[8]);
+	}
+
+	if (!strcmp(command_struct.arg[0], "wacht"))
+	{
+
+	}
+
+	//als dit deel van de functie bereikt wordt is het commando niet herkend
+	return COMMANDERROR;
 }
+
