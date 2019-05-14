@@ -1,8 +1,6 @@
 #include <main.h>
 #include <string.h>
 
-#define ARGAMOUNT 10
-#define ARGLENGTH 20
 
 
 void LOGIC_errorhandler(int error)
@@ -91,45 +89,47 @@ int LOGIC_functionpicker()
 	int i;
 	for (i = 0; i < ARGAMOUNT; i++)
 	{
-		// de volgende if checkt of het eerste character van het commando een getal is.
+		// de volgende if checkt of het eerste character van het commando een getal is (of - voor negatief).
 		// als dat zo is wordt hij omgezet
-		if (command_struct.arg[i][0] >= 48 || command_struct.arg[i][0] <= 57)
+		if (command_struct.arg[i].text[0] == 45 || command_struct.arg[i].text[0] >= 48 || command_struct.arg[i].text[0] <= 57)
 		{
-			atoi(command_struct.arg[i]);
+			//het argument is een union tussen num en text (een int en een string)
+			//deze lijn zet de string om in een int en plaatst het terug in het zelfde geheugen!
+			command_struct.arg[i].num = atoi(command_struct.arg[i].text);
 		}
 	}
 
-	if (!strcmp(command_struct.arg[0], "bitmap"))
+	if (!strcmp(command_struct.arg[0].text, "bitmap"))
 	{
 
 	}
 
-	if (!strcmp(command_struct.arg[0], "clearscherm"))
+	if (!strcmp(command_struct.arg[0].text, "clearscherm"))
 	{
 
 	}
 
-	if (!strcmp(command_struct.arg[0], "driehoek"))
+	if (!strcmp(command_struct.arg[0].text, "driehoek"))
 	{
 
 	}
 
-	if (!strcmp(command_struct.arg[0], "ellips"))
+	if (!strcmp(command_struct.arg[0].text, "ellips"))
 	{
 
 	}
 
-	if (!strcmp(command_struct.arg[0], "lijn"))
+	if (!strcmp(command_struct.arg[0].text, "lijn"))
 	{
 
 	}
 
-	if (!strcmp(command_struct.arg[0], "rechthoek"))
+	if (!strcmp(command_struct.arg[0].text, "rechthoek"))
 	{
 
 	}
 
-	if (!strcmp(command_struct.arg[0], "tekst"))
+	if (!strcmp(command_struct.arg[0].text, "tekst"))
 	{
 		API_draw_text(	command_struct.arg[1],
 						command_struct.arg[2],
@@ -141,7 +141,7 @@ int LOGIC_functionpicker()
 						command_struct.arg[8]);
 	}
 
-	if (!strcmp(command_struct.arg[0], "wacht"))
+	if (!strcmp(command_struct.arg[0].text, "wacht"))
 	{
 
 	}

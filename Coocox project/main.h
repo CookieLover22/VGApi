@@ -17,6 +17,7 @@ UART_Q_info front_to_logic_Q;
 // Includes
 //--------------------------------------------------------------
 #include "stm32f4xx.h"
+#include <stdlib.h>
 
 
 

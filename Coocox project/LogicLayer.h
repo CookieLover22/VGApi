@@ -1,13 +1,22 @@
+#define ARGAMOUNT 10
+#define ARGLENGTH 20
 
 //==========================
 //variabelen
+
+union Argument
+{
+	char text[ARGLENGTH];
+	int  num;
+};
 
 /*!Dit is de uart struct. De UART Queue die de front en de logic layer verbind
  * bevat structs van dit type
  */
 typedef struct
 {
-	char arg[ARGAMOUNT][ARGLENGTH];
+	union Argument arg [ARGAMOUNT];
+	//char arg[ARGAMOUNT][ARGLENGTH];
 
 } UART_command;
 

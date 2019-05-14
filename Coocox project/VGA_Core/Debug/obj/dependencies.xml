@@ -56,7 +56,7 @@
       <source file="..\..\..\cmsis_lib\source\misc.c" lastModified="16a2af88ef1">
          <include file="..\..\..\cmsis_lib\include\misc.h"/>
       </source>
-      <source file="..\..\..\main.h" lastModified="16ab66880b9">
+      <source file="..\..\..\main.h" lastModified="16ab6af91fb">
          <include file="..\..\..\LogicLayer.h"/>
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
       </source>
@@ -83,7 +83,7 @@
       <source file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h" lastModified="16a2af88eed">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
       </source>
-      <source file="..\..\..\LogicLayer.h" lastModified="16ab66f0351">
+      <source file="..\..\..\LogicLayer.h" lastModified="16ab6af28d7">
       </source>
    </includePath>
 </dependencies>
