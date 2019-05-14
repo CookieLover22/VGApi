@@ -13,10 +13,11 @@
 #include "main.h"
 #include "stm32_ub_vga_screen.h"
 #include <math.h>
+#include <time.h>
+//#include <IO_draw.h>
 
 int main(void)
 {
-
 	//  uint32_t n;
 
 	SystemInit(); // System speed to 168MHz
@@ -25,9 +26,10 @@ int main(void)
 
 	UB_VGA_Screen_Init(); // Init VGA-Screen
 
+
 	UB_VGA_FillScreen(VGA_COL_BLACK);
-	UB_VGA_SetPixel(10,10,10);
-	UB_VGA_SetPixel(100,100,10);
+
+
 
 
 
@@ -36,4 +38,3 @@ int main(void)
 
 	}
 }
-

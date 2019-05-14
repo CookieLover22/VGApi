@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
+<<<<<<< HEAD
    <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m4 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F407VG -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project\cmsis_boot -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project\cmsis_lib\include -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project\cmsis_lib -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project\cmsis -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project\ub_lib">
       <target file="stm32f4xx_gpio.o" lastModified="16ab666dfa0">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_gpio.c" lastModified="16a2af88ef4"/>
@@ -30,6 +31,38 @@
       </target>
       <target file="misc.o" lastModified="16ab666e3ff">
          <source file="..\..\..\cmsis_lib\source\misc.c" lastModified="16a2af88ef1"/>
+=======
+   <processor signature="arm-none-eabi-gcc 4.9.2 x86_64-w64-mingw32 -mcpu=cortex-m4 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F407VG -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project\ub_lib -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project\cmsis_lib -I..\..\..\..\..\Users\danie\source\repos -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project\cmsis -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project\cmsis_boot -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project\cmsis_lib\include -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project\IO Layer -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project -I..\..\..\..\..\Users\danie\source\repos\VGApi">
+      <target file="stm32f4xx_gpio.o" lastModified="16a96dbd5f8">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_gpio.c" lastModified="16a4eb7af86"/>
+      </target>
+      <target file="stm32_ub_vga_screen.o" lastModified="16a96dbd7ad">
+         <source file="..\..\..\ub_lib\stm32_ub_vga_screen.c" lastModified="16a4eb7af96"/>
+      </target>
+      <target file="stm32f4xx_dma.o" lastModified="16a96dbd721">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_dma.c" lastModified="16a4eb7af84"/>
+      </target>
+      <target file="stm32f4xx_tim.o" lastModified="16a96dbd924">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_tim.c" lastModified="16a4eb7af8e"/>
+      </target>
+      <target file="IO_draw.o" lastModified="16ab6302835">
+         <source file="..\..\..\IO Layer\IO_draw.c" lastModified="16ab630245b"/>
+      </target>
+      <target file="system_stm32f4xx.o" lastModified="16a96dbd675">
+         <source file="..\..\..\cmsis_boot\system_stm32f4xx.c" lastModified="16a4eb7af6b"/>
+      </target>
+      <target file="startup_stm32f4xx.o" lastModified="16a96dbd27d">
+         <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="16a4eb7af60"/>
+      </target>
+      <target file="main.o" lastModified="16ab627b455">
+         <source file="..\..\..\main.c" lastModified="16ab6181d09"/>
+      </target>
+      <target file="stm32f4xx_rcc.o" lastModified="16a96dbd4bf">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_rcc.c" lastModified="16a4eb7af8a"/>
+      </target>
+      <target file="misc.o" lastModified="16a96dbd82a">
+         <source file="..\..\..\cmsis_lib\source\misc.c" lastModified="16a4eb7af82"/>
+>>>>>>> van_Daniël
       </target>
    </processor>
 </history>
