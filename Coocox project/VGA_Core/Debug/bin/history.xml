@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=VGA_Core.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\VGA_Core -TC:\CooCox\CoIDE\configuration\ProgramData\VGA_Core/arm-gcc-link.ld -g -L..\..\.. -lm">
+<<<<<<< HEAD
       <target file="VGA_Core.elf" lastModified="16ab72e7993">
          <source file="..\obj\startup_stm32f4xx.o" lastModified="16ab72e6eca"/>
          <source file="..\obj\LogicLayer.o" lastModified="16ab72e6f82"/>
@@ -12,6 +13,20 @@
          <source file="..\obj\stm32_ub_vga_screen.o" lastModified="16ab72e749a"/>
          <source file="..\obj\misc.o" lastModified="16ab72e7534"/>
          <source file="..\obj\stm32f4xx_tim.o" lastModified="16ab72e76a6"/>
+=======
+      <target file="VGA_Core.elf" lastModified="16a795d97b4">
+         <source file="..\obj\dithering.o" lastModified="16a79539d45"/>
+         <source file="..\obj\startup_stm32f4xx.o" lastModified="16a7951e35f"/>
+         <source file="..\obj\main.o" lastModified="16a795d94fa"/>
+         <source file="..\obj\stm32f4xx_rcc.o" lastModified="16a7951e578"/>
+         <source file="..\obj\HSVtoRGB.o" lastModified="16a7951e605"/>
+         <source file="..\obj\stm32f4xx_gpio.o" lastModified="16a7951e71f"/>
+         <source file="..\obj\system_stm32f4xx.o" lastModified="16a7951e7a8"/>
+         <source file="..\obj\stm32f4xx_dma.o" lastModified="16a7951e856"/>
+         <source file="..\obj\stm32_ub_vga_screen.o" lastModified="16a7951e987"/>
+         <source file="..\obj\misc.o" lastModified="16a7951ea0d"/>
+         <source file="..\obj\stm32f4xx_tim.o" lastModified="16a7951eb2e"/>
+>>>>>>> HSVtoRGB
       </target>
    </processor>
 </history>
