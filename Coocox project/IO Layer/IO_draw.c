@@ -3,6 +3,7 @@
 #include <math.h>
 #include <time.h>
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include "bitmap.h"
 #include "font8x8_basic.h"
@@ -239,7 +240,6 @@ int API_draw_rectangle(int x, int y, int width, int height, int color, int fille
 	int i,j;
 	width = abs(width);
 	height = abs(height);
-
 	if(filled==1)
 	{
 	  for(i=y;i<=(y+height);i++)
@@ -279,12 +279,10 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
 {
     int x,y;
     int set;
-    int mask;
-    int ord;
     char *bitmap;
     if(fontsytle==0)
     {
-    	bitmap = font8x8_basic[letter];
+    	bitmap = font8x8_basic[(int)letter];
         for (x=x_lup; x < (x_lup+8); x++)
         {
             for (y=y_lup; y < (y_lup+8); y++)
@@ -298,7 +296,8 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
     }
     else if(fontsytle==1)
     {
-    	bitmap = minimum_font[letter-32];
+    	letter-=32;
+    	bitmap = minimum_font[(int)letter];
     }
     else
     	return 1;
@@ -333,5 +332,6 @@ int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, 
 			y += 8;
 		}
 	}
+	return 0;
 }
 
