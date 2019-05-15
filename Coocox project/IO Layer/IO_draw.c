@@ -20,16 +20,64 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 	  int hoogte = 78;
 	  int breedte = 130;
 	  //if(bm_nr ==0)
-	  for(i=y_lup;i<(y_lup+hoogte);i++)
+	  if(bm_nr==1)
 	  {
-		  for(j=x_lup;j<(x_lup+breedte);j++)
+		  for(i=0;i<16;i++)
 		  {
-			  UB_VGA_SetPixel(j,i,pikachu[k]);
-
-			  if(k>sizeof(pikachu))
-				  ;//doe niks
-			  else
+			  for(j=0;j<16;j++)
+				  if(arrow[i][j])
+					  UB_VGA_SetPixel((j+x_lup),(i+y_lup),arrow[i][j]);
+		  }
+	  }
+	  else if(bm_nr==2)
+	  {
+		  for(i=0;i<16;i++)
+		  {
+			  for(j=15;j>=0;j--)
+			  {
+				  if(arrow[i][j])
+					  UB_VGA_SetPixel((k+x_lup),(i+y_lup),arrow[i][j]);
 				  k++;
+			  }
+			  k=0;
+		  }
+	  }
+	  else if(bm_nr==3)
+	  {
+		  for(i=0;i<16;i++)
+		  {
+			  for(j=0;j<16;j++)
+				  if(arrow[j][i])
+					  UB_VGA_SetPixel((j+x_lup),(i+y_lup),arrow[j][i]);
+		  }
+	  }
+	  else if(bm_nr==4)
+	  {
+		  for(i=15;i>=0;i--)
+		  {
+			  for(j=0;j<16;j++)
+			  {
+				  if(arrow[j][i])
+					  UB_VGA_SetPixel((j+x_lup),(k+y_lup),arrow[j][i]);
+
+			  }
+			  k++;
+		  }
+		  k=0;
+	  }
+	  else if(bm_nr==5)
+	  {
+		  for(i=y_lup;i<(y_lup+hoogte);i++)
+		  {
+			  for(j=x_lup;j<(x_lup+breedte);j++)
+			  {
+				  UB_VGA_SetPixel(j,i,pikachu[k]);
+
+				  if(k>sizeof(pikachu))
+					  ;//doe niks
+				  else
+					  k++;
+			  }
 		  }
 	  }
 	  /*else
@@ -186,24 +234,32 @@ int	API_draw_line (int x_1, int y_1, int x_2, int y_2, int color, int weight, in
   return 0;
 }
 
-int API_draw_rectangle(int x_lup, int y_lup, int x_rdown, int y_rdown, int color, int style, int reserved1, int reserved2)
+int API_draw_rectangle(int x, int y, int width, int height, int color, int filled, int reserved1, int reserved2)
 {
 	int i,j;
+	width = abs(width);
+	height = abs(height);
 
-	if(style==0)
+	if(filled==1)
 	{
-	  for(i=y_lup;i<=y_rdown;i++)
+	  for(i=y;i<=(y+height);i++)
 	  {
-		  for(j=x_lup;j<=x_rdown;j++)
-		  {
+		  for(j=x;j<=(x+width);j++)
 			  UB_VGA_SetPixel(j,i,color);
-		  }
 	  }
 	}
-	else
+	else if(filled==0)
 	{
-		//
+		API_draw_line(x,y,(x+width),y,color,reserved1,reserved2);
+		if(reserved1>1)
+			API_draw_line((x+width),y,(x+width),(y+height+reserved1-1),color,reserved1,reserved2);
+		else
+			API_draw_line((x+width),y,(x+width),(y+height+reserved1),color,reserved1,reserved2);
+		API_draw_line((x+width),(y+height),x,(y+height),color,reserved1,reserved2);
+		API_draw_line(x,(y+height),x,y,color,reserved1,reserved2);
 	}
+	else
+		return 123;
 	return 0;
 }
 
