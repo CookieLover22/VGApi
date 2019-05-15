@@ -9,14 +9,6 @@
          <include file="..\..\..\cmsis_lib\include\misc.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_dma.h"/>
       </source>
-      <source file="..\..\..\IO Layer\IO_draw.c" lastModified="16abab6e02a">
-         <include file="..\..\..\IO Layer\IO_draw.h"/>
-         <include file="..\..\..\ub_lib\stm32_ub_vga_screen.h"/>
-         <include file="..\..\..\IO Layer\bitmap.h"/>
-         <include file="..\..\..\IO Layer\font8x8_basic.h"/>
-         <include file="..\..\..\IO Layer\Minimum+1_font.h"/>
-         <include file="..\..\..\ub_lib\stm32_ub_vga_screen.h"/>
-      </source>
       <source file="..\..\..\cmsis\core_cmInstr.h" lastModified="16a7265f470">
       </source>
       <source file="..\..\..\cmsis\core_cm4.h" lastModified="16a7265f46a">
@@ -74,7 +66,7 @@
       </source>
       <source file="..\..\..\cmsis\core_cmFunc.h" lastModified="16a7265f46e">
       </source>
-      <source file="..\..\..\main.c" lastModified="16abaad5e82">
+      <source file="..\..\..\main.c" lastModified="16abb21c7cb">
          <include file="..\..\..\main.h"/>
          <include file="..\..\..\ub_lib\stm32_ub_vga_screen.h"/>
          <include file="..\..\..\IO Layer\IO_draw.h"/>
@@ -97,7 +89,7 @@
       </source>
       <source file="..\..\..\IO Layer\font8x8_basic.h" lastModified="16a96cb51e6">
       </source>
-      <source file="..\..\..\IO Layer\IO_draw.h" lastModified="16ab6f6d566">
+      <source file="..\..\..\IO Layer\IO_draw.h" lastModified="16abad1fb65">
       </source>
    </includePath>
 </dependencies>

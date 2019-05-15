@@ -34,7 +34,7 @@ int main(void)
   API_draw_rectangle(0,0,50,50,10,1,0,0);
   API_draw_rectangle(150,150,50,50,25,0,1,25);
 
-  API_draw_line(50,50,100,100,10,32,0);
+  API_draw_line(50,50,100,80,10,30,0);
   API_draw_line(150,150,100,100,40,0,0);
 
   API_draw_line(50,150,100,100,80,0,0);
@@ -45,6 +45,8 @@ int main(void)
 
   API_draw_line(100,50,100,100,240,0,0);
   API_draw_line(100,150,100,100,255,0,0);
+
+  API_draw_line(0,0,10,100,120,0,0);
 
   API_draw_bitmap(180,30,5);
   API_draw_bitmap(220,150,1);
