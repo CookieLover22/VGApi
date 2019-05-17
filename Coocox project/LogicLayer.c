@@ -16,11 +16,12 @@ int API_Qinit(Q_INFO * initQ, int Qsize)
 {
 	if(Qsize < 1) return QSIZEERROR;
 	COMMAND initCommand[Qsize];
+	COMMAND * command_pointer = malloc(sizeof(initCommand)*Qsize);
 
 	initQ->Q_size = Qsize;
 	initQ->last_written_Q_member = 0;
 	initQ->last_read_Q_member = 0;
-	initQ->Q_members = initCommand;
+	initQ->Q_members = command_pointer;
 
 	return NOERROR;
 }
@@ -97,11 +98,11 @@ int LOGIC_colorpicker(union Argument* color_arg)
 	return UNDEFINEDCOLOR;
 }
 
-int LOGIC_functionpicker(COMMAND command_struct) //DIT IS BEWUST NIET EEN POINTER. de data in de Q wordt zo niet aangepast
+int LOGIC_functionpicker(COMMAND *command_struct)
 {
 	int error = 0;
 
-	error = API_Qreader(&front_to_logic_Q, &command_struct);
+	//error = API_Qreader(&front_to_logic_Q, &command_struct);
 	if (error) return error;
 
 	int i;
@@ -109,82 +110,83 @@ int LOGIC_functionpicker(COMMAND command_struct) //DIT IS BEWUST NIET EEN POINTE
 	{
 		// de volgende if checkt of het eerste character van het commando een getal is (of - voor negatief).
 		// als dat zo is wordt hij omgezet
-		if (command_struct.arg[i].text[0] == 45 || command_struct.arg[i].text[0] >= 48 || command_struct.arg[i].text[0] <= 57)
+		if (command_struct->arg[i].text[0] == 45 || command_struct->arg[i].text[0] >= 48 || command_struct->arg[i].text[0] <= 57)
 		{
 			//het argument is een union tussen num en text (een int en een string)
 			//deze lijn zet de string om in een int en plaatst het terug in het zelfde geheugen!
-			command_struct.arg[i].num = atoi(command_struct.arg[i].text);
+			command_struct->arg[i].num = atoi(command_struct->arg[i].text);
 		}
 	}
 
 
 
-	if (!strcmp(command_struct.arg[0].text, "bitmap"))
+	if (!strcmp(command_struct->arg[0].text, "bitmap"))
 	{
-		API_draw_bitmap(command_struct.arg[1].num,
-						command_struct.arg[2].num,
-						command_struct.arg[3].num);
+		API_draw_bitmap(command_struct->arg[1].num,
+						command_struct->arg[2].num,
+						command_struct->arg[3].num);
 	}
 
-	if (!strcmp(command_struct.arg[0].text, "clearscherm"))
+	if (!strcmp(command_struct->arg[0].text, "clearscherm"))
 	{
-		error = LOGIC_colorpicker(&command_struct.arg[1]);
-		API_clearscreen(command_struct.arg[1].num);
+		error = LOGIC_colorpicker(&command_struct->arg[1]);
+		API_clearscreen(command_struct->arg[1].num);
 
 		return error;
 	}
 
-	if (!strcmp(command_struct.arg[0].text, "driehoek"))
+	if (!strcmp(command_struct->arg[0].text, "driehoek"))
 	{
 		return COMMANDERROR;
 	}
 
-	if (!strcmp(command_struct.arg[0].text, "ellips"))
+	if (!strcmp(command_struct->arg[0].text, "ellips"))
 	{
 		return COMMANDERROR;
 	}
 
-	if (!strcmp(command_struct.arg[0].text, "lijn"))
+	if (!strcmp(command_struct->arg[0].text, "lijn"))
 	{
-		error = LOGIC_colorpicker(&command_struct.arg[7]);
-		API_draw_line(	command_struct.arg[1].num,
-						command_struct.arg[2].num,
-						command_struct.arg[3].num,
-						command_struct.arg[4].num,
-						command_struct.arg[5].num,
-						command_struct.arg[6].num,
-						command_struct.arg[7].num);
+		error = LOGIC_colorpicker(&command_struct->arg[7]);
+		API_draw_line(	command_struct->arg[1].num,
+						command_struct->arg[2].num,
+						command_struct->arg[3].num,
+						command_struct->arg[4].num,
+						command_struct->arg[5].num,
+						command_struct->arg[6].num,
+						command_struct->arg[7].num);
 		return error;
 	}
 
-	if (!strcmp(command_struct.arg[0].text, "rechthoek"))
+	if (strcmp(command_struct->arg[0].text, "rechthoek"))
 	{
-		error = LOGIC_colorpicker(&command_struct.arg[5]);
-		API_draw_rectangle(	command_struct.arg[1].num,
-							command_struct.arg[2].num,
-							command_struct.arg[3].num,
-							command_struct.arg[4].num,
-							command_struct.arg[5].num,
-							command_struct.arg[6].num,
-							command_struct.arg[7].num,
-							command_struct.arg[8].num);
+		error = LOGIC_colorpicker(&command_struct->arg[5]);
+		API_draw_rectangle(	command_struct->arg[1].num,
+							command_struct->arg[2].num,
+							command_struct->arg[3].num,
+							command_struct->arg[4].num,
+							command_struct->arg[5].num,
+							command_struct->arg[6].num,
+							command_struct->arg[7].num,
+							command_struct->arg[8].num);
+		return NOERROR;
 	}
 
-	if (!strcmp(command_struct.arg[0].text, "tekst"))
+	if (!strcmp(command_struct->arg[0].text, "tekst"))
 	{
-		error = LOGIC_colorpicker(&command_struct.arg[7]);
-		API_draw_text(	command_struct.arg[1].num,
-						command_struct.arg[2].num,
-						command_struct.arg[3].num,
-						command_struct.arg[4].text,
-						command_struct.arg[5].text,
-						command_struct.arg[6].num,
-						command_struct.arg[7].num,
-						command_struct.arg[8].num);
+		error = LOGIC_colorpicker(&command_struct->arg[7]);
+		API_draw_text(	command_struct->arg[1].num,
+						command_struct->arg[2].num,
+						command_struct->arg[3].num,
+						command_struct->arg[4].text,
+						command_struct->arg[5].text,
+						command_struct->arg[6].num,
+						command_struct->arg[7].num,
+						command_struct->arg[8].num);
 		return error;
 	}
 
-	if (!strcmp(command_struct.arg[0].text, "wacht"))
+	if (!strcmp(command_struct->arg[0].text, "wacht"))
 	{
 		return COMMANDERROR;
 	}
@@ -199,6 +201,6 @@ int API_perform(Q_INFO * performQ) //naam onder voorbehoud
 	COMMAND performCommand;
 
 	error =API_Qreader(performQ, &performCommand);
-	error = LOGIC_functionpicker(performCommand);
+	error = LOGIC_functionpicker(&performCommand);
 	return error;
 }

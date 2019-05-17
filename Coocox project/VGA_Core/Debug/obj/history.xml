@@ -1,37 +1,43 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m4 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F407VG -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project\cmsis_boot -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project\cmsis_lib\include -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project\cmsis_lib -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project\cmsis -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project\IO Layer -I..\..\..\..\..\Users\kayah\OneDrive\HU\6D\SOFTON\VGApi\VGApi\Coocox project\ub_lib">
-      <target file="stm32f4xx_gpio.o" lastModified="16abac1d4ae">
+      <target file="syscalls.o" lastModified="16ac57f1f2d">
+         <source file="..\..\..\syscalls\syscalls.c" lastModified="1429c735750"/>
+      </target>
+      <target file="stm32f4xx_gpio.o" lastModified="16ac56cc7b4">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_gpio.c" lastModified="16a2af88ef4"/>
       </target>
-      <target file="stm32_ub_vga_screen.o" lastModified="16abac1d8f7">
+      <target file="stm32_ub_vga_screen.o" lastModified="16ac56cca41">
          <source file="..\..\..\ub_lib\stm32_ub_vga_screen.c" lastModified="16a2af88efe"/>
       </target>
-      <target file="LogicLayer.o" lastModified="16abac1cc37">
-         <source file="..\..\..\LogicLayer.c" lastModified="16ababbf5a9"/>
+      <target file="LogicLayer.o" lastModified="16ac57c4fc5">
+         <source file="..\..\..\LogicLayer.c" lastModified="16ac57c4bee"/>
       </target>
-      <target file="stm32f4xx_dma.o" lastModified="16abac1d7a8">
+      <target file="stm32f4xx_dma.o" lastModified="16ac56cc954">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_dma.c" lastModified="16a2af88ef2"/>
       </target>
-      <target file="stm32f4xx_tim.o" lastModified="16abac1db7b">
+      <target file="stm32f4xx_tim.o" lastModified="16ac56ccbf0">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_tim.c" lastModified="16a2af88efa"/>
       </target>
-      <target file="system_stm32f4xx.o" lastModified="16abac1d683">
+      <target file="IO_draw.o" lastModified="16ac56cc692">
+         <source file="..\..\..\IO Layer\IO_draw.c" lastModified="16ababfb1a1"/>
+      </target>
+      <target file="system_stm32f4xx.o" lastModified="16ac56cc83b">
          <source file="..\..\..\cmsis_boot\system_stm32f4xx.c" lastModified="16a2af88ee1"/>
       </target>
-      <target file="startup_stm32f4xx.o" lastModified="16abac1c86e">
+      <target file="startup_stm32f4xx.o" lastModified="16ac56cc2e7">
          <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="16a2af88ed5"/>
       </target>
-      <target file="main.o" lastModified="16abac1cf31">
-         <source file="..\..\..\main.c" lastModified="16abac1c014"/>
+      <target file="main.o" lastModified="16ac56cc46a">
+         <source file="..\..\..\main.c" lastModified="16ac5699e8c"/>
       </target>
-      <target file="HSVtoRGB.o" lastModified="16abac1d37a">
+      <target file="HSVtoRGB.o" lastModified="16ac56cc720">
          <source file="..\..\..\HSVtoRGB.c" lastModified="16aba9a1aad"/>
       </target>
-      <target file="stm32f4xx_rcc.o" lastModified="16abac1d0b8">
+      <target file="stm32f4xx_rcc.o" lastModified="16ac56cc544">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_rcc.c" lastModified="16a2af88ef6"/>
       </target>
-      <target file="misc.o" lastModified="16abac1d9ab">
+      <target file="misc.o" lastModified="16ac56ccad4">
          <source file="..\..\..\cmsis_lib\source\misc.c" lastModified="16a2af88ef1"/>
       </target>
    </processor>
