@@ -64,7 +64,6 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 			  {
 				  if(arrow[j][i])
 					  UB_VGA_SetPixel((j+x_lup),(k+y_lup),arrow[j][i]);
-
 			  }
 			  k++;
 		  }
@@ -93,121 +92,124 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 
 int draw_lineX (int x_1, int y_1, int x_2, int y_2, int color, int weight, int reserved)
 {
-	  double a;
-	  int i=0;
 	  int dikte = weight;
-	  //a = (y_2 - y_1) / (x_2 - x_1);
-	  double dy,dx;
-	  dy = y_2-y_1;
+	  double dx,dy;
 	  dx = x_2-x_1;
-	  if(dy!=0)
-		  a = dx/dy;
-	  else
-		  a=0;
-	  double x,y;
-	  x = (double)x_1;
-	  y = (double)y_1;
-	  if(a==0)
-	  {
-		  //a=0;
-		  dikte = dikte/1.5;
-	  }
-	  while ((int)x < x_2)
-		{
-		  UB_VGA_SetPixel((int)x,(int)y,color);
-		  if(dikte>1)
-		  {
-			  if(a==0)
-			  {
-				  for(i=1;i<=dikte;i++)
-					  UB_VGA_SetPixel(x,y+i,color);
-			  }
-			  else
-			  {
-				  while(1)
-				  {
-					  if(i*2+2>dikte)
-						  break;
-					  if(y_2-y_1>0)
-						  UB_VGA_SetPixel(x+(1*i),(y-1-(1*i)),color);
-					  else
-						  UB_VGA_SetPixel(x+(1*i),(y+1+(1*i)),color);
-					  if(i*2+3>dikte)
-						  break;
-					  i++;
-					  if(y_2-y_1>0)
-						  UB_VGA_SetPixel(x+(1*i),(y-(1*i)),color);
-					  else
-						  UB_VGA_SetPixel(x+(1*i),(y+(1*i)),color);
-				  }
-			  }
-			  i=0;
-		  }
+	  dy = y_2-y_1;
 
-		  y = y + a;
-		  x=x+1;
+	  int y = y_1;
+
+	  int x,i,D,D2;
+	  i=0;
+	  int x2 = x_1;
+	  int yi = 1;
+	  if (dy < 0)
+	  {
+	    yi = -1;
+	    dy = abs(dy);
+	  }
+	  D = 2*dy - dx;
+	  D2 = D;
+	  y = y_1;
+	  dikte=dikte*2;
+	  dikte--;
+	  //if(dikte%2==0)
+		//  dikte++;
+
+	  for(x=x_1; x<x_2; x++)
+	  {
+		UB_VGA_SetPixel((int)x,(int)y,color);
+
+		if(dikte>1)
+		{
+	    	D2 = D;
+	    	x2 = x;
+			for(i=0;i<=dikte;i++)
+			{
+				if(i!=dikte)
+				{
+					UB_VGA_SetPixel((int)x2,(int)(y-i),color);
+					UB_VGA_SetPixel((int)(x2),(int)(y-i+1),color);
+				}
+
+				if(D2 > 0)
+				{
+				   x2 = x2 + yi;
+				   D2 = D2 - (2*dx);
+				}
+				D2 = D2 + 2*dy;
+			}
 		}
+
+	    if(D > 0)
+	    {
+	       y = y + yi;
+	       D = D - (2*dx);
+	    }
+	    D = D + 2*dy;
+	  }
 	  return 0;
 }
 
 
 int draw_lineY (int x_1, int y_1, int x_2, int y_2, int color, int weight, int reserved)
 {
-  double a;
-  int i=0;
-  int dikte = weight;
-  //a = ((double)x_2 - (double)x_1) / ((double)y_2 - (double)y_1);
-  double dy,dx;
-  dy = y_2-y_1;
-  dx = x_2-x_1;
-  a = dx/dy;
-  double x,y;
-  x = (double)x_1;
-  y = (double)y_1;
-  if(a!=0)
-	  ;//y_1 = a * y + (y - (a * x));
-  else
-  {
-	  //a=0;
-	  dikte = dikte/1.5;
-	  //color = 10;
-  }
-  while (((int)y) < y_2)
-    {
-	  UB_VGA_SetPixel((int)x,(int)y,color);
-	  if(dikte>1)
+	  int dikte = weight;
+	  double dx,dy;
+	  dx = x_2-x_1;
+	  dy = y_2-y_1;
+
+	  int y = y_1;
+	  int x,y2,i,D,D2;
+	  i=0;
+
+	  int xi = 1;
+	  if (dx < 0)
 	  {
-		  if((a-0.1)<0)
-		  {
-			  for(i=1;i<=dikte;i++)
-			  {
-				  UB_VGA_SetPixel(x_1+i,y_1,color);
-			  }
-		  }
-		  else
-		  {
-			  while(1)
-			  {
-				  if(i*2+2>dikte)
-					  break;
-				  if(y_2-y>0)
-					  UB_VGA_SetPixel(x-a-(a*i),(y+(a*i)),color);
-				  else
-					  UB_VGA_SetPixel(x+a+(a*i),(y+(a*i)),color);
-				  if(i*2+3>dikte)
-					  break;
-				  i++;
-				  if(y_2-y>0)
-					  UB_VGA_SetPixel(x-(a*i),(y+(a*i)),color);
-				  else
-					  UB_VGA_SetPixel(x+(a*i),(y+(a*i)),color);
-			  }
-		  }
-		  i=0;
+	    xi = -1;
+	    dx = abs(dx);
 	  }
-      x += (int)a;
-      y=y+1;
-    }
+	  D = 2*(int)dx - (int)dy;
+	  D2 = D;
+	  x = x_1;
+	  y2 = y_1;
+	  dikte=dikte*2;
+	  dikte--;
+
+	  for(y=y_1; y<y_2; y++)
+	  {
+		UB_VGA_SetPixel((int)x,(int)y,color);
+
+		if(dikte>1)
+		{
+			D2 = D;
+			y2 = y;
+			for(i=0;i<=dikte;i++)
+			{
+				if(i!=dikte)
+				{
+					UB_VGA_SetPixel((int)x-i,(int)(y2),color);
+					UB_VGA_SetPixel((int)(x-i-1),(int)(y2),color);
+				}
+
+				if(D2 > 0)
+				{
+				   y2 = y2 + xi;
+				   D2 = D2 - (2*dy);
+				}
+				D2 = D2 + 2*dx;
+			}
+		}
+
+
+	    if(D > 0)
+	    {
+	       x = x + xi;
+	       D = D - (2*dy);
+	    }
+	    D = D + 2*dx;
+	  }
+
   return 0;
 }
 
@@ -223,47 +225,16 @@ int	API_draw_line (int x_1, int y_1, int x_2, int y_2, int color, int weight, in
 
   weight = abs(weight);
 
-  double dx,dy,a,error,D;
-  dx = x_2-x_1;
-  dy = y_2-y_1;
-
-  a = abs(dy/dx);
-  error = 0;
-
-  int y = y_1;
-  int x;
-
-  double yi = 1;
-  if (dy < 0)
-  {
-    yi = -1;
-    dy = abs(dy);
-  }
-  D = 2*dy - dx;
-  y = y_1;
-
-  for(x=x_1; x<x_2; x++)
-  {
-	UB_VGA_SetPixel((int)x,(int)y,color);
-    if(D > 0)
-    {
-       y = y + yi;
-       D = D - (2*dx);
-    }
-    D = D + 2*dy;
-  }
-
-  /*
   if (abs(x_2 - x_1) >= abs(y_2 - y_1))
-    if (x_2 >= x_1)
+    if (x_2 > x_1)
       draw_lineX(x_1, y_1, x_2, y_2, color, weight, reserved);
     else
       draw_lineX(x_2, y_2, x_1, y_1, color, weight, reserved);
   else
-    if (y_2 >= y_1)
+    if (y_2 > y_1)
       draw_lineY(x_1, y_1, x_2, y_2, color, weight, reserved);
     else
-      draw_lineY(x_2, y_2, x_1, y_1, color, weight, reserved);*/
+      draw_lineY(x_2, y_2, x_1, y_1, color, weight, reserved);
   return 0;
 }
 
@@ -289,13 +260,19 @@ int API_draw_rectangle(int x, int y, int width, int height, int color, int fille
 	}
 	else if(filled==0)
 	{
-		API_draw_line(x,y,(x+width),y,color,reserved1,reserved2);
+		API_draw_line(x,y,(x+width+1),y,color,reserved1,reserved2);
+		API_draw_line((x+width),y,(x+width),(y+height+1),color,reserved1,reserved2);
 		if(reserved1>1)
-			API_draw_line((x+width),y,(x+width),(y+height+reserved1-1),color,reserved1,reserved2);
+		{
+			API_draw_line((x+width),(y+height-1),x,(y+height-1),color,reserved1,reserved2);
+			API_draw_line(x,(y+height+1),x,(y-reserved1),color,reserved1,reserved2);
+		}
 		else
-			API_draw_line((x+width),y,(x+width),(y+height+reserved1),color,reserved1,reserved2);
-		API_draw_line((x+width),(y+height),x,(y+height),color,reserved1,reserved2);
-		API_draw_line(x,(y+height),x,y,color,reserved1,reserved2);
+		{
+			API_draw_line((x+width),(y+height),x,(y+height),color,reserved1,reserved2);
+			API_draw_line(x,(y+height),x,(y),color,reserved1,reserved2);
+		}
+
 	}
 	else
 		return 123;
@@ -320,14 +297,13 @@ int API_clearscreen(int color)
 int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname, int fontsize, int fontsytle, int reserved)
 {
     int x,y;
-    int set;
+    int set=0;
     char *bitmap;
     if(fontsytle==0)
     {
 		bitmap = font8x8_basic[(int)letter];
-    	if(fontsize==0)
+    	if(fontsize==1)
     	{
-
 			for (x=x_lup; x < (x_lup+8); x++)
 			{
 				for (y=y_lup; y < (y_lup+8); y++)
@@ -339,36 +315,51 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
 			}
 			return 0;
     	}
-    	/*else
+    	else if(fontsize==2)
     	{
-			for (x=x_lup; x < (x_lup+(8*(fontsize+1))); x++)
+			for (x=x_lup; x < (x_lup+16); x++)
 			{
-				for (y=y_lup; y < (y_lup*(fontsize+1); y++)
+				for (y=y_lup; y < (y_lup+16); y++)
 				{
-					set = bitmap[(y-y_lup)] & 1 << (x-x_lup);
+					if(y%2==0)
+						set = bitmap[(y-y_lup)/2] & 1 << ((x-x_lup)/2);
 					if(set)
 						UB_VGA_SetPixel(x,y,color);
 				}
 			}
 			return 0;
-    	}*/
+    	}
     }
     else if(fontsytle==1)
     {
     	letter-=32;
     	bitmap = minimum_font[(int)letter];
-    }
-    else
-    	return 1;
-
-    for (x=x_lup; x < (x_lup+7); x++)
-    {
-        for (y=y_lup; y < (y_lup+7); y++)
-        {
-            set = bitmap[(x-x_lup)] & 1 << (y-y_lup);
-            if(set)
-            	UB_VGA_SetPixel(x,y,color);
-        }
+    	if(fontsize==1)
+    	{
+			for (x=x_lup; x < (x_lup+7); x++)
+			{
+				for (y=y_lup; y < (y_lup+7); y++)
+				{
+					set = bitmap[(x-x_lup)] & 1 << (y-y_lup);
+					if(set)
+						UB_VGA_SetPixel(x,y,color);
+				}
+			}
+    	}
+    	else if(fontsize==2)
+    	{
+			for (x=x_lup; x < (x_lup+14); x++)
+			{
+				for (y=y_lup; y < (y_lup+14); y++)
+				{
+					if(y%2==0)
+							set = bitmap[(x-x_lup)/2] & 1 << ((y-y_lup)/2);
+					if(set)
+						UB_VGA_SetPixel(x,y,color);
+				}
+			}
+			return 0;
+    	}
     }
     return 0;
 }
@@ -390,12 +381,12 @@ int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, 
 	{
 		API_draw_char (x, y, color, c[i], fontname, fontsize, fontsytle, reserved);
 		i++;
-		x += 8; // 6 pixels wide	    x += 6;
-		if ((x+8) >= VGA_DISPLAY_X)
+		x += (8*fontsize); // 6 pixels wide	    x += 6;
+		if ((x+(8*fontsize)) >= VGA_DISPLAY_X)
 		{
 			x=0;
-			y += 8;
-			if(y_lup>VGA_DISPLAY_Y||y_lup<0)
+			y += (8*fontsize);
+			if((y+(8*fontsize))>VGA_DISPLAY_Y||y<0)
 			  return 1; //error outofbounce
 		}
 	}

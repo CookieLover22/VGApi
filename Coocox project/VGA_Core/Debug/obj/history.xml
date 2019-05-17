@@ -1,34 +1,40 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
-   <processor signature="arm-none-eabi-gcc 4.9.2 x86_64-w64-mingw32 -mcpu=cortex-m4 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F407VG -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project\ub_lib -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project\cmsis_lib -I..\..\..\..\..\Users\danie\source\repos -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project\cmsis -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project\cmsis_boot -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project\cmsis_lib\include -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project\IO Layer -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project -I..\..\..\..\..\Users\danie\source\repos\VGApi">
-      <target file="stm32f4xx_gpio.o" lastModified="16abab322ce">
+   <processor signature="arm-none-eabi-gcc 4.9.2 x86_64-w64-mingw32 -mcpu=cortex-m4 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F407VG -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project\ub_lib -I..\..\..\..\..\Users\danie\source\repos -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project\cmsis_lib -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project\cmsis -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project\cmsis_boot -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project\IO Layer -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project\cmsis_lib\include -I..\..\..\..\..\Users\danie\source\repos\VGApi\Coocox project -I..\..\..\..\..\Users\danie\source\repos\VGApi">
+      <target file="stm32f4xx_gpio.o" lastModified="16abb488336">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_gpio.c" lastModified="16a4eb7af86"/>
       </target>
-      <target file="stm32_ub_vga_screen.o" lastModified="16abab3247f">
+      <target file="uart.o" lastModified="16abb4c1ca3">
+         <source file="..\..\..\ub_lib\uart.c" lastModified="16abb4c1227"/>
+      </target>
+      <target file="stm32_ub_vga_screen.o" lastModified="16abb4884b7">
          <source file="..\..\..\ub_lib\stm32_ub_vga_screen.c" lastModified="16a4eb7af96"/>
       </target>
-      <target file="stm32f4xx_dma.o" lastModified="16abab323f5">
+      <target file="stm32f4xx_dma.o" lastModified="16abb488432">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_dma.c" lastModified="16a4eb7af84"/>
       </target>
-      <target file="stm32f4xx_tim.o" lastModified="16abab32604">
+      <target file="stm32f4xx_tim.o" lastModified="16abb48862f">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_tim.c" lastModified="16a4eb7af8e"/>
       </target>
-      <target file="IO_draw.o" lastModified="16abb30ea56">
-         <source file="..\..\..\IO Layer\IO_draw.c" lastModified="16abb30e6eb"/>
+      <target file="IO_draw.o" lastModified="16ac5e46ef5">
+         <source file="..\..\..\IO Layer\IO_draw.c" lastModified="16ac5e40fd5"/>
       </target>
-      <target file="system_stm32f4xx.o" lastModified="16abab32349">
+      <target file="system_stm32f4xx.o" lastModified="16abb4883a4">
          <source file="..\..\..\cmsis_boot\system_stm32f4xx.c" lastModified="16a4eb7af6b"/>
       </target>
-      <target file="startup_stm32f4xx.o" lastModified="16abab31fb5">
+      <target file="startup_stm32f4xx.o" lastModified="16abb48806f">
          <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="16a4eb7af60"/>
       </target>
-      <target file="main.o" lastModified="16abb228cc8">
-         <source file="..\..\..\main.c" lastModified="16abb21bffb"/>
+      <target file="stm32f4xx_usart.o" lastModified="16abb487fcb">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_usart.c" lastModified="16abb47f65b"/>
       </target>
-      <target file="stm32f4xx_rcc.o" lastModified="16abab320db">
+      <target file="main.o" lastModified="16ac5e46e09">
+         <source file="..\..\..\main.c" lastModified="16ac5e46afc"/>
+      </target>
+      <target file="stm32f4xx_rcc.o" lastModified="16abb488168">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_rcc.c" lastModified="16a4eb7af8a"/>
       </target>
-      <target file="misc.o" lastModified="16abab324f4">
+      <target file="misc.o" lastModified="16abb488526">
          <source file="..\..\..\cmsis_lib\source\misc.c" lastModified="16a4eb7af82"/>
       </target>
    </processor>
