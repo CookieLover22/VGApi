@@ -46,3 +46,4 @@ int API_Qwriter			(Q_INFO * writeQ, COMMAND * writeCommand);
 int API_Qreader			(Q_INFO * readQ,  COMMAND * readCommand);
 int API_Qreader_stealth	(Q_INFO * readQ,  COMMAND * readCommand);
 int LOGIC_functionpicker(COMMAND * command_struct);
+int API_perform			(Q_INFO * performQ);

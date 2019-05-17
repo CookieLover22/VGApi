@@ -21,8 +21,15 @@ int main(void)
 
 	UB_VGA_Screen_Init(); // Init VGA-Screen
 
+	DELAY_init();
+	LCD_init();
 
-	API_Qinit(&front_to_logic_Q, 20); //Q initialiseren
+	LCD_clear();			// Start with a clear display
+	LCD_XY(0,0);			// Shift one spot
+
+	//LCD_put("pretest");
+
+	LCD_putint(API_Qinit(&front_to_logic_Q, 20)); //Q initialiseren
 
 	UB_VGA_Screen_Init(); // Init VGA-Screen
 
@@ -31,7 +38,7 @@ int main(void)
 	COMMAND write_struct;
 	//COMMAND read_struct;
 
-	char errorstring [20];
+	//char errorstring [20];
 
 	int i;
 
@@ -54,16 +61,18 @@ int main(void)
 
 	//API_draw_rectangle(100,100,20,30,3,1,1,0);
 	//if(LOGIC_functionpicker(write_struct)) UB_VGA_SetPixel(10,10,20);
-	char error[] = "G";
-	error[0] = LOGIC_functionpicker(&write_struct)+48;
+	//char error[] = "G";
+	//error[0] = LOGIC_functionpicker(&write_struct)+48;
 
-	API_draw_text(20,20, 20, error,errorstring,0,0,0);
+	//API_draw_text(20,20, 20, error,errorstring,0,0,0);
+
 
 
 	while(1)
 	{
 		//API_Qreader(&front_to_logic_Q, &read_struct);
-
+		LCD_clear();
+		LCD_putint(API_perform(&front_to_logic_Q));
 
 	}
 }

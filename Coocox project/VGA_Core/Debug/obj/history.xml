@@ -10,8 +10,8 @@
       <target file="stm32_ub_vga_screen.o" lastModified="16ac56cca41">
          <source file="..\..\..\ub_lib\stm32_ub_vga_screen.c" lastModified="16a2af88efe"/>
       </target>
-      <target file="LogicLayer.o" lastModified="16ac57c4fc5">
-         <source file="..\..\..\LogicLayer.c" lastModified="16ac57c4bee"/>
+      <target file="LogicLayer.o" lastModified="16ac5e59d70">
+         <source file="..\..\..\LogicLayer.c" lastModified="16ac5e58ff3"/>
       </target>
       <target file="stm32f4xx_dma.o" lastModified="16ac56cc954">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_dma.c" lastModified="16a2af88ef2"/>
@@ -28,14 +28,20 @@
       <target file="startup_stm32f4xx.o" lastModified="16ac56cc2e7">
          <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="16a2af88ed5"/>
       </target>
-      <target file="main.o" lastModified="16ac56cc46a">
-         <source file="..\..\..\main.c" lastModified="16ac5699e8c"/>
+      <target file="main.o" lastModified="16ac5e6201d">
+         <source file="..\..\..\main.c" lastModified="16ac5e61c7e"/>
+      </target>
+      <target file="lcd.o" lastModified="16ac5e51f13">
+         <source file="..\..\..\lcd.c" lastModified="16ac5e0cf47"/>
       </target>
       <target file="HSVtoRGB.o" lastModified="16ac56cc720">
          <source file="..\..\..\HSVtoRGB.c" lastModified="16aba9a1aad"/>
       </target>
       <target file="stm32f4xx_rcc.o" lastModified="16ac56cc544">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_rcc.c" lastModified="16a2af88ef6"/>
+      </target>
+      <target file="delay.o" lastModified="16ac5e519f8">
+         <source file="..\..\..\delay.c" lastModified="16961154de0"/>
       </target>
       <target file="misc.o" lastModified="16ac56ccad4">
          <source file="..\..\..\cmsis_lib\source\misc.c" lastModified="16a2af88ef1"/>

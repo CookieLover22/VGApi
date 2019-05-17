@@ -20,6 +20,8 @@
 #include "stm32_ub_vga_screen.h"
 #include <string.h>
 #include <time.h>
+#include <lcd.h>
+#include <delay.h>
 //--------------------------------------------------------------
 // Variables
 //--------------------------------------------------------------

@@ -15,8 +15,10 @@ void LOGIC_errorhandler(int error)
 int API_Qinit(Q_INFO * initQ, int Qsize)
 {
 	if(Qsize < 1) return QSIZEERROR;
+
 	COMMAND initCommand[Qsize];
-	COMMAND * command_pointer = malloc(sizeof(initCommand)*Qsize);
+	//LCD_putint(sizeof(initCommand));
+	void * command_pointer = malloc(sizeof(initCommand));
 
 	initQ->Q_size = Qsize;
 	initQ->last_written_Q_member = 0;
@@ -202,5 +204,6 @@ int API_perform(Q_INFO * performQ) //naam onder voorbehoud
 
 	error =API_Qreader(performQ, &performCommand);
 	error = LOGIC_functionpicker(&performCommand);
+
 	return error;
 }
