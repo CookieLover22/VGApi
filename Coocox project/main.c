@@ -36,26 +36,26 @@ int main(void)
 	UB_VGA_FillScreen(0);
 
 	COMMAND write_struct;
-	//COMMAND read_struct;
+	COMMAND read_struct;
 
 	//char errorstring [20];
 
 	int i;
 
 	strcpy(write_struct.arg[0].text, "rechthoek");
-	write_struct.arg[1].num = 100;
-	write_struct.arg[2].num = 100;
-	write_struct.arg[3].num = 20;
-	write_struct.arg[4].num = 30;
-	write_struct.arg[5].num = 3;
-	write_struct.arg[6].num = 1;
-	write_struct.arg[7].num = 1;
-	write_struct.arg[8].num = 0;
+	strcpy(write_struct.arg[1].text, "100");
+	strcpy(write_struct.arg[2].text, "100");
+	strcpy(write_struct.arg[3].text, "20");
+	strcpy(write_struct.arg[4].text, "30");
+	strcpy(write_struct.arg[5].text, "blauw");
+	strcpy(write_struct.arg[6].text, "1");
+	strcpy(write_struct.arg[7].text, "1");
+	strcpy(write_struct.arg[8].text, "0");
 
 	for (i = 0; i < 3; i++)
 	{
 
-		//API_Qwriter(&front_to_logic_Q, &write_struct);
+		API_Qwriter(&front_to_logic_Q, &write_struct);
 	}
 
 
@@ -70,10 +70,14 @@ int main(void)
 
 	while(1)
 	{
-		//API_Qreader(&front_to_logic_Q, &read_struct);
+		API_Qreader(&front_to_logic_Q, &read_struct);
 		LCD_clear();
-		LCD_putint(API_perform(&front_to_logic_Q));
-
+		int error;
+		error = API_perform(&front_to_logic_Q);
+		//error = LOGIC_functionpicker(&write_struct);
+		LCD_putint(error);
+		if(error) while(1);
+		DELAY_ms(100);
 	}
 }
 

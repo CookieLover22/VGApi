@@ -1,7 +1,6 @@
 #include <main.h>
 
 
-
 void LOGIC_errorhandler(int error)
 {
 
@@ -86,16 +85,20 @@ int API_Qreader_stealth(Q_INFO * readQ, COMMAND * readCommand)
  * Als de kleur niet bestaat of als het argument geen kleur is
  * wordt UNDEFINEDCOLOR gereturnt.
  */
-int LOGIC_colorpicker(union Argument* color_arg)
+int LOGIC_colorpicker(char * color_string, int *color_num)
 {
-	if (strcmp(color_arg->text, "zwart"))  {color_arg->num = VGA_COL_BLACK; 	return NOERROR; }
-	if (strcmp(color_arg->text, "blauw"))  {color_arg->num = VGA_COL_BLUE; 		return NOERROR; }
-	if (strcmp(color_arg->text, "groen"))  {color_arg->num = VGA_COL_GREEN; 	return NOERROR; }
-	if (strcmp(color_arg->text, "rood"))   {color_arg->num = VGA_COL_RED; 		return NOERROR; }
-	if (strcmp(color_arg->text, "wit"))    {color_arg->num = VGA_COL_WHITE; 	return NOERROR; }
-	if (strcmp(color_arg->text, "cyaan"))  {color_arg->num = VGA_COL_CYAN; 		return NOERROR; }
-	if (strcmp(color_arg->text, "magenta")){color_arg->num = VGA_COL_MAGENTA; 	return NOERROR; }
-	if (strcmp(color_arg->text, "geel"))   {color_arg->num = VGA_COL_YELLOW;  	return NOERROR; }
+	int test1 = strcmp(color_string, "zwart");
+	int test2 = strcmp(color_string, "blauw");
+	if (0==strcmp(color_string, "zwart"))  {*color_num = VGA_COL_BLACK;  return NOERROR; }
+	if (0==strcmp(color_string, "blauw"))  {
+		*color_num = VGA_COL_BLUE;
+	return NOERROR; }
+	if (0==strcmp(color_string, "groen"))  {*color_num = VGA_COL_GREEN;  return NOERROR; }
+	if (0==strcmp(color_string, "rood"))   {*color_num = VGA_COL_RED; 	 return NOERROR; }
+	if (0==strcmp(color_string, "wit"))    {*color_num = VGA_COL_WHITE;  return NOERROR; }
+	if (0==strcmp(color_string, "cyaan"))  {*color_num = VGA_COL_CYAN; 	 return NOERROR; }
+	if (0==strcmp(color_string, "magenta")){*color_num = VGA_COL_MAGENTA;return NOERROR; }
+	if (0==strcmp(color_string, "geel"))   {*color_num = VGA_COL_YELLOW; return NOERROR; }
 
 	return UNDEFINEDCOLOR;
 }
@@ -131,7 +134,7 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 
 	if (!strcmp(command_struct->arg[0].text, "clearscherm"))
 	{
-		error = LOGIC_colorpicker(&command_struct->arg[1]);
+		error = LOGIC_colorpicker(command_struct->arg[1].text, &command_struct->arg[1].num);
 		API_clearscreen(command_struct->arg[1].num);
 
 		return error;
@@ -149,7 +152,7 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 
 	if (!strcmp(command_struct->arg[0].text, "lijn"))
 	{
-		error = LOGIC_colorpicker(&command_struct->arg[7]);
+		error = LOGIC_colorpicker(command_struct->arg[7].text, &command_struct->arg[7].num);
 		API_draw_line(	command_struct->arg[1].num,
 						command_struct->arg[2].num,
 						command_struct->arg[3].num,
@@ -162,7 +165,9 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 
 	if (strcmp(command_struct->arg[0].text, "rechthoek"))
 	{
-		error = LOGIC_colorpicker(&command_struct->arg[5]);
+		//char * stringcol = command_struct->arg[5].text;
+		char stringtest [] = "blauw";
+		error = LOGIC_colorpicker(stringtest,&command_struct->arg[5].num);
 		API_draw_rectangle(	command_struct->arg[1].num,
 							command_struct->arg[2].num,
 							command_struct->arg[3].num,
@@ -171,12 +176,12 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 							command_struct->arg[6].num,
 							command_struct->arg[7].num,
 							command_struct->arg[8].num);
-		return NOERROR;
+		return error;
 	}
 
 	if (!strcmp(command_struct->arg[0].text, "tekst"))
 	{
-		error = LOGIC_colorpicker(&command_struct->arg[7]);
+		error = LOGIC_colorpicker(command_struct->arg[7].text,&command_struct->arg[5].num);
 		API_draw_text(	command_struct->arg[1].num,
 						command_struct->arg[2].num,
 						command_struct->arg[3].num,
@@ -202,8 +207,10 @@ int API_perform(Q_INFO * performQ) //naam onder voorbehoud
 	int error = NOERROR;
 	COMMAND performCommand;
 
-	error =API_Qreader(performQ, &performCommand);
+
+	error = API_Qreader(performQ, &performCommand);
 	error = LOGIC_functionpicker(&performCommand);
+	//error = LOGIC_functionpicker(&write_struct);
 
 	return error;
 }

@@ -19,9 +19,6 @@
          <include file="..\..\..\IO Layer\Minimum+1_font.h"/>
          <include file="..\..\..\ub_lib\stm32_ub_vga_screen.h"/>
       </source>
-      <source file="..\..\..\LogicLayer.c" lastModified="16ac5e58ff3">
-         <include file="..\..\..\main.h"/>
-      </source>
       <source file="..\..\..\cmsis\core_cmInstr.h" lastModified="16a2af892ba">
       </source>
       <source file="..\..\..\cmsis\core_cm4.h" lastModified="16a2af892b5">
@@ -97,6 +94,9 @@
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
       </source>
       <source file="..\..\..\cmsis\core_cmFunc.h" lastModified="16a2af892b8">
+      </source>
+      <source file="..\..\..\main.c" lastModified="16ac6881ca8">
+         <include file="..\..\..\main.h"/>
       </source>
       <source file="..\..\..\cmsis_lib\source\stm32f4xx_rcc.c" lastModified="16a2af88ef6">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
