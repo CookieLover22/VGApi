@@ -87,12 +87,8 @@ int API_Qreader_stealth(Q_INFO * readQ, COMMAND * readCommand)
  */
 int LOGIC_colorpicker(char * color_string, int *color_num)
 {
-	int test1 = strcmp(color_string, "zwart");
-	int test2 = strcmp(color_string, "blauw");
 	if (0==strcmp(color_string, "zwart"))  {*color_num = VGA_COL_BLACK;  return NOERROR; }
-	if (0==strcmp(color_string, "blauw"))  {
-		*color_num = VGA_COL_BLUE;
-	return NOERROR; }
+	if (0==strcmp(color_string, "blauw"))  {*color_num = VGA_COL_BLUE;return NOERROR; }
 	if (0==strcmp(color_string, "groen"))  {*color_num = VGA_COL_GREEN;  return NOERROR; }
 	if (0==strcmp(color_string, "rood"))   {*color_num = VGA_COL_RED; 	 return NOERROR; }
 	if (0==strcmp(color_string, "wit"))    {*color_num = VGA_COL_WHITE;  return NOERROR; }

@@ -11,7 +11,7 @@
 //--------------------------------------------------------------
 
 #include <main.h>
-
+#include "uart.h"
 
 
 
@@ -23,6 +23,8 @@ int main(void)
 
 	DELAY_init();
 	LCD_init();
+	UART_init();
+	UART_INT_init();
 
 	LCD_clear();			// Start with a clear display
 	LCD_XY(0,0);			// Shift one spot
@@ -35,11 +37,11 @@ int main(void)
 
 	UB_VGA_FillScreen(0);
 
-	COMMAND write_struct;
-	COMMAND read_struct;
+	//COMMAND write_struct;
+	//COMMAND read_struct;
 
 	//char errorstring [20];
-
+	/*
 	int i;
 
 	strcpy(write_struct.arg[0].text, "rechthoek");
@@ -57,7 +59,7 @@ int main(void)
 
 		API_Qwriter(&front_to_logic_Q, &write_struct);
 	}
-
+	*/
 
 	//API_draw_rectangle(100,100,20,30,3,1,1,0);
 	//if(LOGIC_functionpicker(write_struct)) UB_VGA_SetPixel(10,10,20);
@@ -70,14 +72,15 @@ int main(void)
 
 	while(1)
 	{
-		API_Qreader(&front_to_logic_Q, &read_struct);
+		//API_Qreader(&front_to_logic_Q, &read_struct);
 		LCD_clear();
-		int error;
+		int error = 0;
 		error = API_perform(&front_to_logic_Q);
 		//error = LOGIC_functionpicker(&write_struct);
 		LCD_putint(error);
-		if(error) while(1);
-		DELAY_ms(100);
+		if(error) UART_putint(error);
+		//if(error) while(1);
+		//DELAY_ms(100);
 	}
 }
 
