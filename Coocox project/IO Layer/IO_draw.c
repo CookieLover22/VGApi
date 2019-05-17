@@ -7,8 +7,6 @@
 #include <stdlib.h>
 #include "bitmap.h"
 #include "font8x8_basic.h"
-//#include "aztech_font.h"
-//#include "bubblesstandard_font.h"
 #include "Minimum+1_font.h"
 #include "stm32_ub_vga_screen.h"
 
@@ -20,7 +18,6 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 	  int j=0;
 	  int hoogte = 78;
 	  int breedte = 130;
-	  //if(bm_nr ==0)
 
 	  if(x_lup>VGA_DISPLAY_X||x_lup<0||y_lup>VGA_DISPLAY_Y||y_lup<0)
 		  return 1; //error outofbounce
@@ -76,10 +73,19 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 			  for(j=x_lup;j<(x_lup+breedte);j++)
 			  {
 				  UB_VGA_SetPixel(j,i,pikachu[k]);
-
-				  if(k>sizeof(pikachu))
-					  ;//doe niks
-				  else
+				  if(k<sizeof(pikachu))
+					  k++;
+			  }
+		  }
+	  }
+	  else if(bm_nr==6)
+	  {
+		  for(i=y_lup;i<(y_lup+100);i++)
+		  {
+			  for(j=x_lup;j<(x_lup+100);j++)
+			  {
+				  UB_VGA_SetPixel(j,i,smiley[k]);
+				  if(k<sizeof(smiley))
 					  k++;
 			  }
 		  }
@@ -200,7 +206,6 @@ int draw_lineY (int x_1, int y_1, int x_2, int y_2, int color, int weight, int r
 				D2 = D2 + 2*dx;
 			}
 		}
-
 
 	    if(D > 0)
 	    {
@@ -392,4 +397,73 @@ int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, 
 	}
 	return 0;
 }
+
+void drawCircle(int xc, int yc, int x, int y, int color)
+{
+	UB_VGA_SetPixel(xc+x, yc+y, color);
+	UB_VGA_SetPixel(xc-x, yc+y, color);
+	UB_VGA_SetPixel(xc+x, yc-y, color);
+	UB_VGA_SetPixel(xc-x, yc-y, color);
+	UB_VGA_SetPixel(xc+y, yc+x, color);
+	UB_VGA_SetPixel(xc-y, yc+x, color);
+	UB_VGA_SetPixel(xc+y, yc-x, color);
+	UB_VGA_SetPixel(xc-y, yc-x, color);
+}
+
+
+int API_draw_circle (int xc, int yc, int r, int color, int reserved)
+{
+
+	if(color>255||color<0)
+	  return 3; //error color not existing
+
+	if(xc>VGA_DISPLAY_X||xc<0||yc>VGA_DISPLAY_Y||yc<0)
+	  return 1; //error outofbounce
+
+    int x = 0, y = r;
+    int d = 3 - 2 * r;
+    drawCircle(xc, yc, x, y, color);
+    while (y >= x)
+    {
+        x++;
+        if (d > 0)
+        {
+            y--;
+            d = d + 4 * (x - y) + 10;
+        }
+        else
+            d = d + 4 * x + 6;
+        drawCircle(xc, yc, x, y, color);
+    }
+    return 0;
+}
+
+int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x_4, int y_4, int x_5, int y_5, int color, int reserved)
+{
+	int error=0;
+	if(color>255||color<0)
+	  return 3; //error color not existing
+
+	if(x_1>VGA_DISPLAY_X||x_1<0||y_1>VGA_DISPLAY_Y||y_1<0||x_2>VGA_DISPLAY_X||x_2<0||y_2>VGA_DISPLAY_Y||y_2<0||x_3>VGA_DISPLAY_X||x_3<0||y_3>VGA_DISPLAY_Y||y_3<0||x_4>VGA_DISPLAY_X||x_4<0||y_4>VGA_DISPLAY_Y||y_4<0||x_5>VGA_DISPLAY_X||x_5<0||y_5>VGA_DISPLAY_Y||y_5<0)
+	  return 1; //error outofbounce
+
+	error = API_draw_line (x_1, y_1, x_2, y_2, color, 1, 0);
+	if(error)
+		return error;
+	error = API_draw_line (x_2, y_2, x_3, y_3, color, 1, 0);
+	if(error)
+		return error;
+	error = API_draw_line (x_3, y_3, x_4, y_4, color, 1, 0);
+	if(error)
+		return error;
+	error = API_draw_line (x_4, y_4, x_5, y_5, color, 1, 0);
+	if(error)
+		return error;
+	error = API_draw_line (x_5, y_5, x_1, y_1, color, 1, 0);
+	if(error)
+		return error;
+
+	return 0;
+}
+
 

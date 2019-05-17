@@ -26,17 +26,6 @@ int main(void)
   UB_VGA_Screen_Init(); // Init VGA-Screen
 
   API_clearscreen(0);
-  API_draw_rectangle(150,150,50,50,25,0,0,25);
-  char c = 'C';
-  API_draw_char(20,100,254,c,0,0,0,0);
-  char *text = "WAT EEN HOEREN OPDRACHT !@#$%^&*() gaat deze zin verder op de volgende regel?";
-  //char *text = "WA";
-
-  API_draw_text(0,180,232,text,0,2,0,0);
-  text = "Mooi dat doet tie. Nou blij?";
-  API_draw_text(0,216,232,text,0,1,1,0);
- // API_draw_rectangle(0,0,50,50,10,1,0,0);
-
 
   API_draw_line(50,50,70,150,10,20,0);
   API_draw_line(150,150,100,100,40,1,0);
@@ -52,13 +41,27 @@ int main(void)
 
   API_draw_line(0,0,10,100,120,1,0);
 
-  API_draw_bitmap(180,30,5);
-  API_draw_bitmap(220,150,1);
-  API_draw_bitmap(240,150,2);
-  API_draw_bitmap(260,150,3);
-  API_draw_bitmap(280,150,4);
 
+  API_draw_bitmap(180,70,6);
+  API_draw_bitmap(180,0,5);
+  API_draw_bitmap(220,160,1);
+  API_draw_bitmap(240,160,2);
+  API_draw_bitmap(260,160,3);
+  API_draw_bitmap(280,160,4);
 
+  API_draw_rectangle(150,150,50,50,25,0,0,25);
+
+  char c = 'C';
+  API_draw_char(20,100,254,c,0,1,0,0);
+  char *text = "WAT EEN HOEREN OPDRACHT !@#$%^&*() gaat deze zin verder op de volgende regel?";
+
+  API_draw_text(0,180,232,text,0,2,0,0);
+  text = "Mooi dat doet tie. Nou blij?";
+  API_draw_text(0,216,232,text,0,1,1,0);
+ // API_draw_rectangle(0,0,50,50,10,1,0,0);
+
+  API_draw_circle(50,50,15,25,0);
+  API_draw_figure (25, 25, 50, 25, 70, 35, 50, 50, 25, 50, 30, 0);
   while(1)
   {
 	  //
