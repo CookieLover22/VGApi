@@ -26,11 +26,13 @@ int main(void)
 	UART_init();
 	UART_INT_init();
 
+	UART_puts("Ready to receive.");
+
 	LCD_clear();			// Start with a clear display
 	LCD_XY(0,0);			// Shift one spot
 
-	//LCD_put("pretest");
 
+	LCD_putint(API_Qinit(&front_to_logic_Q, 5)); //kapot geheugen vullen
 	LCD_putint(API_Qinit(&front_to_logic_Q, 20)); //Q initialiseren
 
 	UB_VGA_Screen_Init(); // Init VGA-Screen
@@ -68,7 +70,7 @@ int main(void)
 
 	//API_draw_text(20,20, 20, error,errorstring,0,0,0);
 
-
+	//DELAY_s(10);
 
 	while(1)
 	{
@@ -77,10 +79,11 @@ int main(void)
 		int error = 0;
 		error = API_perform(&front_to_logic_Q);
 		//error = LOGIC_functionpicker(&write_struct);
+
+		if(error && error != EMPTYQ)UART_putint(error);
 		LCD_putint(error);
-		if(error) UART_putint(error);
 		//if(error) while(1);
-		//DELAY_ms(100);
+		DELAY_ms(500);
 	}
 }
 

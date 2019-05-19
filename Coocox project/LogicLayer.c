@@ -1,4 +1,5 @@
 #include <main.h>
+#include "uart.h"
 
 
 void LOGIC_errorhandler(int error)
@@ -19,6 +20,9 @@ int API_Qinit(Q_INFO * initQ, int Qsize)
 	//LCD_putint(sizeof(initCommand));
 	void * command_pointer = malloc(sizeof(initCommand));
 
+	UART_puts("\naddr:");
+	UART_putint((int)command_pointer);
+
 	initQ->Q_size = Qsize;
 	initQ->last_written_Q_member = 0;
 	initQ->last_read_Q_member = 0;
@@ -34,19 +38,29 @@ int API_Qinit(Q_INFO * initQ, int Qsize)
 int API_Qwriter(Q_INFO * writeQ, COMMAND * writeCommand)
 {
 
-
 	if (writeQ->last_written_Q_member < writeQ->Q_size - 1)
-	{
-		if (writeQ->last_read_Q_member == writeQ->last_written_Q_member+1) return FULLQ;
-		writeQ->last_written_Q_member++;
-	}
-	else
-	{
-		if (writeQ->last_read_Q_member == 0) return FULLQ;
-		writeQ->last_written_Q_member = 0;
-	}
+		{if (writeQ->last_read_Q_member == writeQ->last_written_Q_member+1) return FULLQ;}
+	else {if (writeQ->last_read_Q_member == 0) return FULLQ;}
+
+	//if (writeQ->last_written_Q_member == 1) writeQ->last_written_Q_member =4; //kapot geheugen over slaan
+
+	UART_puts("\naddr:");
+	UART_putint((int)&writeQ->Q_members[writeQ->last_written_Q_member]);
 
 	writeQ->Q_members[writeQ->last_written_Q_member] = *writeCommand;
+
+	UART_puts("\naddr:");
+	UART_putint((int)&writeQ->Q_members[writeQ->last_written_Q_member]);
+
+	UART_puts("\nqsize:");
+	UART_putint(writeQ->Q_size);
+	UART_puts("\nlastw:");
+	UART_putint(writeQ->last_written_Q_member);
+	UART_puts("\nlastr:");
+	UART_putint(writeQ->last_read_Q_member);
+
+	if (writeQ->last_written_Q_member < writeQ->Q_size - 1) writeQ->last_written_Q_member++;
+	else writeQ->last_written_Q_member = 0;
 
 	return NOERROR;
 
@@ -59,10 +73,13 @@ int API_Qwriter(Q_INFO * writeQ, COMMAND * writeCommand)
 int API_Qreader(Q_INFO * readQ, COMMAND * readCommand)
 {
 	if (readQ->last_read_Q_member == readQ->last_written_Q_member) return EMPTYQ;
+
+	*readCommand = readQ->Q_members[readQ->last_read_Q_member];
+
 	if (readQ->last_read_Q_member < readQ->Q_size - 1) readQ->last_read_Q_member++;
 	else readQ->last_read_Q_member = 0;
 
-	*readCommand = readQ->Q_members[readQ->last_read_Q_member];
+
 
 	return NOERROR;
 }
@@ -87,14 +104,21 @@ int API_Qreader_stealth(Q_INFO * readQ, COMMAND * readCommand)
  */
 int LOGIC_colorpicker(char * color_string, int *color_num)
 {
-	if (0==strcmp(color_string, "zwart"))  {*color_num = VGA_COL_BLACK;  return NOERROR; }
-	if (0==strcmp(color_string, "blauw"))  {*color_num = VGA_COL_BLUE;return NOERROR; }
-	if (0==strcmp(color_string, "groen"))  {*color_num = VGA_COL_GREEN;  return NOERROR; }
-	if (0==strcmp(color_string, "rood"))   {*color_num = VGA_COL_RED; 	 return NOERROR; }
-	if (0==strcmp(color_string, "wit"))    {*color_num = VGA_COL_WHITE;  return NOERROR; }
+	UART_puts(color_string);
+	if (0==strcmp(color_string, "zwart"))  {*color_num = VGA_COL_BLACK;
+	return NOERROR; }
+	if (0==strcmp(color_string, "blauw"))  {*color_num = VGA_COL_BLUE;
+	return NOERROR; }
+	if (0==strcmp(color_string, "groen"))  {*color_num = VGA_COL_GREEN;
+	return NOERROR; }
+	if (0==strcmp(color_string, "rood"))   {*color_num = VGA_COL_RED;
+	return NOERROR; }
+	if (0==strcmp(color_string, "wit"))    {*color_num = VGA_COL_WHITE;
+	return NOERROR; }
 	if (0==strcmp(color_string, "cyaan"))  {*color_num = VGA_COL_CYAN; 	 return NOERROR; }
 	if (0==strcmp(color_string, "magenta")){*color_num = VGA_COL_MAGENTA;return NOERROR; }
 	if (0==strcmp(color_string, "geel"))   {*color_num = VGA_COL_YELLOW; return NOERROR; }
+
 
 	return UNDEFINEDCOLOR;
 }
@@ -111,7 +135,9 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 	{
 		// de volgende if checkt of het eerste character van het commando een getal is (of - voor negatief).
 		// als dat zo is wordt hij omgezet
-		if (command_struct->arg[i].text[0] == 45 || command_struct->arg[i].text[0] >= 48 || command_struct->arg[i].text[0] <= 57)
+		if (command_struct->arg[i].text[0] == '-' ||
+		   (command_struct->arg[i].text[0] >= '0' &&
+			command_struct->arg[i].text[0] <= '9'))
 		{
 			//het argument is een union tussen num en text (een int en een string)
 			//deze lijn zet de string om in een int en plaatst het terug in het zelfde geheugen!
@@ -123,13 +149,17 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 
 	if (!strcmp(command_struct->arg[0].text, "bitmap"))
 	{
+		//return COMMANDERROR;
 		API_draw_bitmap(command_struct->arg[1].num,
 						command_struct->arg[2].num,
 						command_struct->arg[3].num);
+		return NOERROR;
 	}
 
 	if (!strcmp(command_struct->arg[0].text, "clearscherm"))
 	{
+		UART_puts("clear");
+
 		error = LOGIC_colorpicker(command_struct->arg[1].text, &command_struct->arg[1].num);
 		API_clearscreen(command_struct->arg[1].num);
 
@@ -148,44 +178,51 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 
 	if (!strcmp(command_struct->arg[0].text, "lijn"))
 	{
-		error = LOGIC_colorpicker(command_struct->arg[7].text, &command_struct->arg[7].num);
+		UART_puts("lijn");
+
+		error = LOGIC_colorpicker(command_struct->arg[6].text, &command_struct->arg[6].num); //CHECK
 		API_draw_line(	command_struct->arg[1].num,
 						command_struct->arg[2].num,
 						command_struct->arg[3].num,
 						command_struct->arg[4].num,
-						command_struct->arg[5].num,
-						command_struct->arg[6].num,
-						command_struct->arg[7].num);
+						command_struct->arg[6].num, //CHECK
+						command_struct->arg[5].num, //CHECK
+						0);//command_struct->arg[7].num);
+
 		return error;
+
 	}
 
-	if (strcmp(command_struct->arg[0].text, "rechthoek"))
+	if (!strcmp(command_struct->arg[0].text, "rechthoek"))
 	{
 		//char * stringcol = command_struct->arg[5].text;
-		char stringtest [] = "blauw";
-		error = LOGIC_colorpicker(stringtest,&command_struct->arg[5].num);
+		//char stringtest [] = "blauw";
+		UART_puts("rechthoek");
+		error = LOGIC_colorpicker(command_struct->arg[5].text,&command_struct->arg[5].num);
 		API_draw_rectangle(	command_struct->arg[1].num,
 							command_struct->arg[2].num,
 							command_struct->arg[3].num,
 							command_struct->arg[4].num,
 							command_struct->arg[5].num,
-							command_struct->arg[6].num,
-							command_struct->arg[7].num,
-							command_struct->arg[8].num);
+							1,//command_struct->arg[6].num,
+							0,//command_struct->arg[7].num,
+							0);//command_struct->arg[8].num);
 		return error;
 	}
 
 	if (!strcmp(command_struct->arg[0].text, "tekst"))
 	{
-		error = LOGIC_colorpicker(command_struct->arg[7].text,&command_struct->arg[5].num);
+		UART_puts("tekst");
+
+		error = LOGIC_colorpicker(command_struct->arg[4].text,&command_struct->arg[4].num);//CHECK
 		API_draw_text(	command_struct->arg[1].num,
 						command_struct->arg[2].num,
-						command_struct->arg[3].num,
-						command_struct->arg[4].text,
-						command_struct->arg[5].text,
-						command_struct->arg[6].num,
-						command_struct->arg[7].num,
-						command_struct->arg[8].num);
+						command_struct->arg[4].num,//CHECK
+						command_struct->arg[3].text,//CHECK
+						"",//command_struct->arg[5].text,
+						0,//command_struct->arg[6].num,
+						0,//command_struct->arg[7].num,
+						0);//command_struct->arg[8].num);
 		return error;
 	}
 
@@ -205,6 +242,7 @@ int API_perform(Q_INFO * performQ) //naam onder voorbehoud
 
 
 	error = API_Qreader(performQ, &performCommand);
+	if(error) return error;
 	error = LOGIC_functionpicker(&performCommand);
 	//error = LOGIC_functionpicker(&write_struct);
 

@@ -1,5 +1,5 @@
 #define ARGAMOUNT 10
-#define ARGLENGTH 20
+#define ARGLENGTH 50
 
 //==========================
 //variabelen

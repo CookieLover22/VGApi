@@ -73,10 +73,10 @@
       </source>
       <source file="..\..\..\cmsis\core_cmInstr.h" lastModified="16a2af892ba">
       </source>
-      <source file="..\..\..\ub_lib\stm32_ub_vga_screen.c" lastModified="16a2af88efe">
+      <source file="..\..\..\ub_lib\stm32_ub_vga_screen.c" lastModified="16acf5b4488">
          <include file="..\..\..\ub_lib\stm32_ub_vga_screen.h"/>
       </source>
-      <source file="..\..\..\uart.h" lastModified="16ac6ac87b9">
+      <source file="..\..\..\uart.h" lastModified="16acf898740">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_usart.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_gpio.h"/>
@@ -89,7 +89,7 @@
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_usart.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
       </source>
-      <source file="..\..\..\uart.c" lastModified="16ac6b4619a">
+      <source file="..\..\..\uart.c" lastModified="16acfb00714">
          <include file="..\..\..\main.h"/>
          <include file="..\..\..\uart.h"/>
          <include file="..\..\..\cmsis_lib\include\misc.h"/>
@@ -103,7 +103,7 @@
       </source>
       <source file="..\..\..\IO Layer\Minimum+1_font.h" lastModified="16ac68f0b8f">
       </source>
-      <source file="..\..\..\LogicLayer.h" lastModified="16ac68f509a">
+      <source file="..\..\..\LogicLayer.h" lastModified="16acfa596b3">
       </source>
       <source file="..\..\..\IO Layer\IO_draw.h" lastModified="16ac6a7e4c2">
       </source>
@@ -114,8 +114,9 @@
       </source>
       <source file="..\..\..\cmsis_boot\system_stm32f4xx.h" lastModified="16a2af88ee2">
       </source>
-      <source file="..\..\..\LogicLayer.c" lastModified="16ac6aa32bc">
+      <source file="..\..\..\LogicLayer.c" lastModified="16acfb2d3ac">
          <include file="..\..\..\main.h"/>
+         <include file="..\..\..\uart.h"/>
       </source>
       <source file="..\..\..\cmsis_lib\source\stm32f4xx_tim.c" lastModified="16a2af88efa">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_tim.h"/>
@@ -129,7 +130,7 @@
          <include file="..\..\..\IO Layer\Minimum+1_font.h"/>
          <include file="..\..\..\ub_lib\stm32_ub_vga_screen.h"/>
       </source>
-      <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="16a2af88ed5">
+      <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="16acf4f0660">
       </source>
       <source file="..\..\..\cmsis_lib\include\stm32f4xx_tim.h" lastModified="16a2af88eef">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>

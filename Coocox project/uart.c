@@ -38,7 +38,7 @@ In the interrupt routine the char is send back to the terminal
 
 /* Defines -------------------------------------------------------------------*/
 
-#define QUE_SIZE 10
+
 
 /* Global variables ----------------------------------------------------------*/
 
@@ -88,7 +88,7 @@ void UART_init(void)
       - Hardware flow control disabled (RTS and CTS signals)
       - Receive and transmit enabled
 */
-USART_InitStructure.USART_BaudRate = 115200;
+USART_InitStructure.USART_BaudRate = BAUDRATE;
 USART_InitStructure.USART_WordLength = USART_WordLength_8b;
 USART_InitStructure.USART_StopBits = USART_StopBits_1;
 USART_InitStructure.USART_Parity = USART_Parity_No;
@@ -127,7 +127,7 @@ void UART_INT_init(void)
 	NVIC_InitTypeDef   NVIC_InitStructure;
 
 	NVIC_InitStructure.NVIC_IRQChannel = USART2_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 10;
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
@@ -146,26 +146,34 @@ void USART2_IRQHandler(void)
 
 		if(c <= 13) // end of string character received
 		{
-			received.arg[Arg_cnt].text[Char_cnt] = '\n';
+			received.arg[Arg_cnt].text[Char_cnt] = '\0';
 			Arg_cnt = 0;
 			Char_cnt = 0;
 //			frontlayer_unit_test(&received);
 			int error_code = API_Qwriter(&front_to_logic_Q,&received);
-//			if(error_code == FULLQ)
+			UART_puts("\nQueued\n");
+			if(error_code == FULLQ) UART_puts("FULLQ");
+			//UART_putint(error_code);
 		}
 		else if(c == ',') // end of argument character received
 		{
-			c = '\n';
+			c = '\0';
 			received.arg[Arg_cnt].text[Char_cnt] = c;
 			Arg_cnt++;
 			Char_cnt = 0;
+			if (Arg_cnt >= ARGAMOUNT-1) UART_puts("com full");
 		}
 		else
 		{
+			if(Char_cnt >= ARGLENGTH) UART_puts("arg full\n");
+
 			received.arg[Arg_cnt].text[Char_cnt] = c;
 			Char_cnt++;
+
+
 		}
 		while (USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET); // Wait for Empty
+
 
 	}
 }

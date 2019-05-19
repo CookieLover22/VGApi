@@ -4,6 +4,7 @@
 #include "lcd.h"
 #define CR 13 // carriage return char
 #define LF 10 // linefeed char
+#define BAUDRATE 115200
 
 
 void UART_init(void);
