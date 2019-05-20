@@ -151,10 +151,10 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 	if (!strcmp(command_struct->arg[0].text, "bitmap"))
 	{
 		//return COMMANDERROR;
-		API_draw_bitmap(command_struct->arg[1].num,
-						command_struct->arg[2].num,
-						command_struct->arg[3].num);
-		return NOERROR;
+		error = API_draw_bitmap(command_struct->arg[2].num,
+								command_struct->arg[3].num,
+								command_struct->arg[1].num);
+		return error;
 	}
 
 	if (!strcmp(command_struct->arg[0].text, "clearscherm"))

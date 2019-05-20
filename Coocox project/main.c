@@ -45,6 +45,7 @@ int main(void)
 
 
 
+
 	int state = 0;
 	int error = 0;
 	while(1)
@@ -55,6 +56,7 @@ int main(void)
 		if(!GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_12) && state == 0) state = 1;
 		if(state == 1)
 		{
+
 
 			//GPIO_SetBits(GPIOE, GPIO_Pin_7);
 			state = 2;
