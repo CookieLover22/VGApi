@@ -14,6 +14,15 @@
          <include file="..\..\..\cmsis_lib\include\misc.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_dma.h"/>
       </source>
+      <source file="..\..\..\IO Layer\IO_draw.c" lastModified="16ad5a51caa">
+         <include file="..\..\..\IO Layer\IO_draw.h"/>
+         <include file="..\..\..\ub_lib\stm32_ub_vga_screen.h"/>
+         <include file="..\..\..\IO Layer\bitmap.h"/>
+         <include file="..\..\..\IO Layer\font8x8_basic.h"/>
+         <include file="..\..\..\IO Layer\Minimum+1_font.h"/>
+         <include file="..\..\..\ub_lib\stm32_ub_vga_screen.h"/>
+         <include file="..\..\..\main.h"/>
+      </source>
       <source file="..\..\..\cmsis\core_cmInstr.h" lastModified="16a7265f470">
       </source>
       <source file="..\..\..\cmsis\core_cm4.h" lastModified="16a7265f46a">
@@ -38,6 +47,8 @@
       </source>
       <source file="..\..\..\cmsis_lib\include\misc.h" lastModified="16a4eb7af72">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
+      </source>
+      <source file="..\..\..\IO Layer\bitmap.h" lastModified="16ad5ad9c6e">
       </source>
       <source file="..\..\..\cmsis_lib\source\stm32f4xx_dma.c" lastModified="16a4eb7af84">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_dma.h"/>
@@ -91,10 +102,14 @@
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_gpio.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
       </source>
+      <source file="..\..\..\IO Layer\Minimum+1_font.h" lastModified="16ac6571ab9">
+      </source>
       <source file="..\..\..\cmsis\core_cm4_simd.h" lastModified="16a7265f46c">
       </source>
       <source file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h" lastModified="16a4eb7af79">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
+      </source>
+      <source file="..\..\..\IO Layer\font8x8_basic.h" lastModified="16abb3b8522">
       </source>
       <source file="..\..\..\IO Layer\IO_draw.h" lastModified="16ad4f16f1e">
       </source>
