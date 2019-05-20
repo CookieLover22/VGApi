@@ -344,7 +344,8 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
     int x,y;
     int set=0;
     char *bitmap;
-    if(fontsytle==0)
+
+    if(strcmp(fontname,"arial")==0)
     {
 		bitmap = font8x8_basic[(int)letter];
     	if(fontsize==1)
@@ -377,7 +378,7 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
     	else return FONTSIZE_NOT_EXISTING; //fontsize not existing
 
     }
-    else if(fontsytle==1)
+    else if(strcmp(fontname,"consolas")==0)
     {
     	letter-=32;
     	bitmap = minimum_font[(int)letter];
@@ -410,6 +411,9 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
     	else
     		return FONTSIZE_NOT_EXISTING; //fontsize not existing
     }
+    else
+    	return UNDEFINED_FONTNAME;
+
     return NOERROR;
 }
 
@@ -424,8 +428,6 @@ int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, 
 	if(x_lup>VGA_DISPLAY_X||x_lup<0||y_lup>VGA_DISPLAY_Y||y_lup<0)
 	  return OUT_OF_BAUNCE; //error outofbounce
 
-	if(fontname)
-	  return ONLY_FONTSTYLE_NORMAL_AVAILIBLE; //fonttype feature not existing
 
 	if(fontname)
 	  return 4; //fonttype feature not existing
@@ -445,7 +447,7 @@ int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, 
 		x += (FONT_LENGTH*fontsize);
 		if ((x+(FONT_LENGTH*fontsize)) >= VGA_DISPLAY_X)
 		{
-			x=0;
+			x=x_lup;
 			y += (8*fontsize);
 			if((y+(8*fontsize))>VGA_DISPLAY_Y||y<0)
 			  return OUT_OF_BAUNCE; //error outofbounce
