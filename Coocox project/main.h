@@ -54,8 +54,17 @@ enum error
 	//! Het gestuurde commando wordt niet herkend (LOGIC_functionpicker)
 	COMMANDERROR,
 	//! Geeft aan dat het meegegeven argument geen (gedefinieerde) kleur is (LOGIC_colorpicker)
-	UNDEFINEDCOLOR
-
+	UNDEFINEDCOLOR,
+	//! IO Layer --> Out of bounce
+	OUT_OF_BAUNCE,
+	//! IO Layer --> Bitmap Nr not existing
+	UNDEFINED_BITMAP_NR,
+	//! IO Layer --> no Bold or Italic functionality availible
+	ONLY_FONTSTYLE_NORMAL_AVAILIBLE,
+	//! IO Layer --> Fontsize not existing
+	FONTSIZE_NOT_EXISTING,
+	//! IO Layer --> Filled not 0 or 1
+	FILLED_NOT_0_OR_1
 };
 
 extern void HsvToRgb(float h, float S, float V, int* r, int* g, int* b);
