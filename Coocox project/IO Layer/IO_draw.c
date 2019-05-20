@@ -433,6 +433,7 @@ int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, 
 	int y = y_lup;
 	char c[100];
 	int i = 0;
+	int j = 0;
 	int error = 0;
 	strcpy(c, text);
 	while (c[i] != 0)
@@ -442,11 +443,30 @@ int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, 
 			return error;
 		i++;
 		x += (FONT_LENGTH*fontsize);
-		if ((x+(FONT_LENGTH*fontsize)) >= VGA_DISPLAY_X)
+		if(c[i]==' ')
+		{
+			j=0;
+			while(1)
+			{
+				j++;
+				if ((x+(FONT_LENGTH*fontsize)+((FONT_LENGTH*fontsize)*j)) >= VGA_DISPLAY_X)
+				{
+					i++;
+					x=x_lup;
+					y += (FONT_LENGTH*fontsize);
+					if((y+(FONT_LENGTH*fontsize))>VGA_DISPLAY_Y||y<0)
+					  return OUT_OF_BAUNCE; //error outofbounce
+					break;
+				}
+				if((c[j+i]==' ')||(c[j+i]=='\0'))
+					break;
+			}
+		}
+		else if ((x+(FONT_LENGTH*fontsize)) >= VGA_DISPLAY_X)
 		{
 			x=x_lup;
-			y += (8*fontsize);
-			if((y+(8*fontsize))>VGA_DISPLAY_Y||y<0)
+			y += (FONT_LENGTH*fontsize);
+			if((y+(FONT_LENGTH*fontsize))>VGA_DISPLAY_Y||y<0)
 			  return OUT_OF_BAUNCE; //error outofbounce
 		}
 	}

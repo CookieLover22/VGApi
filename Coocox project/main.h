@@ -2,7 +2,7 @@
 // File     : main.h
 //--------------------------------------------------------------
 #define INTERLACELINES 1 //1 = no interlace
-#define QLENGTH 32
+#define QLENGTH 23
 
 //--------------------------------------------------------------
 #ifndef __STM32F4_UB_MAIN_H
@@ -68,7 +68,9 @@ enum error
 	//! IO Layer --> Fontsize not existing
 	FONTSIZE_NOT_EXISTING,
 	//! IO Layer --> Filled not 0 or 1
-	FILLED_NOT_0_OR_1
+	FILLED_NOT_0_OR_1,
+	//! Herhaal functie kan niet zo ver terug kijken (wordt bepaald door define QLENGTH)
+	TOOFARBACKERROR
 };
 
 

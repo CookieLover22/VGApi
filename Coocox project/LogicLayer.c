@@ -118,7 +118,7 @@ int LOGIC_colorpicker(char * color_string, int *color_num)
 	if (0==strcmp(color_string, "lichtcyaan"))  {*color_num = VGA_COL_CYAN | 0b01101101; 	 	return NOERROR; }
 	if (0==strcmp(color_string, "magenta"))		{*color_num = VGA_COL_MAGENTA;					return NOERROR; }
 	if (0==strcmp(color_string, "geel"))   		{*color_num = VGA_COL_YELLOW; 					return NOERROR; }
-	if (0==strcmp(color_string, "bruin"))   	{*color_num = VGA_COL_YELLOW; 					return NOERROR; }
+	if (0==strcmp(color_string, "bruin"))   	{*color_num = VGA_COL_BROWN; 					return NOERROR; }
 
 	*color_num = VGA_COL_BLACK;
 	return UNDEFINEDCOLOR;
@@ -245,9 +245,58 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 		return error;
 	}
 
+	if (!strcmp(command_struct->arg[0].text, "figuur"))
+		{
+
+			error = LOGIC_colorpicker(command_struct->arg[11].text,&command_struct->arg[11].num);//CHECK
+			if (error) return error;
+			error = API_draw_figure(command_struct->arg[1].num,
+									command_struct->arg[2].num,
+									command_struct->arg[3].num,
+									command_struct->arg[4].num,
+									command_struct->arg[5].num,
+									command_struct->arg[6].num,
+									command_struct->arg[7].num,
+									command_struct->arg[8].num,
+									command_struct->arg[9].num,
+									command_struct->arg[10].num,
+									command_struct->arg[11].num,
+									0//command_struct->arg[12].num
+									);
+			return error;
+		}
+
 	if (!strcmp(command_struct->arg[0].text, "wacht"))
 	{
 		DELAY_ms(command_struct->arg[1].num);
+		return NOERROR;
+	}
+
+	if (!strcmp(command_struct->arg[0].text, "herhaal"))
+	{
+		if(command_struct->arg[1].num > QLENGTH) return TOOFARBACKERROR;
+
+		int herhaalaantal;
+		int herhaalplaats;
+
+		herhaalaantal = command_struct->arg[2].num;
+
+		//PAS OP! VERSCHRIKKELIJKE HACK
+		if(front_to_logic_Q.last_read_Q_member > command_struct->arg[1].num)
+			herhaalplaats = front_to_logic_Q.last_read_Q_member - command_struct->arg[1].num;
+		else herhaalplaats = front_to_logic_Q.last_read_Q_member + front_to_logic_Q.Q_size - command_struct->arg[1].num;
+
+		int i, k;
+		for (i = 0; i < herhaalaantal; i++)
+		{
+			for (k = 0; k < command_struct->arg[1].num-1; k++)
+			{
+				API_Qwriter(&front_to_logic_Q, &front_to_logic_Q.Q_members [(herhaalplaats + k) % front_to_logic_Q.Q_size] );
+
+			}
+		}
+
+
 		return NOERROR;
 	}
 

@@ -61,6 +61,7 @@ int main(void)
 			//API_Qreader(&front_to_logic_Q, &read_struct);
 			LCD_clear();
 
+
 			error = API_perform(&front_to_logic_Q);
 			//error = LOGIC_functionpicker(&write_struct);
 

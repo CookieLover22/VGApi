@@ -184,6 +184,10 @@ void USART2_IRQHandler(void)
 		{
 			if (!Arg_cnt && !Char_cnt) return;
 			received.arg[Arg_cnt].text[Char_cnt] = '\0';
+
+			//spatie padding weg halen
+			trimwhitespace(received.arg[Arg_cnt].text, ARGLENGTH, received.arg[Arg_cnt].text);
+
 			Arg_cnt = 0;
 			Char_cnt = 0;
 //			frontlayer_unit_test(&received);
@@ -198,6 +202,7 @@ void USART2_IRQHandler(void)
 			c = '\0';
 			received.arg[Arg_cnt].text[Char_cnt] = c;
 
+			//spatie padding weg halen
 			trimwhitespace(received.arg[Arg_cnt].text, ARGLENGTH, received.arg[Arg_cnt].text);
 
 			if (Arg_cnt >= ARGAMOUNT-1) {UART_puts("com full"); return;}
