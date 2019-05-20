@@ -10,6 +10,7 @@
 // Function : VGA_core DMA LIB 320x240, 8bit color
 //--------------------------------------------------------------
 
+
 #include <main.h>
 #include "uart.h"
 
@@ -39,46 +40,16 @@ int main(void)
 
 	UB_VGA_Screen_Init(); // Init VGA-Screen
 
+
 	UB_VGA_FillScreen(0);
 
-	//COMMAND write_struct;
-	//COMMAND read_struct;
 
-	//char errorstring [20];
-	/*
-	int i;
-
-	strcpy(write_struct.arg[0].text, "rechthoek");
-	strcpy(write_struct.arg[1].text, "100");
-	strcpy(write_struct.arg[2].text, "100");
-	strcpy(write_struct.arg[3].text, "20");
-	strcpy(write_struct.arg[4].text, "30");
-	strcpy(write_struct.arg[5].text, "blauw");
-	strcpy(write_struct.arg[6].text, "1");
-	strcpy(write_struct.arg[7].text, "1");
-	strcpy(write_struct.arg[8].text, "0");
-
-	for (i = 0; i < 3; i++)
-	{
-
-		API_Qwriter(&front_to_logic_Q, &write_struct);
-	}
-	*/
-
-	//API_draw_rectangle(100,100,20,30,3,1,1,0);
-	//if(LOGIC_functionpicker(write_struct)) UB_VGA_SetPixel(10,10,20);
-	//char error[] = "G";
-	//error[0] = LOGIC_functionpicker(&write_struct)+48;
-
-	//API_draw_text(20,20, 20, error,errorstring,0,0,0);
-
-	//DELAY_s(10);
 
 	int state = 0;
 	int error = 0;
 	while(1)
 	{
-		//if (!GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_12)) DELAY_us(31);
+		//if (!GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_11)) DELAY_us(28);
 		//het volgende state machientje zorgt ervoor dat de loop één keer doorlopen wordt tijdens Vsync
 		if( GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_12)) state = 0;
 		if(!GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_12) && state == 0) state = 1;
@@ -94,13 +65,18 @@ int main(void)
 			//error = LOGIC_functionpicker(&write_struct);
 
 			//if(error && error != EMPTYQ)UART_putint(error);
+			//if(error)UART_putint(error);
+
+
 			//LCD_putint(error);
 			//if(error) while(1);
 			//DELAY_ms(50);
+			//DELAY_us(10000);
 			//GPIO_ResetBits(GPIOE, GPIO_Pin_7);
-			DELAY_ms(17);
+
 		}
 	}
+
 }
 
 
