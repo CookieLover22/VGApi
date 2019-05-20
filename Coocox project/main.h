@@ -41,6 +41,8 @@ enum error
 	UNDEFINED_BITMAP_NR,
 	//! IO Layer --> no Bold or Italic functionality availible
 	ONLY_FONTSTYLE_NORMAL_AVAILIBLE,
+	//! IO Layer --> Fontname not existing
+	UNDEFINED_FONTNAME,
 	//! IO Layer --> Fontsize not existing
 	FONTSIZE_NOT_EXISTING,
 	//! IO Layer --> Filled not 0 or 1
