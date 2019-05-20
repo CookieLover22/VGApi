@@ -64,13 +64,12 @@ int main(void)
 			error = API_perform(&front_to_logic_Q);
 			//error = LOGIC_functionpicker(&write_struct);
 
-			//if(error && error != EMPTYQ)UART_putint(error);
 			if(error && error != EMPTYQ)UART_putint(error);
 
 
 			LCD_putint(error);
 			//if(error && error != EMPTYQ && error != COMMANDERROR) while(1);
-			//DELAY_ms(50);
+			//DELAY_ms(5);
 			//DELAY_us(10000);
 			//GPIO_ResetBits(GPIOE, GPIO_Pin_7);
 

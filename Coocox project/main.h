@@ -41,6 +41,7 @@ Q_INFO front_to_logic_Q;
 // Error codes
 //--------------------------------------------------------------
 
+//! Deze enum houd bij welke nummers bij welke errors horen
 enum error
 {
 	//! Geeft aan dat er niks aan de hand is (is altijd 0)

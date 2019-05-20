@@ -146,6 +146,7 @@ void USART2_IRQHandler(void)
 
 		if(c <= 13) // end of string character received
 		{
+			if (!Arg_cnt && !Char_cnt) return;
 			received.arg[Arg_cnt].text[Char_cnt] = '\0';
 			Arg_cnt = 0;
 			Char_cnt = 0;

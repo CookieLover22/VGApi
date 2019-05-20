@@ -42,7 +42,7 @@
       </source>
       <source file="..\..\..\delay.h" lastModified="16ac68f5158">
       </source>
-      <source file="..\..\..\main.h" lastModified="16ad47b1ffb">
+      <source file="..\..\..\main.h" lastModified="16ad5020315">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
          <include file="..\..\..\LogicLayer.h"/>
          <include file="..\..\..\IO Layer\IO_draw.h"/>
@@ -71,10 +71,6 @@
          <include file="..\..\..\cmsis_lib\include\misc.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_dma.h"/>
       </source>
-      <source file="..\..\..\main.c" lastModified="16ad4dfdad1">
-         <include file="..\..\..\main.h"/>
-         <include file="..\..\..\uart.h"/>
-      </source>
       <source file="..\..\..\cmsis\core_cmInstr.h" lastModified="16a2af892ba">
       </source>
       <source file="..\..\..\ub_lib\stm32_ub_vga_screen.c" lastModified="16ad4534ce3">
@@ -93,7 +89,7 @@
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_usart.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
       </source>
-      <source file="..\..\..\uart.c" lastModified="16ad45b8a33">
+      <source file="..\..\..\uart.c" lastModified="16ad4fb0090">
          <include file="..\..\..\main.h"/>
          <include file="..\..\..\uart.h"/>
          <include file="..\..\..\cmsis_lib\include\misc.h"/>
@@ -118,11 +114,15 @@
       </source>
       <source file="..\..\..\cmsis_boot\system_stm32f4xx.h" lastModified="16a2af88ee2">
       </source>
+      <source file="..\..\..\LogicLayer.c" lastModified="16ad4f1d871">
+         <include file="..\..\..\main.h"/>
+         <include file="..\..\..\uart.h"/>
+      </source>
       <source file="..\..\..\cmsis_lib\source\stm32f4xx_tim.c" lastModified="16a2af88efa">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_tim.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
       </source>
-      <source file="..\..\..\IO Layer\IO_draw.c" lastModified="16ad49bd5b2">
+      <source file="..\..\..\IO Layer\IO_draw.c" lastModified="16ad4f45b84">
          <include file="..\..\..\IO Layer\IO_draw.h"/>
          <include file="..\..\..\ub_lib\stm32_ub_vga_screen.h"/>
          <include file="..\..\..\IO Layer\bitmap.h"/>
