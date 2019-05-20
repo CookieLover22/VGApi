@@ -35,17 +35,20 @@
 <part id="14"/>
 <part id="15"/>
 <part id="16"/>
+<part id="17"/>
+<part id="18"/>
+<part id="19"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/danie/source/repos/VGApi/Coocox project/main.c" title="main.c" tooltip="C:/Users/danie/source/repos/VGApi/Coocox project/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/VGA_Core/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="541" selectionTopPixel="81"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="418" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_vga_screen.h" partName="stm32_ub_vga_screen.h" path="C:/Users/danie/source/repos/VGApi/Coocox project/ub_lib/stm32_ub_vga_screen.h" title="stm32_ub_vga_screen.h" tooltip="C:/Users/danie/source/repos/VGApi/Coocox project/ub_lib/stm32_ub_vga_screen.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/VGA_Core/ub_lib/stm32_ub_vga_screen.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1384" selectionTopPixel="2021"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1384" selectionTopPixel="0"/>
 </editor>
 <editor id="org.coocox.builder.ui.editors.ConfigEditor" name="" partName="Configuration" title="Configuration" tooltip="" workbook="DefaultEditorWorkbook">
 <input factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory">&#x0A;<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="2" verticalPosition="0"/>
@@ -53,11 +56,11 @@
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="IO_draw.c" partName="IO_draw.c" path="C:/Users/danie/source/repos/VGApi/Coocox project/IO Layer/IO_draw.c" title="IO_draw.c" tooltip="C:/Users/danie/source/repos/VGApi/Coocox project/IO Layer/IO_draw.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/VGA_Core/IO Layer/IO_draw.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2277" selectionTopPixel="3604"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="534" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="IO_draw.h" partName="IO_draw.h" path="C:/Users/danie/source/repos/VGApi/Coocox project/IO Layer/IO_draw.h" title="IO_draw.h" tooltip="C:/Users/danie/source/repos/VGApi/Coocox project/IO Layer/IO_draw.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/VGA_Core/IO Layer/IO_draw.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="234" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="719" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="math.h" partName="math.h" title="math.h" tooltip="C:\Program Files (x86)\GNU Tools ARM Embedded\4.8 2013q4\arm-none-eabi\include\math.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" path="C:\Program Files (x86)\GNU Tools ARM Embedded\4.8 2013q4\arm-none-eabi\include\math.h" project="VGA_Core"/>
@@ -107,16 +110,29 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/VGA_Core/cmsis_lib/source/main.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="804" selectionTopPixel="0"/>
 </editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="bitmap.h" partName="bitmap.h" path="C:/Users/danie/source/repos/VGApi/Coocox project/IO Layer/bitmap.h" title="bitmap.h" tooltip="C:/Users/danie/source/repos/VGApi/Coocox project/IO Layer/bitmap.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/VGA_Core/IO Layer/bitmap.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="88886" selectionTopPixel="3740"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="uart.h" partName="uart.h" path="C:/Users/danie/source/repos/VGApi/Coocox project/ub_lib/uart.h" title="uart.h" tooltip="C:/Users/danie/source/repos/VGApi/Coocox project/ub_lib/uart.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/VGA_Core/ub_lib/uart.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="uart.c" partName="uart.c" path="C:/Users/danie/source/repos/VGApi/Coocox project/ub_lib/uart.c" title="uart.c" tooltip="C:/Users/danie/source/repos/VGApi/Coocox project/ub_lib/uart.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/VGA_Core/ub_lib/uart.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="13">
 <expanded>
 <element path="/VGA_Core"/>
 <element path="/VGA_Core/IO Layer"/>
+<element path="/VGA_Core/ub_lib"/>
 </expanded>
 <selection>
-<element path="/VGA_Core/IO Layer/IO_draw.c"/>
+<element path="/VGA_Core/ub_lib/uart.c"/>
 </selection>
 </viewState>
 </view>
@@ -163,8 +179,8 @@
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showPeripheralsAction"/>
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showVariablesAction"/>
 <hide_menu_item_id id="org.coocox.builder.ui.openProjectExplorerAction"/>
-<hide_menu_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
 <hide_menu_item_id id="org.coocox.codebugger.trace.actions.ShowTraceControlAction"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showRegistersAction"/>
 <hide_toolbar_item_id id="org.eclipse.cdt.debug.internal.ui.actions.ToggleInstructionStepModeAction"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
@@ -320,163 +336,161 @@
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/VGA_Core/IO Layer/IO_draw.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/VGA_Core/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/VGA_Core/ub_lib/font8x8_basic.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/VGA_Core/IO Layer/bitmap.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/VGA_Core/IO Layer/IO_draw.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/VGA_Core/ub_lib/bubblesstandard_font.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/VGA_Core/ub_lib/Minimum+1_font.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/VGA_Core/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/VGA_Core/cmsis_lib/source/main.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/VGA_Core/IO Layer/IO_draw.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/VGA_Core/ub_lib/uart.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/VGA_Core/ub_lib/stm32_ub_vga_screen.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/VGA_Core/ub_lib/uart.c"/>
 </editors>
-<item historyLabel="font8x8_basic.h" index="2">
-<position info="not_deleted" x="5128" y="0"/>
+<item historyLabel="IO_draw.c" index="0">
+<position/>
 </item>
-<item historyLabel="Minimum+1_font.h" index="5">
+<item historyLabel="main.c" index="1">
+<position/>
+</item>
+<item historyLabel="IO_draw.c" index="0">
+<position/>
+</item>
+<item historyLabel="main.c" index="1">
+<position/>
+</item>
+<item historyLabel="bitmap.h" index="2">
 <position info="not_deleted" x="0" y="0"/>
 </item>
 <item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="3014" y="0"/>
+<position/>
 </item>
-<item historyLabel="main.c" index="1">
-<position info="not_deleted" x="1427" y="0"/>
+<item historyLabel="bitmap.h" index="2">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Minimum+1_font.h" index="5">
-<position info="not_deleted" x="20" y="12"/>
+<item historyLabel="bitmap.h" index="2">
+<position info="not_deleted" x="88886" y="0"/>
 </item>
 <item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="2885" y="0"/>
+<position/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="708" y="0"/>
+</item>
+<item historyLabel="IO_draw.c" index="0">
+<position/>
+</item>
+<item historyLabel="main.c" index="1">
+<position/>
+</item>
+<item historyLabel="IO_draw.c" index="0">
+<position/>
 </item>
 <item historyLabel="IO_draw.h" index="3">
-<position info="not_deleted" x="234" y="0"/>
+<position info="not_deleted" x="973" y="0"/>
 </item>
 <item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="2885" y="0"/>
+<position/>
+</item>
+<item historyLabel="IO_draw.h" index="3">
+<position info="not_deleted" x="973" y="0"/>
+</item>
+<item historyLabel="IO_draw.c" index="0">
+<position/>
 </item>
 <item historyLabel="main.c" index="1">
-<position info="not_deleted" x="1427" y="0"/>
+<position/>
 </item>
-<item historyLabel="bubblesstandard_font.h" index="4">
-<position info="not_deleted" x="20" y="20"/>
+<item historyLabel="IO_draw.c" index="0">
+<position/>
+</item>
+<item historyLabel="IO_draw.c" index="0">
+<position/>
+</item>
+<item historyLabel="IO_draw.h" index="3">
+<position info="not_deleted" x="972" y="0"/>
+</item>
+<item historyLabel="IO_draw.c" index="0">
+<position/>
 </item>
 <item historyLabel="main.c" index="1">
-<position info="not_deleted" x="1427" y="0"/>
+<position info="not_deleted" x="1760" y="0"/>
 </item>
 <item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="2885" y="0"/>
+<position info="not_deleted" x="8853" y="131"/>
+</item>
+<item historyLabel="bitmap.h" index="2">
+<position info="not_deleted" x="88886" y="0"/>
+</item>
+<item historyLabel="IO_draw.h" index="3">
+<position info="not_deleted" x="972" y="0"/>
 </item>
 <item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="6179" y="0"/>
+<position info="not_deleted" x="820" y="0"/>
 </item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="1500" y="0"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="1093" y="0"/>
+</item>
+<item historyLabel="IO_draw.c" index="0">
+<position info="not_deleted" x="529" y="0"/>
+</item>
+<item historyLabel="IO_draw.h" index="3">
+<position info="not_deleted" x="972" y="0"/>
+</item>
+<item historyLabel="IO_draw.c" index="0">
+<position info="not_deleted" x="259" y="0"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="0" y="397"/>
+</item>
+<item historyLabel="IO_draw.c" index="0">
+<position info="not_deleted" x="259" y="0"/>
+</item>
+<item historyLabel="IO_draw.h" index="3">
+<position info="not_deleted" x="683" y="0"/>
+</item>
+<item historyLabel="IO_draw.c" index="0">
+<position info="not_deleted" x="259" y="0"/>
+</item>
+<item historyLabel="IO_draw.h" index="3">
+<position info="not_deleted" x="683" y="0"/>
+</item>
+<item historyLabel="IO_draw.c" index="0">
+<position info="not_deleted" x="6586" y="0"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="0" y="397"/>
+</item>
+<item historyLabel="IO_draw.c" index="0">
+<position info="not_deleted" x="6586" y="0"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="131" y="0"/>
+</item>
+<item historyLabel="IO_draw.c" index="0">
+<position info="not_deleted" x="6586" y="0"/>
 </item>
 <item historyLabel="IO_draw.c" index="0">
 <position/>
 </item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="970" y="0"/>
+<item historyLabel="IO_draw.c" index="0">
+<position/>
 </item>
 <item historyLabel="IO_draw.c" index="0">
 <position/>
 </item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="930" y="0"/>
-</item>
-<item historyLabel="IO_draw.c" index="0">
-<position/>
-</item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="930" y="0"/>
-</item>
-<item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="7460" y="0"/>
-</item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="930" y="0"/>
-</item>
-<item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="7700" y="0"/>
-</item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="964" y="0"/>
-</item>
-<item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="7700" y="0"/>
-</item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="957" y="0"/>
-</item>
-<item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="7802" y="0"/>
-</item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="970" y="0"/>
-</item>
-<item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="7802" y="0"/>
-</item>
-<item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="6566" y="0"/>
-</item>
-<item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="6974" y="0"/>
-</item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="970" y="0"/>
-</item>
-<item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="6974" y="0"/>
-</item>
-<item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="6351" y="0"/>
-</item>
-<item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="5530" y="0"/>
-</item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="1145" y="0"/>
-</item>
-<item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="5530" y="0"/>
-</item>
-<item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="4214" y="0"/>
-</item>
-<item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="2277" y="0"/>
-</item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="1145" y="0"/>
-</item>
-<item historyLabel="IO_draw.c" index="0">
-<position info="not_deleted" x="2277" y="0"/>
-</item>
-<item historyLabel="main.c" index="6">
+<item historyLabel="uart.h" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="533" y="54"/>
+<item historyLabel="stm32_ub_vga_screen.h" index="5">
+<position info="not_deleted" x="1384" y="0"/>
 </item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="632" y="0"/>
+<item historyLabel="uart.c" index="6">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="533" y="54"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="418" y="0"/>
 </item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="598" y="0"/>
+<item historyLabel="IO_draw.h" index="3">
+<position info="not_deleted" x="719" y="0"/>
 </item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="412" y="0"/>
-</item>
-<item historyLabel="main.h" index="7">
-<position info="not_deleted" x="804" y="0"/>
-</item>
-<item historyLabel="main.c" index="6">
-<position info="not_deleted" x="412" y="0"/>
-</item>
-<item active="true" historyLabel="IO_draw.c" index="8">
-<position info="not_deleted" x="2277" y="0"/>
+<item active="true" historyLabel="IO_draw.c" index="0">
+<position/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -485,6 +499,15 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="uart.c" tooltip="VGA_Core/ub_lib/uart.c">
+<persistable path="/VGA_Core/ub_lib/uart.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="uart.h" tooltip="VGA_Core/ub_lib/uart.h">
+<persistable path="/VGA_Core/ub_lib/uart.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="bitmap.h" tooltip="VGA_Core/IO Layer/bitmap.h">
+<persistable path="/VGA_Core/IO Layer/bitmap.h"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.h" tooltip="VGA_Core/cmsis_lib/source/main.h">
 <persistable path="/VGA_Core/cmsis_lib/source/main.h"/>
 </file>
@@ -497,15 +520,6 @@
 <file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
 <persistable>&#x0A;<subPage horizontalPosition="0" selectedItemId="517" subPageIndex="2" verticalPosition="569"/>
 </persistable>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="uart.h" tooltip="VGA_Core/ub_lib/uart.h">
-<persistable path="/VGA_Core/ub_lib/uart.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="uart.c" tooltip="VGA_Core/ub_lib/uart.c">
-<persistable path="/VGA_Core/ub_lib/uart.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="bitmap.h" tooltip="VGA_Core/IO Layer/bitmap.h">
-<persistable path="/VGA_Core/IO Layer/bitmap.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Minimum+1_font.h" tooltip="VGA_Core/ub_lib/Minimum+1_font.h">
 <persistable path="/VGA_Core/ub_lib/Minimum+1_font.h"/>

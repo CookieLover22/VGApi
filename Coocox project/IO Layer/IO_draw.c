@@ -21,8 +21,14 @@
 #include "Minimum+1_font.h"
 #include "stm32_ub_vga_screen.h"
 
+#define ARROW_LENGTH 16
+#define SMILEY_LENGTH 100
+#define PIKACHU_WITH 130
+#define PIKACHU_LENGTH 78
+#define FONT_LENGTH 8
+
 /**
- * tekent bitmap vanaf x_lup (left up) en y_lup (left up). beschikbare bitmaps
+ * tekent bitmap vanaf x_lup (left up) en y_lup (left up). beschikbare bitmaps:
  * bm_nr 1 --> pijl naar links
  * bm_nr 2 --> pijl naar rechts
  * bm_nr 3 --> pijl naar boven
@@ -35,26 +41,24 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 	  int k=0;
 	  int i=0;
 	  int j=0;
-	  int hoogte = 78;
-	  int breedte = 130;
 
 	  if(x_lup>VGA_DISPLAY_X||x_lup<0||y_lup>VGA_DISPLAY_Y||y_lup<0)
 		  return 1; //error outofbounce
 
 	  if(bm_nr==1)
 	  {
-		  for(i=0;i<16;i++)
+		  for(i=0;i<ARROW_LENGTH;i++)
 		  {
-			  for(j=0;j<16;j++)
+			  for(j=0;j<ARROW_LENGTH;j++)
 				  if(arrow[i][j])
 					  UB_VGA_SetPixel((j+x_lup),(i+y_lup),arrow[i][j]);
 		  }
 	  }
 	  else if(bm_nr==2)
 	  {
-		  for(i=0;i<16;i++)
+		  for(i=0;i<ARROW_LENGTH;i++)
 		  {
-			  for(j=15;j>=0;j--)
+			  for(j=(ARROW_LENGTH-1);j>=0;j--)
 			  {
 				  if(arrow[i][j])
 					  UB_VGA_SetPixel((k+x_lup),(i+y_lup),arrow[i][j]);
@@ -65,18 +69,18 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 	  }
 	  else if(bm_nr==3)
 	  {
-		  for(i=0;i<16;i++)
+		  for(i=0;i<ARROW_LENGTH;i++)
 		  {
-			  for(j=0;j<16;j++)
+			  for(j=0;j<ARROW_LENGTH;j++)
 				  if(arrow[j][i])
 					  UB_VGA_SetPixel((j+x_lup),(i+y_lup),arrow[j][i]);
 		  }
 	  }
 	  else if(bm_nr==4)
 	  {
-		  for(i=15;i>=0;i--)
+		  for(i=(ARROW_LENGTH-1);i>=0;i--)
 		  {
-			  for(j=0;j<16;j++)
+			  for(j=0;j<ARROW_LENGTH;j++)
 			  {
 				  if(arrow[j][i])
 					  UB_VGA_SetPixel((j+x_lup),(k+y_lup),arrow[j][i]);
@@ -87,9 +91,9 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 	  }
 	  else if(bm_nr==5)
 	  {
-		  for(i=y_lup;i<(y_lup+hoogte);i++)
+		  for(i=y_lup;i<(y_lup+PIKACHU_LENGTH);i++)
 		  {
-			  for(j=x_lup;j<(x_lup+breedte);j++)
+			  for(j=x_lup;j<(x_lup+PIKACHU_WITH);j++)
 			  {
 				  UB_VGA_SetPixel(j,i,pikachu[k]);
 				  if(k<sizeof(pikachu))
@@ -99,9 +103,9 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 	  }
 	  else if(bm_nr==6)
 	  {
-		  for(i=y_lup;i<(y_lup+100);i++)
+		  for(i=y_lup;i<(y_lup+SMILEY_LENGTH);i++)
 		  {
-			  for(j=x_lup;j<(x_lup+100);j++)
+			  for(j=x_lup;j<(x_lup+SMILEY_LENGTH);j++)
 			  {
 				  UB_VGA_SetPixel(j,i,smiley[k]);
 				  if(k<sizeof(smiley))
@@ -309,7 +313,8 @@ int API_draw_rectangle(int x, int y, int width, int height, int color, int fille
 
 	}
 	else
-		return 5;
+		return 5; //filled not 0 or 1
+
 	return 0;
 }
 /**
@@ -343,9 +348,9 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
 		bitmap = font8x8_basic[(int)letter];
     	if(fontsize==1)
     	{
-			for (x=x_lup; x < (x_lup+8); x++)
+			for (x=x_lup; x < (x_lup+FONT_LENGTH); x++)
 			{
-				for (y=y_lup; y < (y_lup+8); y++)
+				for (y=y_lup; y < (y_lup+FONT_LENGTH); y++)
 				{
 					set = bitmap[(y-y_lup)] & 1 << (x-x_lup);
 					if(set)
@@ -356,9 +361,9 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
     	}
     	else if(fontsize==2)
     	{
-			for (x=x_lup; x < (x_lup+16); x++)
+			for (x=x_lup; x < (x_lup+(FONT_LENGTH*2)); x++)
 			{
-				for (y=y_lup; y < (y_lup+16); y++)
+				for (y=y_lup; y < (y_lup+(FONT_LENGTH*2)); y++)
 				{
 					if(y%2==0)
 						set = bitmap[(y-y_lup)/2] & 1 << ((x-x_lup)/2);
@@ -368,6 +373,8 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
 			}
 			return 0;
     	}
+    	else
+    		return 6; //fontsize not existing
     }
     else if(fontsytle==1)
     {
@@ -375,9 +382,9 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
     	bitmap = minimum_font[(int)letter];
     	if(fontsize==1)
     	{
-			for (x=x_lup; x < (x_lup+7); x++)
+			for (x=x_lup; x < (x_lup+(FONT_LENGTH-1)); x++)
 			{
-				for (y=y_lup; y < (y_lup+7); y++)
+				for (y=y_lup; y < (y_lup+(FONT_LENGTH-1)); y++)
 				{
 					set = bitmap[(x-x_lup)] & 1 << (y-y_lup);
 					if(set)
@@ -387,9 +394,9 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
     	}
     	else if(fontsize==2)
     	{
-			for (x=x_lup; x < (x_lup+14); x++)
+			for (x=x_lup; x < (x_lup+((FONT_LENGTH-1)*2)); x++)
 			{
-				for (y=y_lup; y < (y_lup+14); y++)
+				for (y=y_lup; y < (y_lup+((FONT_LENGTH-1)*2)); y++)
 				{
 					if(y%2==0)
 							set = bitmap[(x-x_lup)/2] & 1 << ((y-y_lup)/2);
@@ -399,6 +406,8 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
 			}
 			return 0;
     	}
+    	else
+    		return 6; //fontsize not existing
     }
     return 0;
 }
@@ -415,19 +424,22 @@ int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, 
 	  return 1; //error outofbounce
 
 	if(fontname)
-	  return 4;
+	  return 4; //fonttype feature not existing
 
 	int x = x_lup;
 	int y = y_lup;
 	char c[100];
-	int i=0;
+	int i = 0;
+	int error = 0;
 	strcpy(c, text);
 	while (c[i] != 0)
 	{
-		API_draw_char (x, y, color, c[i], fontname, fontsize, fontsytle, reserved);
+		error = API_draw_char(x, y, color, c[i], fontname, fontsize, fontsytle, reserved);
+		if(error)
+			return error;
 		i++;
-		x += (8*fontsize); // 6 pixels wide	    x += 6;
-		if ((x+(8*fontsize)) >= VGA_DISPLAY_X)
+		x += (FONT_LENGTH*fontsize);
+		if ((x+(FONT_LENGTH*fontsize)) >= VGA_DISPLAY_X)
 		{
 			x=0;
 			y += (8*fontsize);
