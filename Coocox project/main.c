@@ -42,12 +42,12 @@ int main(void)
   API_draw_line(0,0,10,100,120,1,0);
 
 
-  API_draw_bitmap(180,70,6);
-  API_draw_bitmap(180,0,5);
-  API_draw_bitmap(220,160,1);
-  API_draw_bitmap(240,160,2);
-  API_draw_bitmap(260,160,3);
-  API_draw_bitmap(280,160,4);
+  API_draw_bitmap(180,70,5);
+  API_draw_bitmap(180,0,4);
+  API_draw_bitmap(220,160,0);
+  API_draw_bitmap(240,160,1);
+  API_draw_bitmap(260,160,2);
+  API_draw_bitmap(280,160,3);
 
   API_draw_rectangle(150,150,50,50,25,0,0,25);
 

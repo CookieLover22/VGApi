@@ -75,7 +75,7 @@
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_usart.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
       </source>
-      <source file="..\..\..\main.c" lastModified="16ad54bc859">
+      <source file="..\..\..\main.c" lastModified="16ad5a3f31b">
          <include file="..\..\..\main.h"/>
          <include file="..\..\..\ub_lib\stm32_ub_vga_screen.h"/>
          <include file="..\..\..\IO Layer\IO_draw.h"/>

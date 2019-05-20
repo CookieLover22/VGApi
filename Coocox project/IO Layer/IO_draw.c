@@ -1,7 +1,7 @@
 /**
  * File     : IO_draw.c
- * Datum    : 17.05.2019
- * Version  : 0.1
+ * Datum    : 20.05.2019
+ * Version  : 0.5
  * Autor    : Daniël Boon
  * CPU      : STM32F4
  * IDE      : CooCox CoIDE 1.7.8
@@ -9,24 +9,24 @@
  * Function : drawing figures with UB_VGA_SetPixel()
  */
 
-#include "IO_draw.h"
-#include "stm32_ub_vga_screen.h"
 #include <math.h>
-#include <time.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
+#include "IO_draw.h"
+#include "stm32_ub_vga_screen.h"
 #include "bitmap.h"
 #include "font8x8_basic.h"
 #include "Minimum+1_font.h"
 #include "stm32_ub_vga_screen.h"
 #include "main.h"
 
-#define ARROW_LENGTH 16
-#define SMILEY_LENGTH 100
-#define PIKACHU_WITH 130
-#define PIKACHU_LENGTH 78
-#define FONT_LENGTH 8
+#define ARROW_LENGTH 	16
+#define SMILEY_LENGTH 	100
+#define PIKACHU_WITH 	130
+#define PIKACHU_LENGTH 	78
+#define FONT_LENGTH 	8
 
 /**
  * tekent bitmap vanaf x_lup (left up) en y_lup (left up). beschikbare bitmaps:
@@ -46,7 +46,7 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 	  if(x_lup>VGA_DISPLAY_X||x_lup<0||y_lup>VGA_DISPLAY_Y||y_lup<0)
 		  return OUT_OF_BAUNCE; //error outofbounce
 
-	  if(bm_nr==1)
+	  if(bm_nr==0)
 	  {
 		  for(i=0;i<ARROW_LENGTH;i++)
 		  {
@@ -55,7 +55,7 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 					  UB_VGA_SetPixel((j+x_lup),(i+y_lup),arrow[i][j]);
 		  }
 	  }
-	  else if(bm_nr==2)
+	  else if(bm_nr==1)
 	  {
 		  for(i=0;i<ARROW_LENGTH;i++)
 		  {
@@ -68,7 +68,7 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 			  k=0;
 		  }
 	  }
-	  else if(bm_nr==3)
+	  else if(bm_nr==2)
 	  {
 		  for(i=0;i<ARROW_LENGTH;i++)
 		  {
@@ -77,7 +77,7 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 					  UB_VGA_SetPixel((j+x_lup),(i+y_lup),arrow[j][i]);
 		  }
 	  }
-	  else if(bm_nr==4)
+	  else if(bm_nr==3)
 	  {
 		  for(i=(ARROW_LENGTH-1);i>=0;i--)
 		  {
@@ -90,7 +90,7 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 		  }
 		  k=0;
 	  }
-	  else if(bm_nr==5)
+	  else if(bm_nr==4)
 	  {
 		  for(i=y_lup;i<(y_lup+PIKACHU_LENGTH);i++)
 		  {
@@ -102,7 +102,7 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 			  }
 		  }
 	  }
-	  else if(bm_nr==6)
+	  else if(bm_nr==5)
 	  {
 		  for(i=y_lup;i<(y_lup+SMILEY_LENGTH);i++)
 		  {
@@ -117,11 +117,12 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 	  else
 		  return UNDEFINED_BITMAP_NR; //no existing bitmap
 
+
 	  return NOERROR;
 }
 
 /**
- * functie voor lijnen tekenen met een meer horizontale richting
+ * functie voor lijnen tekenen in horizontale richting tussen coördinaten (x_1,y_1) en (x_2,y_2)
  */
 int draw_lineX (int x_1, int y_1, int x_2, int y_2, int color, int weight, int reserved)
 {
@@ -183,7 +184,7 @@ int draw_lineX (int x_1, int y_1, int x_2, int y_2, int color, int weight, int r
 }
 
 /**
- * functie voor lijnen tekenen met een meer verticale richting
+ * functie voor lijnen tekenen in verticale richting tussen coördinaten (x_1,y_1) en (x_2,y_2)
  */
 int draw_lineY (int x_1, int y_1, int x_2, int y_2, int color, int weight, int reserved)
 {
@@ -247,7 +248,7 @@ int draw_lineY (int x_1, int y_1, int x_2, int y_2, int color, int weight, int r
 
 
 /**
- * functie voor bepalen van gebruik van drawlineX of drawlineY
+ * functie voor lijnen tekenen tussen coördinaten (x_1,y_1) en (x_2,y_2) met gebtuik van functie drawlineX of drawlineY
  */
 int	API_draw_line (int x_1, int y_1, int x_2, int y_2, int color, int weight, int reserved)
 {
@@ -258,6 +259,12 @@ int	API_draw_line (int x_1, int y_1, int x_2, int y_2, int color, int weight, in
 
   if(color>255||color<0)
 	  return UNDEFINEDCOLOR; //error color not existing
+
+  if(x_1 == x_2 && y_1 == y_2)
+  {
+	  UB_VGA_SetPixel(x_1,y_1,color);
+	  return 0;
+  }
 
   weight = abs(weight);
 
