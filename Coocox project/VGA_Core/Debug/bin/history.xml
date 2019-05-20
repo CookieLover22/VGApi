@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=VGA_Core.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\VGA_Core -TC:\CooCox\CoIDE\configuration\ProgramData\VGA_Core/arm-gcc-link.ld -g -L..\..\.. -lm">
-      <target file="VGA_Core.elf" lastModified="16ad5c0ae8d">
+      <target file="VGA_Core.elf" lastModified="16ad5cd543b">
          <source file="..\obj\delay.o" lastModified="16ad5bd835b"/>
          <source file="..\obj\stm32f4xx_usart.o" lastModified="16ad5b062eb"/>
          <source file="..\obj\uart.o" lastModified="16ad5bd8490"/>
          <source file="..\obj\startup_stm32f4xx.o" lastModified="16ad5b06447"/>
-         <source file="..\obj\LogicLayer.o" lastModified="16ad5bd867e"/>
+         <source file="..\obj\LogicLayer.o" lastModified="16ad5cd5186"/>
          <source file="..\obj\main.o" lastModified="16ad5bd8750"/>
          <source file="..\obj\stm32f4xx_rcc.o" lastModified="16ad5b066a2"/>
-         <source file="..\obj\IO_draw.o" lastModified="16ad5c0aba4"/>
+         <source file="..\obj\IO_draw.o" lastModified="16ad5c42b6b"/>
          <source file="..\obj\HSVtoRGB.o" lastModified="16ad5bd897b"/>
          <source file="..\obj\stm32f4xx_gpio.o" lastModified="16ad5b0690d"/>
          <source file="..\obj\system_stm32f4xx.o" lastModified="16ad5b06989"/>

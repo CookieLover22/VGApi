@@ -10,11 +10,11 @@
       <target file="uart.o" lastModified="16ad5bd8490">
          <source file="..\..\..\uart.c" lastModified="16ad562b647"/>
       </target>
+      <target file="LogicLayer.o" lastModified="16ad5cd5186">
+         <source file="..\..\..\LogicLayer.c" lastModified="16ad5cd33de"/>
+      </target>
       <target file="stm32_ub_vga_screen.o" lastModified="16ad5bd8b33">
          <source file="..\..\..\ub_lib\stm32_ub_vga_screen.c" lastModified="16ad4534ce3"/>
-      </target>
-      <target file="LogicLayer.o" lastModified="16ad5bd867e">
-         <source file="..\..\..\LogicLayer.c" lastModified="16ad5a8b199"/>
       </target>
       <target file="stm32f4xx_dma.o" lastModified="16ad5b06b08">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_dma.c" lastModified="16a2af88ef2"/>
@@ -22,11 +22,11 @@
       <target file="stm32f4xx_tim.o" lastModified="16ad5b06df1">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_tim.c" lastModified="16a2af88efa"/>
       </target>
-      <target file="IO_draw.o" lastModified="16ad5c0aba4">
-         <source file="..\..\..\IO Layer\IO_draw.c" lastModified="16ad5a7cfcd"/>
-      </target>
       <target file="system_stm32f4xx.o" lastModified="16ad5b06989">
          <source file="..\..\..\cmsis_boot\system_stm32f4xx.c" lastModified="16a2af88ee1"/>
+      </target>
+      <target file="IO_draw.o" lastModified="16ad5c42b6b">
+         <source file="..\..\..\IO Layer\IO_draw.c" lastModified="16ad5a7cfcd"/>
       </target>
       <target file="startup_stm32f4xx.o" lastModified="16ad5b06447">
          <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="16acf4f0660"/>

@@ -279,9 +279,10 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 		int herhaalaantal;
 		int herhaalplaats;
 
-		herhaalaantal = command_struct->arg[2].num;
 
-		//PAS OP! VERSCHRIKKELIJKE HACK
+		if(!strcmp(command_struct->arg[2].text, "eindeloos")) herhaalaantal = 1; //in geval van eindeloos, voeg maar een keer toe, meer later
+		else herhaalaantal = command_struct->arg[2].num;
+
 		if(front_to_logic_Q.last_read_Q_member > command_struct->arg[1].num)
 			herhaalplaats = front_to_logic_Q.last_read_Q_member - command_struct->arg[1].num;
 		else herhaalplaats = front_to_logic_Q.last_read_Q_member + front_to_logic_Q.Q_size - command_struct->arg[1].num;
@@ -295,6 +296,10 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 
 			}
 		}
+
+		//voeg herhaal weer toe als eindeloos herhaald moet worden
+		if(!strcmp(command_struct->arg[2].text, "eindeloos"))
+			API_Qwriter(&front_to_logic_Q, &front_to_logic_Q.Q_members[front_to_logic_Q.last_read_Q_member]);
 
 
 		return NOERROR;

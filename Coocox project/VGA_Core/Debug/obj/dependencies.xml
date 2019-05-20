@@ -118,10 +118,6 @@
       </source>
       <source file="..\..\..\cmsis_boot\system_stm32f4xx.h" lastModified="16a2af88ee2">
       </source>
-      <source file="..\..\..\LogicLayer.c" lastModified="16ad5a8b199">
-         <include file="..\..\..\main.h"/>
-         <include file="..\..\..\uart.h"/>
-      </source>
       <source file="..\..\..\cmsis_lib\source\stm32f4xx_tim.c" lastModified="16a2af88efa">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_tim.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_rcc.h"/>
@@ -143,7 +139,7 @@
       <source file="..\..\..\cmsis_boot\system_stm32f4xx.c" lastModified="16a2af88ee1">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
       </source>
-      <source file="..\..\..\IO Layer\bitmap.h" lastModified="16ad5bfc51f">
+      <source file="..\..\..\IO Layer\bitmap.h" lastModified="16ad5c39852">
       </source>
    </includePath>
 </dependencies>
