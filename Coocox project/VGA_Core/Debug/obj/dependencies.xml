@@ -100,8 +100,12 @@
       </source>
       <source file="..\..\..\lcd.h" lastModified="16ac68f5164">
       </source>
+      <source file="..\..\..\IO Layer\font8x8_basic.h" lastModified="16ababbf524">
+      </source>
       <source file="..\..\..\lcd.c" lastModified="16ac6a7e4f9">
          <include file="..\..\..\main.h"/>
+      </source>
+      <source file="..\..\..\IO Layer\Minimum+1_font.h" lastModified="16ac68f0b8f">
       </source>
       <source file="..\..\..\LogicLayer.h" lastModified="16ad551644e">
       </source>
@@ -138,6 +142,8 @@
       </source>
       <source file="..\..\..\cmsis_boot\system_stm32f4xx.c" lastModified="16a2af88ee1">
          <include file="..\..\..\cmsis_boot\stm32f4xx.h"/>
+      </source>
+      <source file="..\..\..\IO Layer\bitmap.h" lastModified="16ad5bfc51f">
       </source>
    </includePath>
 </dependencies>
