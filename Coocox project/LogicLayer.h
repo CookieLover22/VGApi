@@ -1,4 +1,4 @@
-#define ARGAMOUNT 10
+#define ARGAMOUNT 12
 #define ARGLENGTH 69
 
 //==========================
@@ -47,3 +47,4 @@ int API_Qreader			(Q_INFO * readQ,  COMMAND * readCommand);
 int API_Qreader_stealth	(Q_INFO * readQ,  COMMAND * readCommand);
 int LOGIC_functionpicker(COMMAND * command_struct);
 int API_perform			(Q_INFO * performQ);
+void LOGIC_errorhandler(int error);

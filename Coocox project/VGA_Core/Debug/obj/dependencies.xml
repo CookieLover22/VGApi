@@ -71,7 +71,7 @@
          <include file="..\..\..\cmsis_lib\include\misc.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_dma.h"/>
       </source>
-      <source file="..\..\..\main.c" lastModified="16ad502fdea">
+      <source file="..\..\..\main.c" lastModified="16ad54a0555">
          <include file="..\..\..\main.h"/>
          <include file="..\..\..\uart.h"/>
       </source>
@@ -107,7 +107,7 @@
       </source>
       <source file="..\..\..\IO Layer\Minimum+1_font.h" lastModified="16ac68f0b8f">
       </source>
-      <source file="..\..\..\LogicLayer.h" lastModified="16ad544872c">
+      <source file="..\..\..\LogicLayer.h" lastModified="16ad551644e">
       </source>
       <source file="..\..\..\IO Layer\IO_draw.h" lastModified="16ad4c535f8">
       </source>
@@ -117,10 +117,6 @@
          <include file="..\..\..\cmsis\core_cm4_simd.h"/>
       </source>
       <source file="..\..\..\cmsis_boot\system_stm32f4xx.h" lastModified="16a2af88ee2">
-      </source>
-      <source file="..\..\..\LogicLayer.c" lastModified="16ad4f1d871">
-         <include file="..\..\..\main.h"/>
-         <include file="..\..\..\uart.h"/>
       </source>
       <source file="..\..\..\cmsis_lib\source\stm32f4xx_tim.c" lastModified="16a2af88efa">
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_tim.h"/>

@@ -4,7 +4,7 @@
 
 void LOGIC_errorhandler(int error)
 {
-
+	if(error && error != EMPTYQ){UART_putint(error);UART_putchar('\n');}
 }
 
 
@@ -118,6 +118,7 @@ int LOGIC_colorpicker(char * color_string, int *color_num)
 	if (0==strcmp(color_string, "lichtcyaan"))  {*color_num = VGA_COL_CYAN | 0b01101101; 	 	return NOERROR; }
 	if (0==strcmp(color_string, "magenta"))		{*color_num = VGA_COL_MAGENTA;					return NOERROR; }
 	if (0==strcmp(color_string, "geel"))   		{*color_num = VGA_COL_YELLOW; 					return NOERROR; }
+	if (0==strcmp(color_string, "bruin"))   	{*color_num = VGA_COL_YELLOW; 					return NOERROR; }
 
 	*color_num = VGA_COL_BLACK;
 	return UNDEFINEDCOLOR;
@@ -179,13 +180,13 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 	if (!strcmp(command_struct->arg[0].text, "cirkel"))
 	{
 
-		error = LOGIC_colorpicker(command_struct->arg[6].text, &command_struct->arg[6].num); //CHECK
+		error = LOGIC_colorpicker(command_struct->arg[4].text, &command_struct->arg[4].num);
 		if(error) return error;
 		error = API_draw_circle(command_struct->arg[1].num,
 								command_struct->arg[2].num,
 								command_struct->arg[3].num,
 								command_struct->arg[4].num,
-								command_struct->arg[5].num);
+								0);//command_struct->arg[5].num);
 
 		return error;
 	}
@@ -246,7 +247,8 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 
 	if (!strcmp(command_struct->arg[0].text, "wacht"))
 	{
-		return COMMANDERROR;
+		DELAY_ms(command_struct->arg[1].num);
+		return NOERROR;
 	}
 
 	//als dit deel van de functie bereikt wordt is het commando niet herkend
