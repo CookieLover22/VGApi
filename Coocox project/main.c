@@ -15,7 +15,7 @@
 #include <math.h>
 #include <time.h>
 #include <IO_draw.h>
-#include "uart.h"
+//#include "uart.h"
 
 int main(void)
 {
@@ -52,12 +52,12 @@ int main(void)
   API_draw_rectangle(150,150,50,50,25,0,0,25);
 
   char c = 'C';
-  API_draw_char(20,100,254,c,0,1,0,0);
+  API_draw_char(20,100,254,c,"arial",1,0,0);
   char *text = "WAT EEN HOEREN OPDRACHT !@#$%^&*() gaat deze zin verder op de volgende regel?";
 
-  API_draw_text(0,180,232,text,0,2,0,0);
+  API_draw_text(0,180,232,text,"arial",2,0,0);
   text = "Mooi dat doet tie. Nou blij?";
-  API_draw_text(0,216,232,text,0,1,1,0);
+  API_draw_text(0,216,232,text,"consolas",1,1,0);
  // API_draw_rectangle(0,0,50,50,10,1,0,0);
 
   API_draw_circle(50,50,15,25,0);
