@@ -133,6 +133,42 @@ void UART_INT_init(void)
 	NVIC_Init(&NVIC_InitStructure);
 }
 
+//haalt spaties vooraf en achteraf weg. courtesy of Dave Gray
+// Stores the trimmed input string into the given output buffer, which must be
+// large enough to store the result.  If it is too small, the output is
+// truncated.
+size_t trimwhitespace(char *out, size_t len, const char *str)
+{
+  if(len == 0)
+    return 0;
+
+  const char *end;
+  size_t out_size;
+
+  // Trim leading space
+  while(*str == ' ') str++;
+
+  if(*str == 0)  // All spaces?
+  {
+    *out = 0;
+    return 1;
+  }
+
+  // Trim trailing space
+  end = str + strlen(str) - 1;
+  while(end > str && *end == ' ') end--;
+  end++;
+
+  // Set output size to minimum of trimmed string length and buffer size minus 1
+  out_size = (end - str) < len-1 ? (end - str) : len-1;
+
+  // Copy trimmed string and add null terminator
+  memcpy(out, str, out_size);
+  out[out_size] = 0;
+
+  return out_size;
+}
+
 void USART2_IRQHandler(void)
 {
 	if( USART_GetITStatus(USART2, USART_IT_RXNE)) // check if the USART2 receive interrupt flag was set
@@ -152,7 +188,7 @@ void USART2_IRQHandler(void)
 			Char_cnt = 0;
 //			frontlayer_unit_test(&received);
 			int error_code = API_Qwriter(&front_to_logic_Q,&received);
-			UART_puts("\nQueued\n");
+			//UART_puts("\nQueued\n");
 			if(error_code == FULLQ) UART_puts("FULLQ");
 			//UART_putint(error_code);
 		}
@@ -161,6 +197,9 @@ void USART2_IRQHandler(void)
 
 			c = '\0';
 			received.arg[Arg_cnt].text[Char_cnt] = c;
+
+			trimwhitespace(received.arg[Arg_cnt].text, ARGLENGTH, received.arg[Arg_cnt].text);
+
 			if (Arg_cnt >= ARGAMOUNT-1) {UART_puts("com full"); return;}
 			Arg_cnt++;
 			Char_cnt = 0;

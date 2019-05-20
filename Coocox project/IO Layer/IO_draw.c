@@ -429,9 +429,6 @@ int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, 
 	  return OUT_OF_BAUNCE; //error outofbounce
 
 
-	if(fontname)
-	  return 4; //fonttype feature not existing
-
 	int x = x_lup;
 	int y = y_lup;
 	char c[100];
