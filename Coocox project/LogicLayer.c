@@ -108,21 +108,18 @@ int API_Qreader_stealth(Q_INFO * readQ, COMMAND * readCommand)
 int LOGIC_colorpicker(char * color_string, int *color_num)
 {
 	//UART_puts(color_string);
-	if (0==strcmp(color_string, "zwart"))  {*color_num = VGA_COL_BLACK;
-	return NOERROR; }
-	if (0==strcmp(color_string, "blauw"))  {*color_num = VGA_COL_BLUE;
-	return NOERROR; }
-	if (0==strcmp(color_string, "groen"))  {*color_num = VGA_COL_GREEN;
-	return NOERROR; }
-	if (0==strcmp(color_string, "rood"))   {*color_num = VGA_COL_RED;
-	return NOERROR; }
-	if (0==strcmp(color_string, "wit"))    {*color_num = VGA_COL_WHITE;
-	return NOERROR; }
-	if (0==strcmp(color_string, "cyaan"))  {*color_num = VGA_COL_CYAN; 	 return NOERROR; }
-	if (0==strcmp(color_string, "magenta")){*color_num = VGA_COL_MAGENTA;return NOERROR; }
-	if (0==strcmp(color_string, "geel"))   {*color_num = VGA_COL_YELLOW; return NOERROR; }
+	if (0==strcmp(color_string, "zwart"))  		{*color_num = VGA_COL_BLACK;					return NOERROR; }
+	if (0==strcmp(color_string, "blauw"))  		{*color_num = VGA_COL_BLUE;						return NOERROR; }
+	if (0==strcmp(color_string, "lichtblauw"))  {*color_num = VGA_COL_BLUE | 0b01001101;		return NOERROR; }
+	if (0==strcmp(color_string, "groen"))  		{*color_num = VGA_COL_GREEN;					return NOERROR; }
+	if (0==strcmp(color_string, "rood"))   		{*color_num = VGA_COL_RED;						return NOERROR; }
+	if (0==strcmp(color_string, "wit"))    		{*color_num = VGA_COL_WHITE;  					return NOERROR; }
+	if (0==strcmp(color_string, "cyaan"))  		{*color_num = VGA_COL_CYAN; 	 				return NOERROR; }
+	if (0==strcmp(color_string, "lichtcyaan"))  {*color_num = VGA_COL_CYAN | 0b01101101; 	 	return NOERROR; }
+	if (0==strcmp(color_string, "magenta"))		{*color_num = VGA_COL_MAGENTA;					return NOERROR; }
+	if (0==strcmp(color_string, "geel"))   		{*color_num = VGA_COL_YELLOW; 					return NOERROR; }
 
-
+	*color_num = VGA_COL_BLACK;
 	return UNDEFINEDCOLOR;
 }
 
@@ -179,17 +176,34 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 		return COMMANDERROR;
 	}
 
+	if (!strcmp(command_struct->arg[0].text, "cirkel"))
+	{
+
+		error = LOGIC_colorpicker(command_struct->arg[6].text, &command_struct->arg[6].num); //CHECK
+		if(error) return error;
+		error = API_draw_circle(command_struct->arg[1].num,
+								command_struct->arg[2].num,
+								command_struct->arg[3].num,
+								command_struct->arg[4].num,
+								command_struct->arg[5].num);
+
+		return error;
+	}
+
 	if (!strcmp(command_struct->arg[0].text, "lijn"))
 	{
 		//UART_puts("lijn");
 
-		error = LOGIC_colorpicker(command_struct->arg[6].text, &command_struct->arg[6].num); //CHECK
-		API_draw_line(	command_struct->arg[1].num,
+		error = LOGIC_colorpicker(command_struct->arg[5].text, &command_struct->arg[5].num); //CHECK
+
+		if (error) return error;
+
+		error = API_draw_line(	command_struct->arg[1].num,
 						command_struct->arg[2].num,
 						command_struct->arg[3].num,
 						command_struct->arg[4].num,
-						command_struct->arg[6].num, //CHECK
 						command_struct->arg[5].num, //CHECK
+						command_struct->arg[6].num, //CHECK
 						0);//command_struct->arg[7].num);
 
 		return error;
@@ -207,7 +221,7 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 							command_struct->arg[3].num,
 							command_struct->arg[4].num,
 							command_struct->arg[5].num,
-							1,//command_struct->arg[6].num,
+							command_struct->arg[6].num,
 							0,//command_struct->arg[7].num,
 							0);//command_struct->arg[8].num);
 		return error;
@@ -217,15 +231,16 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 	{
 		//UART_puts("tekst");
 
-		error = LOGIC_colorpicker(command_struct->arg[4].text,&command_struct->arg[4].num);//CHECK
-		API_draw_text(	command_struct->arg[1].num,
-						command_struct->arg[2].num,
-						command_struct->arg[4].num,//CHECK
-						command_struct->arg[3].text,//CHECK
-						"",//command_struct->arg[5].text,
-						0,//command_struct->arg[6].num,
-						0,//command_struct->arg[7].num,
-						0);//command_struct->arg[8].num);
+		error = LOGIC_colorpicker(command_struct->arg[3].text,&command_struct->arg[3].num);//CHECK
+		if (error) return error;
+		error = API_draw_text(	command_struct->arg[1].num,
+								command_struct->arg[2].num,
+								command_struct->arg[3].num,//CHECK
+								command_struct->arg[4].text,//CHECK
+								command_struct->arg[5].text,
+								command_struct->arg[6].num,
+								0,//command_struct->arg[7].num,
+								0);//command_struct->arg[8].num);
 		return error;
 	}
 
