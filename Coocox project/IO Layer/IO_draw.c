@@ -21,6 +21,9 @@
 #include "Minimum+1_font.h"
 #include "stm32_ub_vga_screen.h"
 
+#include "main.h"
+
+
 #define ARROW_LENGTH 16
 #define SMILEY_LENGTH 100
 #define PIKACHU_WITH 130
@@ -43,7 +46,7 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 	  int j=0;
 
 	  if(x_lup>VGA_DISPLAY_X||x_lup<0||y_lup>VGA_DISPLAY_Y||y_lup<0)
-		  return 1; //error outofbounce
+		  return OUT_OF_BAUNCE; //error outofbounce
 
 	  if(bm_nr==1)
 	  {
@@ -114,9 +117,9 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 		  }
 	  }
 	  else
-		  return 2; //no existing bitmap
+		  return UNDEFINED_BITMAP_NR; //no existing bitmap
 
-	  return 0;
+	  return NOERROR;
 }
 
 /**
@@ -178,7 +181,7 @@ int draw_lineX (int x_1, int y_1, int x_2, int y_2, int color, int weight, int r
 	    }
 	    D = D + 2*dy;
 	  }
-	  return 0;
+	  return NOERROR;
 }
 
 /**
@@ -241,7 +244,7 @@ int draw_lineY (int x_1, int y_1, int x_2, int y_2, int color, int weight, int r
 	    D = D + 2*dx;
 	  }
 
-  return 0;
+  return NOERROR;
 }
 
 
@@ -251,12 +254,12 @@ int draw_lineY (int x_1, int y_1, int x_2, int y_2, int color, int weight, int r
 int	API_draw_line (int x_1, int y_1, int x_2, int y_2, int color, int weight, int reserved)
 {
   if(x_1>VGA_DISPLAY_X||x_1<0||y_1>VGA_DISPLAY_Y||y_1<0)
-	  return 1; //error outofbounce
+	  return OUT_OF_BAUNCE; //error outofbounce
   if(x_2>VGA_DISPLAY_X||x_2<0||y_2>VGA_DISPLAY_Y||y_2<0)
-	  return 1; //error outofbounce
+	  return OUT_OF_BAUNCE; //error outofbounce
 
   if(color>255||color<0)
-	  return 3; //error color not existing
+	  return UNDEFINEDCOLOR; //error color not existing
 
   weight = abs(weight);
 
@@ -270,7 +273,7 @@ int	API_draw_line (int x_1, int y_1, int x_2, int y_2, int color, int weight, in
       draw_lineY(x_1, y_1, x_2, y_2, color, weight, reserved);
     else
       draw_lineY(x_2, y_2, x_1, y_1, color, weight, reserved);
-  return 0;
+  return NOERROR;
 }
 
 /**
@@ -281,10 +284,10 @@ int API_draw_rectangle(int x, int y, int width, int height, int color, int fille
 	int i,j;
 
 	if(x>VGA_DISPLAY_X||x<0||y>VGA_DISPLAY_Y||y<0)
-	  return 1; //error outofbounce
+	  return OUT_OF_BAUNCE; //error outofbounce
 
 	if(color>255||color<0)
-	  return 3; //error color not existing
+	  return UNDEFINEDCOLOR; //error color not existing
 
 	width = abs(width);
 	height = abs(height);
@@ -310,12 +313,10 @@ int API_draw_rectangle(int x, int y, int width, int height, int color, int fille
 			API_draw_line((x+width),(y+height),x,(y+height),color,reserved1,reserved2);
 			API_draw_line(x,(y+height),x,(y),color,reserved1,reserved2);
 		}
-
 	}
-	else
-		return 5; //filled not 0 or 1
+	else return FILLED_NOT_0_OR_1; //filled not 0 or 1
 
-	return 0;
+	return NOERROR;
 }
 /**
  * functie voor scherm volledig met een kleur op te vullen
@@ -323,7 +324,7 @@ int API_draw_rectangle(int x, int y, int width, int height, int color, int fille
 int API_clearscreen(int color)
 {
 	  if(color>255||color<0)
-	    return 3; //error color not existing
+	    return UNDEFINEDCOLOR; //error color not existing
 
 	  uint16_t xp,yp;
 
@@ -332,7 +333,7 @@ int API_clearscreen(int color)
 	    for(xp=0;xp<VGA_DISPLAY_X;xp++)
 	    	UB_VGA_SetPixel(xp,yp,color);
 	  }
-	  return 0;
+	  return NOERROR;
 }
 
 /**
@@ -357,7 +358,7 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
 						UB_VGA_SetPixel(x,y,color);
 				}
 			}
-			return 0;
+			return NOERROR;
     	}
     	else if(fontsize==2)
     	{
@@ -371,10 +372,10 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
 						UB_VGA_SetPixel(x,y,color);
 				}
 			}
-			return 0;
+			return NOERROR;
     	}
-    	else
-    		return 6; //fontsize not existing
+    	else return FONTSIZE_NOT_EXISTING; //fontsize not existing
+
     }
     else if(fontsytle==1)
     {
@@ -404,12 +405,12 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
 						UB_VGA_SetPixel(x,y,color);
 				}
 			}
-			return 0;
+			return NOERROR;
     	}
     	else
-    		return 6; //fontsize not existing
+    		return FONTSIZE_NOT_EXISTING; //fontsize not existing
     }
-    return 0;
+    return NOERROR;
 }
 
 /**
@@ -418,10 +419,13 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
 int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, int fontsize, int fontsytle, int reserved)
 {
 	if(color>255||color<0)
-	  return 3; //error color not existing
+	  return UNDEFINEDCOLOR; //error color not existing
 
 	if(x_lup>VGA_DISPLAY_X||x_lup<0||y_lup>VGA_DISPLAY_Y||y_lup<0)
-	  return 1; //error outofbounce
+	  return OUT_OF_BAUNCE; //error outofbounce
+
+	if(fontname)
+	  return ONLY_FONTSTYLE_NORMAL_AVAILIBLE; //fonttype feature not existing
 
 	if(fontname)
 	  return 4; //fonttype feature not existing
@@ -444,10 +448,10 @@ int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, 
 			x=0;
 			y += (8*fontsize);
 			if((y+(8*fontsize))>VGA_DISPLAY_Y||y<0)
-			  return 1; //error outofbounce
+			  return OUT_OF_BAUNCE; //error outofbounce
 		}
 	}
-	return 0;
+	return NOERROR;
 }
 
 /**
@@ -472,10 +476,10 @@ int API_draw_circle (int xc, int yc, int r, int color, int reserved)
 {
 
 	if(color>255||color<0)
-	  return 3; //error color not existing
+	  return UNDEFINEDCOLOR; //error color not existing
 
 	if(xc>VGA_DISPLAY_X||xc<0||yc>VGA_DISPLAY_Y||yc<0)
-	  return 1; //error outofbounce
+	  return OUT_OF_BAUNCE; //error outofbounce
 
     int x = 0, y = r;
     int d = 3 - 2 * r;
@@ -492,7 +496,7 @@ int API_draw_circle (int xc, int yc, int r, int color, int reserved)
             d = d + 4 * x + 6;
         drawCircle(xc, yc, x, y, color);
     }
-    return 0;
+    return NOERROR;
 }
 
 /**
@@ -502,10 +506,10 @@ int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x
 {
 	int error=0;
 	if(color>255||color<0)
-	  return 3; //error color not existing
+	  return UNDEFINEDCOLOR; //error color not existing
 
 	if(x_1>VGA_DISPLAY_X||x_1<0||y_1>VGA_DISPLAY_Y||y_1<0||x_2>VGA_DISPLAY_X||x_2<0||y_2>VGA_DISPLAY_Y||y_2<0||x_3>VGA_DISPLAY_X||x_3<0||y_3>VGA_DISPLAY_Y||y_3<0||x_4>VGA_DISPLAY_X||x_4<0||y_4>VGA_DISPLAY_Y||y_4<0||x_5>VGA_DISPLAY_X||x_5<0||y_5>VGA_DISPLAY_Y||y_5<0)
-	  return 1; //error outofbounce
+	  return OUT_OF_BAUNCE; //error outofbounce
 
 	error = API_draw_line (x_1, y_1, x_2, y_2, color, 1, 0);
 	if(error)
@@ -523,7 +527,7 @@ int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x
 	if(error)
 		return error;
 
-	return 0;
+	return NOERROR;
 }
 
 
