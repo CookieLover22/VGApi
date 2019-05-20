@@ -4,7 +4,26 @@
 
 void LOGIC_errorhandler(int error)
 {
-	if(error && error != EMPTYQ){UART_putint(error);UART_putchar('\n');}
+	//if(error && error != EMPTYQ){UART_putint(error);UART_putchar('\n');}
+
+	switch (error)
+	{
+	//case NOERROR: 							UART_puts("NOERROR\n"); break;
+	case QSIZEERROR: 						UART_puts("QSIZEERROR\n"); break;
+	//case EMPTYQ: 							UART_puts("EMPTYQ\n"); break;
+	case FULLQ: 							UART_puts("FULLQ\n"); break;
+	case COMMANDERROR: 						UART_puts("COMMANDERROR\n"); break;
+	case UNDEFINEDCOLOR: 					UART_puts("UNDEFINEDCOLOR\n"); break;
+	case OUT_OF_BAUNCE: 					UART_puts("OUT_OF_BOWNZZ\n"); break;
+	case UNDEFINED_BITMAP_NR: 				UART_puts("UNDEFINED_BITMAP_NR\n"); break;
+	case ONLY_FONTSTYLE_NORMAL_AVAILIBLE: 	UART_puts("ONLY_FONTSTYLE_NORMAL_AVAILIBLE\n"); break;
+	case UNDEFINED_FONTNAME: 				UART_puts("UNDEFINED_FONTNAME\n"); break;
+	case FONTSIZE_NOT_EXISTING: 			UART_puts("FONTSIZE_NOT_EXISTING\n"); break;
+	case FILLED_NOT_0_OR_1: 				UART_puts("FILLED_NOT_0_OR_1\n"); break;
+	case TOOFARBACKERROR: 					UART_puts("TOOFARBACKERROR\n"); break;
+
+	}
+
 }
 
 
@@ -119,6 +138,7 @@ int LOGIC_colorpicker(char * color_string, int *color_num)
 	if (0==strcmp(color_string, "magenta"))		{*color_num = VGA_COL_MAGENTA;					return NOERROR; }
 	if (0==strcmp(color_string, "geel"))   		{*color_num = VGA_COL_YELLOW; 					return NOERROR; }
 	if (0==strcmp(color_string, "bruin"))   	{*color_num = VGA_COL_BROWN; 					return NOERROR; }
+	if (0==strcmp(color_string, "oranje"))   	{*color_num = 168; 					return NOERROR; }
 
 	*color_num = VGA_COL_BLACK;
 	return UNDEFINEDCOLOR;
@@ -299,7 +319,10 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 
 		//voeg herhaal weer toe als eindeloos herhaald moet worden
 		if(!strcmp(command_struct->arg[2].text, "eindeloos"))
-			API_Qwriter(&front_to_logic_Q, &front_to_logic_Q.Q_members[front_to_logic_Q.last_read_Q_member]);
+		{
+			if (front_to_logic_Q.last_read_Q_member > 0) API_Qwriter(&front_to_logic_Q, &front_to_logic_Q.Q_members[front_to_logic_Q.last_read_Q_member-1]);
+			else API_Qwriter(&front_to_logic_Q, &front_to_logic_Q.Q_members[front_to_logic_Q.Q_size-1]);
+		}
 
 
 		return NOERROR;
