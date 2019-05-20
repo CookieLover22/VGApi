@@ -34,14 +34,14 @@ typedef struct
 	 */
 	int last_read_Q_member;
 
-	COMMAND* Q_members;
+	COMMAND Q_members[QLENGTH];
 
 } Q_INFO;
 
 
 //==========================
 //functieprototypes
-int API_Qinit			(Q_INFO * initQ, int Qsize);
+//int API_Qinit			(Q_INFO * initQ, int Qsize);
 int API_Qwriter			(Q_INFO * writeQ, COMMAND * writeCommand);
 int API_Qreader			(Q_INFO * readQ,  COMMAND * readCommand);
 int API_Qreader_stealth	(Q_INFO * readQ,  COMMAND * readCommand);

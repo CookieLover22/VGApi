@@ -12,6 +12,8 @@ void LOGIC_errorhandler(int error)
  *  Het aantal leden van deze Queue wordt meegegeven en de
  *  functie geeft het adres van de Queue terug.
  */
+
+/*
 int API_Qinit(Q_INFO * initQ, int Qsize)
 {
 	if(Qsize < 1) return QSIZEERROR;
@@ -20,8 +22,8 @@ int API_Qinit(Q_INFO * initQ, int Qsize)
 	//LCD_putint(sizeof(initCommand));
 	void * command_pointer = malloc(sizeof(initCommand));
 
-	UART_puts("\naddr:");
-	UART_putint((int)command_pointer);
+	//UART_puts("\naddr:");
+	//UART_putint((int)command_pointer);
 
 	initQ->Q_size = Qsize;
 	initQ->last_written_Q_member = 0;
@@ -30,6 +32,7 @@ int API_Qinit(Q_INFO * initQ, int Qsize)
 
 	return NOERROR;
 }
+*/
 
 /*!Deze functie schrijft een nieuw lid in de Q en returnt een errorcode.
  * Het adres van de Q (van API_Qinit()) wordt meegegeven aan de functie.
@@ -44,20 +47,20 @@ int API_Qwriter(Q_INFO * writeQ, COMMAND * writeCommand)
 
 	//if (writeQ->last_written_Q_member == 1) writeQ->last_written_Q_member =4; //kapot geheugen over slaan
 
-	UART_puts("\naddr:");
-	UART_putint((int)&writeQ->Q_members[writeQ->last_written_Q_member]);
+	//UART_puts("\naddr:");
+	//UART_putint((int)&writeQ->Q_members[writeQ->last_written_Q_member]);
 
 	writeQ->Q_members[writeQ->last_written_Q_member] = *writeCommand;
 
-	UART_puts("\naddr:");
-	UART_putint((int)&writeQ->Q_members[writeQ->last_written_Q_member]);
+	//UART_puts("\naddr:");
+	//UART_putint((int)&writeQ->Q_members[writeQ->last_written_Q_member]);
 
-	UART_puts("\nqsize:");
-	UART_putint(writeQ->Q_size);
-	UART_puts("\nlastw:");
-	UART_putint(writeQ->last_written_Q_member);
-	UART_puts("\nlastr:");
-	UART_putint(writeQ->last_read_Q_member);
+	//UART_puts("\nqsize:");
+	//UART_putint(writeQ->Q_size);
+	//UART_puts("\nlastw:");
+	//UART_putint(writeQ->last_written_Q_member);
+	//UART_puts("\nlastr:");
+	//UART_putint(writeQ->last_read_Q_member);
 
 	if (writeQ->last_written_Q_member < writeQ->Q_size - 1) writeQ->last_written_Q_member++;
 	else writeQ->last_written_Q_member = 0;
@@ -104,7 +107,7 @@ int API_Qreader_stealth(Q_INFO * readQ, COMMAND * readCommand)
  */
 int LOGIC_colorpicker(char * color_string, int *color_num)
 {
-	UART_puts(color_string);
+	//UART_puts(color_string);
 	if (0==strcmp(color_string, "zwart"))  {*color_num = VGA_COL_BLACK;
 	return NOERROR; }
 	if (0==strcmp(color_string, "blauw"))  {*color_num = VGA_COL_BLUE;
@@ -158,7 +161,7 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 
 	if (!strcmp(command_struct->arg[0].text, "clearscherm"))
 	{
-		UART_puts("clear");
+		//UART_puts("clear");
 
 		error = LOGIC_colorpicker(command_struct->arg[1].text, &command_struct->arg[1].num);
 		API_clearscreen(command_struct->arg[1].num);
@@ -178,7 +181,7 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 
 	if (!strcmp(command_struct->arg[0].text, "lijn"))
 	{
-		UART_puts("lijn");
+		//UART_puts("lijn");
 
 		error = LOGIC_colorpicker(command_struct->arg[6].text, &command_struct->arg[6].num); //CHECK
 		API_draw_line(	command_struct->arg[1].num,
@@ -197,7 +200,7 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 	{
 		//char * stringcol = command_struct->arg[5].text;
 		//char stringtest [] = "blauw";
-		UART_puts("rechthoek");
+		//UART_puts("rechthoek");
 		error = LOGIC_colorpicker(command_struct->arg[5].text,&command_struct->arg[5].num);
 		API_draw_rectangle(	command_struct->arg[1].num,
 							command_struct->arg[2].num,
@@ -212,7 +215,7 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 
 	if (!strcmp(command_struct->arg[0].text, "tekst"))
 	{
-		UART_puts("tekst");
+		//UART_puts("tekst");
 
 		error = LOGIC_colorpicker(command_struct->arg[4].text,&command_struct->arg[4].num);//CHECK
 		API_draw_text(	command_struct->arg[1].num,

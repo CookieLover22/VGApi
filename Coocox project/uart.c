@@ -157,15 +157,21 @@ void USART2_IRQHandler(void)
 		}
 		else if(c == ',') // end of argument character received
 		{
+
 			c = '\0';
 			received.arg[Arg_cnt].text[Char_cnt] = c;
+			if (Arg_cnt >= ARGAMOUNT-1) {UART_puts("com full"); return;}
 			Arg_cnt++;
 			Char_cnt = 0;
-			if (Arg_cnt >= ARGAMOUNT-1) UART_puts("com full");
+
 		}
 		else
 		{
-			if(Char_cnt >= ARGLENGTH) UART_puts("arg full\n");
+			if(Char_cnt >= ARGLENGTH)
+			{
+				UART_puts("arg full\n");
+				return;
+			}
 
 			received.arg[Arg_cnt].text[Char_cnt] = c;
 			Char_cnt++;

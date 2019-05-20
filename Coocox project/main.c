@@ -31,9 +31,11 @@ int main(void)
 	LCD_clear();			// Start with a clear display
 	LCD_XY(0,0);			// Shift one spot
 
+	//Q initialiseren
+	front_to_logic_Q.Q_size = QLENGTH;
+	front_to_logic_Q.last_written_Q_member = 0;
+	front_to_logic_Q.last_read_Q_member = 0;
 
-	LCD_putint(API_Qinit(&front_to_logic_Q, 5)); //kapot geheugen vullen
-	LCD_putint(API_Qinit(&front_to_logic_Q, 20)); //Q initialiseren
 
 	UB_VGA_Screen_Init(); // Init VGA-Screen
 
@@ -72,18 +74,32 @@ int main(void)
 
 	//DELAY_s(10);
 
+	int state = 0;
+	int error = 0;
 	while(1)
 	{
-		//API_Qreader(&front_to_logic_Q, &read_struct);
-		LCD_clear();
-		int error = 0;
-		error = API_perform(&front_to_logic_Q);
-		//error = LOGIC_functionpicker(&write_struct);
+		//if (!GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_12)) DELAY_us(31);
+		//het volgende state machientje zorgt ervoor dat de loop één keer doorlopen wordt tijdens Vsync
+		if( GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_12)) state = 0;
+		if(!GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_12) && state == 0) state = 1;
+		if(state == 1)
+		{
 
-		if(error && error != EMPTYQ)UART_putint(error);
-		LCD_putint(error);
-		//if(error) while(1);
-		DELAY_ms(500);
+			//GPIO_SetBits(GPIOE, GPIO_Pin_7);
+			state = 2;
+			//API_Qreader(&front_to_logic_Q, &read_struct);
+			//LCD_clear();
+
+			error = API_perform(&front_to_logic_Q);
+			//error = LOGIC_functionpicker(&write_struct);
+
+			//if(error && error != EMPTYQ)UART_putint(error);
+			//LCD_putint(error);
+			//if(error) while(1);
+			//DELAY_ms(50);
+			//GPIO_ResetBits(GPIOE, GPIO_Pin_7);
+			DELAY_ms(17);
+		}
 	}
 }
 
