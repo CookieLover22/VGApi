@@ -24,6 +24,8 @@
         <Option name="Library" value="Not use C Library"/>
         <LinkedLibraries>
           <Libset dir="" libs="m"/>
+          <Libset dir="" libs="ultimate_io_layer"/>
+          <Libset dir="" libs="libtest"/>
         </LinkedLibraries>
         <MemoryAreas debugInFlashNotRAM="1">
           <Memory name="IROM1" type="ReadOnly" size="0x00100000" startValue="0x08000000"/>
@@ -84,6 +86,7 @@
     <File name="cmsis_lib/source/stm32f4xx_usart.c" path="cmsis_lib/source/stm32f4xx_usart.c" type="1"/>
     <File name="cmsis_boot/startup/startup_stm32f4xx.c" path="cmsis_boot/startup/startup_stm32f4xx.c" type="1"/>
     <File name="cmsis_lib/source/stm32f4xx_rcc.c" path="cmsis_lib/source/stm32f4xx_rcc.c" type="1"/>
+    <File name="liblibtest.a" path="liblibtest.a" type="1"/>
     <File name="cmsis/core_cmInstr.h" path="cmsis/core_cmInstr.h" type="1"/>
     <File name="syscalls.c" path="syscalls/syscalls.c" type="1"/>
     <File name="cmsis_boot" path="" type="2"/>
@@ -106,7 +109,6 @@
     <File name="cmsis" path="" type="2"/>
     <File name="cmsis_lib/include/stm32f4xx_tim.h" path="cmsis_lib/include/stm32f4xx_tim.h" type="1"/>
     <File name="cmsis_lib" path="" type="2"/>
-    <File name="IO_draw.c" path="IO Layer/IO_draw.c" type="1"/>
     <File name="cmsis_lib/source" path="" type="2"/>
     <File name="cmsis_lib/include/stm32f4xx_dma.h" path="cmsis_lib/include/stm32f4xx_dma.h" type="1"/>
     <File name="cmsis_lib/source/stm32f4xx_tim.c" path="cmsis_lib/source/stm32f4xx_tim.c" type="1"/>
