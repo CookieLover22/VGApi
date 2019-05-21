@@ -22,8 +22,18 @@ void LOGIC_errorhandler(int error)
 	case FILLED_NOT_0_OR_1: 				UART_puts("FILLED_NOT_0_OR_1\n"); break;
 	case TOOFARBACKERROR: 					UART_puts("TOOFARBACKERROR\n"); break;
 
+	default : return;
 	}
 
+	//print de commando's
+	int i;
+	for (i = 0; i < ARGAMOUNT; i++)
+	{
+		UART_puts(front_to_logic_Q.Q_members[front_to_logic_Q.last_read_Q_member-1].arg[i].text);
+		UART_puts(", ");
+	}
+
+	UART_puts("\n");
 }
 
 
@@ -288,7 +298,7 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 
 	if (!strcmp(command_struct->arg[0].text, "wacht"))
 	{
-		DELAY_ms(command_struct->arg[1].num);
+		DELAY_screens(command_struct->arg[1].num);
 		return NOERROR;
 	}
 

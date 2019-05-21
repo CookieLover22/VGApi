@@ -60,7 +60,7 @@
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_usart.h"/>
          <include file="..\..\..\cmsis_lib\include\misc.h"/>
       </source>
-      <source file="..\..\..\delay.c" lastModified="16ac6a7e4f6">
+      <source file="..\..\..\delay.c" lastModified="16ada31b34e">
          <include file="..\..\..\main.h"/>
       </source>
       <source file="..\..\..\ub_lib\stm32_ub_vga_screen.h" lastModified="16ad5bd7f54">
@@ -71,7 +71,7 @@
          <include file="..\..\..\cmsis_lib\include\misc.h"/>
          <include file="..\..\..\cmsis_lib\include\stm32f4xx_dma.h"/>
       </source>
-      <source file="..\..\..\main.c" lastModified="16ad5a78265">
+      <source file="..\..\..\main.c" lastModified="16ad9a226cc">
          <include file="..\..\..\main.h"/>
          <include file="..\..\..\uart.h"/>
       </source>
