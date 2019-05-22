@@ -36,7 +36,7 @@ enum error
 	//! Geeft aan dat het meegegeven argument geen (gedefinieerde) kleur is (LOGIC_colorpicker)
 	UNDEFINEDCOLOR,
 	//! IO Layer --> Out of bounce
-	OUT_OF_BAUNCE,
+	OUT_OF_BOUNDS,
 	//! IO Layer --> Bitmap Nr not existing
 	UNDEFINED_BITMAP_NR,
 	//! IO Layer --> no Bold or Italic functionality availible

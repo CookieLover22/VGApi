@@ -53,15 +53,26 @@ int main(void)
 
   char c = 'C';
   API_draw_char(20,100,254,c,"arial",1,0,0);
-  char *text = "WAT EEN HOEREN OPDRACHT !@#$%^&*() gaat deze zin verder op de volgende regel?";
 
-  API_draw_text(0,180,232,text,"arial",2,0,0);
-  text = "Mooi dat doet tie. Nou blij?";
-  API_draw_text(0,216,232,text,"consolas",1,1,0);
+  //char *text = "WAT EEN HOEREN OPDRACHT !@#$%^&*() gaat deze zin verder op de volgende regel?";
+  char *text = "WAT EEN GEWELDIGE OPDRACHT";
+
+  API_draw_text(16,140,255,text,"arial",2,1,0);
+
+  API_draw_text(8,180,255,text,"arial",1,0,0);
+  API_draw_text(8,190,255,text,"arial",1,1,0);
+  API_draw_text(8,200,255,text,"arial",1,2,0);
+
+  API_draw_text(8,210,255,text,"consolas",1,0,0);
+  API_draw_text(8,220,255,text,"consolas",1,1,0);
+  API_draw_text(8,230,255,text,"consolas",1,2,0);
+  //API_draw_text(0,180,232,text,"arial",2,0,0);
+  //text = "Mooi dat doet tie. Nou blij?";
+  //API_draw_text(0,216,232,text,"arial",2,2,0);
  // API_draw_rectangle(0,0,50,50,10,1,0,0);
 
   API_draw_circle(50,50,15,25,0);
-  API_draw_figure (25, 25, 50, 25, 70, 35, 50, 50, 25, 50, 30, 0);
+  API_draw_figure(25, 25, 50, 25, 70, 35, 50, 50, 25, 50, 30, 0);
   while(1)
   {
 	  //
