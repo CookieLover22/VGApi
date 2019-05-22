@@ -30,7 +30,9 @@
 /**
  * API_draw_bitmap
  *
- * @param x_lup, y_lup Tekent bitmap vanaf x_lup (left up) en y_lup (left up).
+ * @brief Tekent bitmap vanaf x_lup (left up) en y_lup (left up).
+ *
+ * @param x_lup, y_lup coördinaat om te starten met tekenen vanaf x_lup (left up) en y_lup (left up).
  *
  * @param bm_nr beschikbare bitmaps:
  * 		bm_nr 0 --> pijl naar rechts
@@ -139,12 +141,13 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 /**
  * draw_lineX
  *
- * @param x_1,y_1,x_2,y_2 functie voor lijnen tekenen in horizontale richting tussen coördinaten (x_1,y_1) en (x_2,y_2).
- *
- * Deze functie is onderdeel van de 'Bresenham's line algorithm' die gebruikt wordt in API_draw_line.
+ * @brief Deze functie is onderdeel van de 'Bresenham's line algorithm' die gebruikt wordt in API_draw_line.
  *
  * Gelieve deze functie niet oproepen voor lijnen tekenen anders dan de functie API_draw_line,
  * met de reden dat de grootste errorhandling door API_draw_line gedaan wordt.
+ *
+ * @param x_1,y_1,x_2,y_2 functie voor lijnen tekenen in horizontale richting tussen coördinaten (x_1,y_1) en (x_2,y_2).
+ *
  */
 int draw_lineX (int x_1, int y_1, int x_2, int y_2, int color, int weight, int reserved)
 {
@@ -208,12 +211,13 @@ int draw_lineX (int x_1, int y_1, int x_2, int y_2, int color, int weight, int r
 /**
  * draw_lineY
  *
- * @param x_1,y_1,x_2,y_2 functie voor lijnen tekenen in verticale richting tussen coördinaten (x_1,y_1) en (x_2,y_2).
- *
- * Deze functie is onderdeel van de 'Bresenham's line algorithm' die gebruikt wordt in API_draw_line.
+ * @brief Deze functie is onderdeel van de 'Bresenham's line algorithm' die gebruikt wordt in API_draw_line.
  *
  * Gelieve deze functie niet oproepen voor lijnen tekenen anders dan de functie API_draw_line,
  * met de reden dat de grootste errorhandling door API_draw_line gedaan wordt.
+ *
+ * @param x_1,y_1,x_2,y_2 functie voor lijnen tekenen in verticale richting tussen coördinaten (x_1,y_1) en (x_2,y_2).
+ *
  */
 int draw_lineY (int x_1, int y_1, int x_2, int y_2, int color, int weight, int reserved)
 {
@@ -278,7 +282,11 @@ int draw_lineY (int x_1, int y_1, int x_2, int y_2, int color, int weight, int r
 /**
  * API_draw_line
  *
- * Deze functie maakt gebruik van de 'Bresenham's line algorithm' met gebtuik van functie drawlineX of drawlineY
+ * @brief Deze functie maakt gebruik van de 'Bresenham's line algorithm' met gebtuik van functie drawlineX of drawlineY
+ * Mogelijk optreedbare errors:
+ * 		NOERROR
+ * 		OUT_OF_BOUNDS
+ * 		UNDEFINEDCOLOR
  *
  * @param x_1,y_1,x_2,y_2 functie voor lijnen tekenen tussen coördinaten (x_1,y_1) en (x_2,y_2)
  *
@@ -288,10 +296,6 @@ int draw_lineY (int x_1, int y_1, int x_2, int y_2, int color, int weight, int r
  *
  * @param reserved de variabele reserved heeft geen functionaliteit en wordt genegeerd
  *
- * Mogelijk optreedbare errors:
- * 		NOERROR
- * 		OUT_OF_BOUNDS
- * 		UNDEFINEDCOLOR
  */
 int	API_draw_line (int x_1, int y_1, int x_2, int y_2, int color, int weight, int reserved)
 {
@@ -327,7 +331,15 @@ int	API_draw_line (int x_1, int y_1, int x_2, int y_2, int color, int weight, in
 /**
  * API_draw_rectangle
  *
- * @param x,y functie voor rechthoekenen tekenen vanaf coördinaten (x,y) als hoek linksboven
+ * @brief functie voor rechthoekenen tekenen vanaf coördinaten (x,y) als hoek linksboven
+ *
+ * Mogelijk optreedbare errors:
+ * 		NOERROR
+ * 		OUT_OF_BOUNDS
+ * 		UNDEFINEDCOLOR
+ * 		FILLED_NOT_0_OR_1
+ *
+ * @param x,y start met tekeken vanaf coördinaten (x,y) als hoek linksboven
  *
  * @param width width is de breedte in aantal pixels van de rechthoek naar rechts
  *
@@ -341,12 +353,6 @@ int	API_draw_line (int x_1, int y_1, int x_2, int y_2, int color, int weight, in
  * @param reserved1 reserved1 is de breedte in aantal pixels van de border lijnen wanneer filled 0 is (anders wordt deze waarde genegeerd)
  *
  * @param reserved2 de variabele reserved2 heeft geen functionaliteit en wordt genegeerd
- *
- * Mogelijk optreedbare errors:
- * 		NOERROR
- * 		OUT_OF_BOUNDS
- * 		UNDEFINEDCOLOR
- * 		FILLED_NOT_0_OR_1
  */
 int API_draw_rectangle(int x, int y, int width, int height, int color, int filled, int reserved1, int reserved2)
 {
@@ -391,7 +397,7 @@ int API_draw_rectangle(int x, int y, int width, int height, int color, int fille
 /**
  * API_clearscreen
  *
- * @param color functie voor scherm volledig met een kleur 8 bit op te vullen met de variabele color
+ * @brief color functie voor scherm volledig met een kleur 8 bit op te vullen met de variabele color
  *
  * Mogelijk optreedbare errors:
  * 		NOERROR
@@ -415,7 +421,17 @@ int API_clearscreen(int color)
 /**
  * API_draw_char
  *
- * @param x_lup,y_lup functie voor tekenen van iduviduele letters vanaf de coördinaten (x_lup,y_lup) met 8x8 fonts
+ * @brief functie voor tekenen van iduviduele letters vanaf de coördinaten (x_lup,y_lup) met 8x8 fonts
+ *
+ * Mogelijk optreedbare errors:
+ * 		NOERROR
+ * 		UNDEFINEDCOLOR
+ * 		OUT_OF_BOUNDS
+ * 		UNDEFINEDFONTSTYLE
+ * 		FONTSIZE_NOT_EXISTING
+ * 		UNDEFINED_FONTNAME
+ *
+ * @param x_lup,y_lup start met tekeken vanaf coördinaten (x_lup,y_lup) als hoek linksboven
  *
  * @param color color is in 8bit kleur (0 tot 255; 0x00 tot 0xFF)
  *
@@ -430,14 +446,6 @@ int API_clearscreen(int color)
  * @param fontsytle fontsytle bij 0 maakt de char normaal, bij 1 cursief, bij 2 vetgedrukt ('fontsytle' is niet als 'fontstyle' geschreven omdat Michiel Scager deze typefout in het protocole heeft gemaakt en hieraan gehouden moet worden)
  *
  * @param reserved de variabele reserved heeft geen functionaliteit en wordt genegeerd
- *
- * Mogelijk optreedbare errors:
- * 		NOERROR
- * 		UNDEFINEDCOLOR
- * 		OUT_OF_BOUNDS
- * 		UNDEFINEDFONTSTYLE
- * 		FONTSIZE_NOT_EXISTING
- * 		UNDEFINED_FONTNAME
  */
 int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname, int fontsize, int fontsytle, int reserved)
 {
@@ -592,9 +600,18 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
 
 /**
  * API_draw_text
- *
- * @param x_lup,y_lup functie voor tekenen van string met behulp van API_draw_char vanaf de coördinaten (x_lup,y_lup) met 8x8 fonts
+ * @brief functie voor tekenen van string met behulp van API_draw_char vanaf de coördinaten (x_lup,y_lup) met 8x8 fonts
  * als een woord niet buiten het scherm valt in de horizontale richting, begint dit woord op de volgende regel
+ *
+ * Mogelijk optreedbare errors:
+ * 		NOERROR
+ * 		UNDEFINEDCOLOR
+ * 		OUT_OF_BOUNDS
+ * 		UNDEFINEDFONTSTYLE
+ * 		FONTSIZE_NOT_EXISTING
+ * 		UNDEFINED_FONTNAME
+ *
+ * @param x_lup,y_lup start met tekeken vanaf coördinaten (x_lup,y_lup) als hoek linksboven
  *
  * @param color color is in 8bit kleur (0 tot 255; 0x00 tot 0xFF)
  *
@@ -609,14 +626,6 @@ int API_draw_char (int x_lup, int y_lup, int color, char letter, char *fontname,
  * @param fontsytle fontsytle bij 0 maakt de char normaal, bij 1 cursief, bij 2 vetgedrukt ('fontsytle' is niet als 'fontstyle' geschreven omdat Michiel Scager deze typefout in het protocole heeft gemaakt en hieraan gehouden moet worden)
  *
  * @param reserved de variabele reserved heeft geen functionaliteit en wordt genegeerd
- *
- * Mogelijk optreedbare errors:
- * 		NOERROR
- * 		UNDEFINEDCOLOR
- * 		OUT_OF_BOUNDS
- * 		UNDEFINEDFONTSTYLE
- * 		FONTSIZE_NOT_EXISTING
- * 		UNDEFINED_FONTNAME
  */
 int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, int fontsize, int fontsytle, int reserved)
 {
@@ -674,16 +683,16 @@ int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, 
 /**
  * drawCircle
  *
- * Deze functie is onderdeel van de 'Bresenham's circle algorithm' die gebruikt wordt in API_draw_circle.
+ * @brief Deze functie is onderdeel van de 'Bresenham's circle algorithm' die gebruikt wordt in API_draw_circle.
+ *
+ * Gelieve deze functie niet oproepen voor cicels tekenen anders dan de functie API_draw_circle,
+ * met de reden dat de errorhandling door API_draw_circle gedaan wordt.
  *
  * @param xc,yc Coördinaten van middelpunt circel
  *
  * @param x,y verschil afstand tussen middelpunt en waar pixels moet komen voor tekenen van circel delen
  *
  * @param color color is in 8bit kleur (0 tot 255; 0x00 tot 0xFF)
- *
- * Gelieve deze functie niet oproepen voor cicels tekenen anders dan de functie API_draw_circle,
- * met de reden dat de errorhandling door API_draw_circle gedaan wordt.
  */
 void drawCircle(int xc, int yc, int x, int y, int color)
 {
@@ -700,18 +709,18 @@ void drawCircle(int xc, int yc, int x, int y, int color)
 /**
  * API_draw_circle
  *
- * Deze functie maakt gebruik van de 'Bresenham's circle algorithm' met gebtuik van functie drawCircle
+ * @brief Deze functie maakt gebruik van de 'Bresenham's circle algorithm' met gebtuik van functie drawCircle
+ *
+ * Mogelijk optreedbare errors:
+ * 		NOERROR
+ * 		OUT_OF_BOUNDS
+ * 		UNDEFINEDCOLOR
  *
  * @param xc,yc Coördinaten van middelpunt circel
  *
  * @param r r is de straal van de circel
  *
  * @param color color is in 8bit kleur (0 tot 255; 0x00 tot 0xFF)
- *
- * Mogelijk optreedbare errors:
- * 		NOERROR
- * 		OUT_OF_BOUNDS
- * 		UNDEFINEDCOLOR
  */
 int API_draw_circle (int xc, int yc, int r, int color, int reserved)
 {
@@ -742,18 +751,18 @@ int API_draw_circle (int xc, int yc, int r, int color, int reserved)
 /**
  * API_draw_figure
  *
- * functie voor tekenen van een lijnenfiguur tussen de gewenste coördinaten met behulp van de functie API_draw_line
+ * @brief functie voor tekenen van een lijnenfiguur tussen de gewenste coördinaten met behulp van de functie API_draw_line
+ *
+ * Mogelijk optreedbare errors:
+ * 		NOERROR
+ * 		OUT_OF_BOUNDS
+ * 		UNDEFINEDCOLOR
  *
  * @param x_1,y_1,x_2,y_2,x_3,y_3,x_4,y_4,x_5,y_5 de coördinaten waartussen getekend moet worden
  *
  * @param color color is in 8bit kleur (0 tot 255; 0x00 tot 0xFF)
  *
  * @param reserved reserved is de dikte van de lijnen die getekend moeten worden
- *
- * Mogelijk optreedbare errors:
- * 		NOERROR
- * 		OUT_OF_BOUNDS
- * 		UNDEFINEDCOLOR
  */
 int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x_4, int y_4, int x_5, int y_5, int color, int reserved)
 {
