@@ -1,31 +1,13 @@
-/*
-	  :		M Scager J.F. van der Bent
-Date:		13-6-2014
-Revision:	2
-
-    uart.c:
-Author: 	W Pielage & E Helmond
-          UART2 driver for ARM-board V5
-
-    pin-info:
-           PA2 - TX
-           PA3 - RX
-
-To enable UART use the following line:
-	UART_init();
-To use UART on interrupt base use:
-	UART_INT_init();
-
-This file initialize the UART on the ARM-board v5.
-To send data to the UART use:
-	UART_printf(*string);
-
-To read the UART without interrupt use:
-	char = USART2->DR & 0xFF;
-
-In the interrupt routine the char is send back to the terminal
-07-07-2014 Aanpassen Uart routine om compatibel te zijn met void UART_put(char *c)
-
+/*!
+*    Author: Mauricio Paulusma
+*
+*    Description: This file defines functions for the Frontlayer of the VGApi project.
+*
+*    Usage: To activate and use the frontlayer follow the stepts below:
+*
+*           1. Call the function UART_init();
+*           2. Call the function UART_INT_init();
+*
 */
 
 /* Includes ------------------------------------------------------------------*/
@@ -53,6 +35,14 @@ typedef __SIZE_TYPE__ size_t;
 
 /* Function definitions ------------------------------------------------------*/
 
+/*!
+*   Name: UART_init
+*
+*   Description: This function initialises the UART (i.e. the frontlayer).
+*
+*   Usage: Call in the main the following UART_INT_init() in conjunction with UART_init()
+*
+*/
 void UART_init(void)
 {
 
@@ -121,6 +111,14 @@ void UART_puts(char *s)
 	}
 }
 
+/*!
+*   Name: UART_INT_init
+*
+*   Description: This function initialises the UART interrupt handler (i.e. the frontlayer).
+*
+*   Usage: Call in the main the following UART_INT_init() in conjunction with UART_init()
+*
+*/
 
 void UART_INT_init(void)
 {
@@ -132,6 +130,19 @@ void UART_INT_init(void)
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 }
+
+/*!
+*   Name: USART2_IRQHandler
+*
+*   Description: This interrupt handler handles the frontlayer functionality.
+*                It receives the command strings from the UART, puts the arguments from this string in a dedicated command structure.
+*                It then puts this filled structure in the command queue. The logic layer can then acquire this structure from the queue and use it to execute appropriate code.
+*
+*   Usage:
+*           1. Call the function UART_init();
+*           2. Call the function UART_INT_init();
+*
+*/
 
 void USART2_IRQHandler(void)
 {
@@ -149,11 +160,9 @@ void USART2_IRQHandler(void)
 			received.arg[Arg_cnt].text[Char_cnt] = '\0';
 			Arg_cnt = 0;
 			Char_cnt = 0;
-//			frontlayer_unit_test(&received);
 			int error_code = API_Qwriter(&front_to_logic_Q,&received);
 			UART_puts("\nQueued\n");
 			if(error_code == FULLQ) UART_puts("FULLQ");
-			//UART_putint(error_code);
 		}
 		else if(c == ',') // end of argument character received
 		{
@@ -181,108 +190,5 @@ void USART2_IRQHandler(void)
 		while (USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET); // Wait for Empty
 
 
-	}
-}
-
-void frontlayer_unit_test(COMMAND* received)
-{
-	UART_puts("generated COMMAND structure:\n");
-	for(i=0;i<8;i++)
-	{
-		UART_puts(received->arg[i].text);
-//		j = 0;
-//		while(received->arg[i][j] != '\n')
-//		{
-//			UART_putchar(received->arg[i][j]);
-//			j++;
-//		}
-
-	}
-}
-
-
-void UART_putint(unsigned int num)
-{
-    UART_putnum(num, 10);
-}
-
-// Stuurt meegegeven getal uit op de UART in het aangegeven getallenstelsel
-void UART_putnum(unsigned int num, unsigned char deel)
-{
-    static unsigned char chars[16] = "0123456789ABCDEF";
-    unsigned int rest;
-    signed char c[16];
-    signed int i=15;
-
-    // Zet de integer om naar een string
-    if(num==0)
-    {
-        c[i]='0';
-        i--;
-    }
-    else
-    {
-        while(num>0)
-        {
-            rest=num%deel;
-            num/=deel;
-            c[i]=chars[rest];
-            i--;
-
-            if(i==0) // it ends here
-                num=0;
-        }
-    }
-
-
-    // Stuur de string uit
-    while(i<15)
-    {
-        i++;
-        // Wacht tot de buffer leeg is
-        while(USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET); // Wait for Empty
-        USART_SendData(USART2, c[i]);
-
-    }
-}
-
-// Ontvang een karakter via de UART
-// niet echt nodig als routine maar als wrapper voor compatabiliteit. Let op geen -1 als er geen char is ontvangen!
-
-char UART_get(void)
-{
-    char uart_char = -1;
-    if (USART_GetFlagStatus(USART2, USART_FLAG_RXNE)== SET)  // check for data available
-    	 uart_char= USART2->DR & 0xFF; // and read the data from peripheral
-    return uart_char;
-}
-
-
-// void UART_gets
-// args: char *readbuffer
-//       int   echo, when TRUE, send read-char to UART
-// remark: ARM sends -1 if buffer is empty
-//         LF is cleared if set in terminal-program
-void UART_gets(char *s, int echo)
-{
-	while (1)
-	{
-	 	*s = UART_get();
-
-	 	if (*s==-1)             // check for data available
-	 		continue;
-
-	 	if (*s==0xff || *s==LF) // if no data or LF, continue
-			continue;
-
-		if (echo)              // if output-flag set
-			UART_putchar(*s);  // to read what u entered
-
-		if (*s==CR)            // if enter pressed
-		{
-			*s = '\0';         // ignore char and close string
-		    return;            // buf ready, exit loop
-		}
-		s++;
 	}
 }
