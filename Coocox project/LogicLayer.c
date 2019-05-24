@@ -1,7 +1,6 @@
 #include <main.h>
 #include "uart.h"
 
-
 void LOGIC_errorhandler(int error)
 {
 	//if(error && error != EMPTYQ){UART_putint(error);UART_putchar('\n');}
@@ -74,22 +73,7 @@ int API_Qwriter(Q_INFO * writeQ, COMMAND * writeCommand)
 		{if (writeQ->last_read_Q_member == writeQ->last_written_Q_member+1) return FULLQ;}
 	else {if (writeQ->last_read_Q_member == 0) return FULLQ;}
 
-	//if (writeQ->last_written_Q_member == 1) writeQ->last_written_Q_member =4; //kapot geheugen over slaan
-
-	//UART_puts("\naddr:");
-	//UART_putint((int)&writeQ->Q_members[writeQ->last_written_Q_member]);
-
 	writeQ->Q_members[writeQ->last_written_Q_member] = *writeCommand;
-
-	//UART_puts("\naddr:");
-	//UART_putint((int)&writeQ->Q_members[writeQ->last_written_Q_member]);
-
-	//UART_puts("\nqsize:");
-	//UART_putint(writeQ->Q_size);
-	//UART_puts("\nlastw:");
-	//UART_putint(writeQ->last_written_Q_member);
-	//UART_puts("\nlastr:");
-	//UART_putint(writeQ->last_read_Q_member);
 
 	if (writeQ->last_written_Q_member < writeQ->Q_size - 1) writeQ->last_written_Q_member++;
 	else writeQ->last_written_Q_member = 0;
@@ -111,8 +95,6 @@ int API_Qreader(Q_INFO * readQ, COMMAND * readCommand)
 	if (readQ->last_read_Q_member < readQ->Q_size - 1) readQ->last_read_Q_member++;
 	else readQ->last_read_Q_member = 0;
 
-
-
 	return NOERROR;
 }
 /*!Deze functie leest het oudste lid naar de Q en returnt een errorcode.
@@ -127,8 +109,6 @@ int API_Qreader_stealth(Q_INFO * readQ, COMMAND * readCommand)
 
 	return NOERROR;
 }
-
-
 
 /*!Deze functie zet het argument dat meegegeven om in een kleur.
  * Als de kleur niet bestaat of als het argument geen kleur is
@@ -148,7 +128,7 @@ int LOGIC_colorpicker(char * color_string, int *color_num)
 	if (0==strcmp(color_string, "magenta"))		{*color_num = VGA_COL_MAGENTA;					return NOERROR; }
 	if (0==strcmp(color_string, "geel"))   		{*color_num = VGA_COL_YELLOW; 					return NOERROR; }
 	if (0==strcmp(color_string, "bruin"))   	{*color_num = VGA_COL_BROWN; 					return NOERROR; }
-	if (0==strcmp(color_string, "oranje"))   	{*color_num = 168; 					return NOERROR; }
+	if (0==strcmp(color_string, "oranje"))   	{*color_num = 168; 								return NOERROR; }
 
 	*color_num = VGA_COL_BLACK;
 	return UNDEFINEDCOLOR;
@@ -175,8 +155,6 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 			command_struct->arg[i].num = atoi(command_struct->arg[i].text);
 		}
 	}
-
-
 
 	if (!strcmp(command_struct->arg[0].text, "bitmap"))
 	{
@@ -334,7 +312,6 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 			else API_Qwriter(&front_to_logic_Q, &front_to_logic_Q.Q_members[front_to_logic_Q.Q_size-1]);
 		}
 
-
 		return NOERROR;
 	}
 
@@ -346,7 +323,6 @@ int API_perform(Q_INFO * performQ) //naam onder voorbehoud
 {
 	int error = NOERROR;
 	COMMAND performCommand;
-
 
 	error = API_Qreader(performQ, &performCommand);
 	if(error) return error;

@@ -46,13 +46,11 @@ int main(void)
 	UB_VGA_FillScreen(0);
 
 
-
-
 	int state = 0;
 	int error = 0;
 	while(1)
 	{
-		//if (!GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_11)) DELAY_us(28);
+
 		//het volgende state machientje zorgt ervoor dat de loop één keer doorlopen wordt tijdens Vsync
 		if( GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_12)) state = 0;
 		else

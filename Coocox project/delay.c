@@ -70,16 +70,22 @@ void DELAY_s(volatile unsigned int time)
 
 int state;
 
+
+/*! Deze variatie op de delay_ms functie loopt synchroon met het Vsync signaal.
+ *  Hierdoor zijn er minder verstoringen in het scherm tijdens het wachten.
+ */
 void DELAY_screens(volatile unsigned int time)
 {
     volatile unsigned int i = 0;
-    while(1){
+    while(1)
+    {
 		if( GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_12)) state = 0;
 		else
 		{
 			state++;
 			if(state == 1) i++;
-			if (i*16 > time ) return;
+			// return wanneer het aantal frames keer het aantal ms per frame groter is dan de delay tijd.
+			if (i*16.784 > time ) return;
 		}
     }
 }

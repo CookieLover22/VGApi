@@ -70,7 +70,8 @@ enum error
 	//! IO Layer --> Filled not 0 or 1
 	FILLED_NOT_0_OR_1,
 	//! Herhaal functie kan niet zo ver terug kijken (wordt bepaald door define QLENGTH)
-	TOOFARBACKERROR
+	TOOFARBACKERROR,
+
 };
 
 
