@@ -24,7 +24,6 @@ typedef struct
 } COMMAND;
 
 /*!Dit is de struct met info over de Queue. Deze wordt teruggegeven door de API_Qinit functie
- *
  */
 typedef struct
 {

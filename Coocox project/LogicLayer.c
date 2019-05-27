@@ -248,7 +248,7 @@ int LOGIC_functionpicker(COMMAND *command_struct)
 								command_struct->arg[2].num,
 								command_struct->arg[3].num,
 								command_struct->arg[4].num,
-								0);//command_struct->arg[5].num);
+								0);
 
 		return error;
 	}
