@@ -33,7 +33,7 @@ int main(void)
 	int error = 0;
 	while(1)
 	{
-		//het volgende state machientje zorgt ervoor dat de loop ï¿½ï¿½n keer doorlopen wordt tijdens Vsync
+		//het volgende state machientje zorgt ervoor dat de loop één keer doorlopen wordt tijdens Vsync
 		if( GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_12)) state = 0;
 		else
 		{
