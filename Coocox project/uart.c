@@ -1,15 +1,12 @@
-//@file uart.c
-//@brief This file is marvelous.
-
-/*!
-*    Author: Mauricio Paulusma
+/*
+*    Auteur: Mauricio Paulusma
 *
-*    Description: This file defines functions for the Frontlayer of the VGApi project.
+*    Beschrijving: Deze file definieert functies voor de Frontlayer van het VGApi project
 *
-*    Usage: To activate and use the frontlayer follow the stepts below:
+*    Gebruik: Om de functie te activeren en te gebruiken, volg de volgende stappen:
 *
-*           1. Call the function UART_init();
-*           2. Call the function UART_INT_init();
+*           1. Roep de functie UART_init(); aan
+*           2. Roep de functie UART_INT_init(); aan
 *
 */
 
@@ -27,12 +24,12 @@
 
 /* Global variables ----------------------------------------------------------*/
 
-/// This structure is used to format the arguments from the received command over UART and fill the COMMAND queue.
+/// Deze structure wordt gebruikt om de argumenten in de ontvangen string te structureren zodat ze in de command queue kunnen worden geplaatst.
 COMMAND received;
-/// This variable is used for formatting the received string in the received COMMAND structure
-volatile unsigned int Arg_cnt = 0;
-/// This variable is used for formatting the received string in the received COMMAND structure
+/// Deze variabele wordt gebruikt door USART2_IRQHandler() om de characters in het juiste plekje van de struct te zetten.
 volatile unsigned int Char_cnt = 0;
+/// Deze variabele wordt gebruikt door USART2_IRQHandler() om de argumenten in het juiste plekje van de struct te zetten.
+volatile unsigned int Arg_cnt = 0;
 volatile int i;
 
 typedef __SIZE_TYPE__ size_t;
@@ -40,11 +37,15 @@ typedef __SIZE_TYPE__ size_t;
 /* Function definitions ------------------------------------------------------*/
 
 /*!
-*   Name: UART_init
+*   @brief	Deze functie initialiseert de UART (onderdeel van de frontlayer)
 *
-*   Description: This function initialises the UART (i.e. the frontlayer).
+*			Gebruik:
+*				- Roep UART_init(); aan in de main.
 *
-*   Usage: Call in the main the following: UART_INT_init() in conjunction with UART_init()
+*
+*	@param void, deze functie verwacht geen input
+*
+*	@return void, deze functie stuurt geen waarde terug.
 *
 */
 void UART_init(void)
@@ -97,6 +98,18 @@ USART_Cmd(USART2, ENABLE);
 
 }
 
+/*!
+*   @brief	Deze functie stuurt een character naar de UART (onderdeel van de frontlayer)
+*
+*			Gebruik:
+*				- Deze functie wordt in dit project gebruikt door UART_puts()
+*
+*
+*	@param char c, het character dat naar de UART verstuurd wordt
+*
+*	@return void, deze functie stuurt geen waarde terug.
+*
+*/
 void UART_putchar(char c)
 {
 		while(USART_GetFlagStatus(USART2, USART_FLAG_TXE) == RESET); // Wait for Empty
@@ -104,7 +117,19 @@ void UART_putchar(char c)
 
 }
 
-void UART_puts(char *s)
+/*!
+*   @brief	Deze functie stuurt een string naar de UART (onderdeel van de frontlayer)
+*
+*			Gebruik:
+*				- Deze functie wordt in dit project gebruikt door USART2_IRQHandler()
+*
+*
+*	@param char* s, de string die naar de UART wordt verstuurd
+*
+*	@return void, deze functie stuurt geen waarde terug.
+*
+*/
+void UART_puts(char* s)
 {
 	volatile unsigned int i;
 	for (i=0; s[i]; i++)
@@ -116,14 +141,17 @@ void UART_puts(char *s)
 }
 
 /*!
-*   Name: UART_INT_init
+*   @brief	Deze functie initialiseert de UART (onderdeel van de frontlayer)
 *
-*   Description: This function initialises the UART interrupt handler (i.e. the frontlayer).
+*			Gebruik:
+*				- Roep UART_INT_init(); aan in de main.
 *
-*   Usage: Call in the main the following: UART_INT_init() in conjunction with UART_init()
+*
+*	@param void, deze functie verwacht geen input
+*
+*	@return void, deze functie stuurt geen waarde terug.
 *
 */
-
 void UART_INT_init(void)
 {
 	NVIC_InitTypeDef   NVIC_InitStructure;
@@ -136,15 +164,14 @@ void UART_INT_init(void)
 }
 
 /*!
-*   Name: USART2_IRQHandler
+*	@brief Deze functie zorgt voor de Frontlayer functionaliteit. Indien een commando via de UART binnenkomt wordt bij elk ontvangen character van het commando deze interrupt handler geactiveerd. Deze functie zorgt er dan voor dat het commando d.m.v. een structure in de commando queue wordt geplaatst.
 *
-*   Description: This interrupt handler handles the frontlayer functionality.
-*                It receives the command strings from the UART, puts the arguments from this string in a dedicated command structure.
-*                It then puts this filled structure in the command queue. The logic layer can then acquire this structure from the queue and use it to execute appropriate code.
+*		Gebruik:
+*			- Deze functie wordt aangeroepen door de USART interrupt
 *
-*   Usage:
-*           1. Call the function UART_init();
-*           2. Call the function UART_INT_init();
+*	@param void, deze functie verwacht geen input
+*
+*	@return void, deze functie stuurt geen waarde terug.
 *
 */
 

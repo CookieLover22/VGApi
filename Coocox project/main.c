@@ -1,15 +1,3 @@
-//--------------------------------------------------------------
-// File     : main.c
-// Datum    : 30.03.2016
-// Version  : 1.0
-// Autor    : UB
-// mods by	: J.F. van der Bent
-// CPU      : STM32F4
-// IDE      : CooCox CoIDE 1.7.x
-// Module   : CMSIS_BOOT, M4_CMSIS_CORE
-// Function : VGA_core DMA LIB 320x240, 8bit color
-//--------------------------------------------------------------
-
 
 #include <main.h>
 #include "uart.h"
@@ -50,7 +38,7 @@ int main(void)
 	while(1)
 	{
 		//if (!GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_11)) DELAY_us(28);
-		//het volgende state machientje zorgt ervoor dat de loop één keer doorlopen wordt tijdens Vsync
+		//het volgende state machientje zorgt ervoor dat de loop ï¿½ï¿½n keer doorlopen wordt tijdens Vsync
 		if( GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_12)) state = 0;
 		if(!GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_12) && state == 0) state = 1;
 		if(state == 1)
