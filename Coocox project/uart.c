@@ -1,4 +1,7 @@
 /**@file Uart.c
+
+//!@page UART.C
+
 * @author Mauricio Paulusma
 *
 * Deze file definieert functies voor de Frontlayer van het VGApi project
@@ -164,7 +167,7 @@ void UART_INT_init(void)
 }
 
 
-//haalt spaties vooraf en achteraf weg. courtesy of Dave Gray
+// haalt spaties vooraf en achteraf weg. courtesy of Dave Gray
 // Stores the trimmed input string into the given output buffer, which must be
 // large enough to store the result.  If it is too small, the output is
 // truncated.
