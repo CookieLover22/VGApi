@@ -1,3 +1,6 @@
+//@file uart.c
+//@brief This file is marvelous.
+
 /*!
 *    Author: Mauricio Paulusma
 *
@@ -24,12 +27,13 @@
 
 /* Global variables ----------------------------------------------------------*/
 
+/// This structure is used to format the arguments from the received command over UART and fill the COMMAND queue.
 COMMAND received;
+/// This variable is used for formatting the received string in the received COMMAND structure
 volatile unsigned int Arg_cnt = 0;
+/// This variable is used for formatting the received string in the received COMMAND structure
 volatile unsigned int Char_cnt = 0;
-volatile unsigned int Com_cnt_front = 0;
-volatile unsigned int Com_cnt_logic = 0;
-volatile int i, j;
+volatile int i;
 
 typedef __SIZE_TYPE__ size_t;
 
@@ -40,7 +44,7 @@ typedef __SIZE_TYPE__ size_t;
 *
 *   Description: This function initialises the UART (i.e. the frontlayer).
 *
-*   Usage: Call in the main the following UART_INT_init() in conjunction with UART_init()
+*   Usage: Call in the main the following: UART_INT_init() in conjunction with UART_init()
 *
 */
 void UART_init(void)
@@ -116,7 +120,7 @@ void UART_puts(char *s)
 *
 *   Description: This function initialises the UART interrupt handler (i.e. the frontlayer).
 *
-*   Usage: Call in the main the following UART_INT_init() in conjunction with UART_init()
+*   Usage: Call in the main the following: UART_INT_init() in conjunction with UART_init()
 *
 */
 
