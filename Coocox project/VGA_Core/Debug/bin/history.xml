@@ -1,22 +1,22 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="arm-none-eabi-ar">
-      <target file="libVGA_Core.a" lastModified="16af88feab2">
-         <source file="..\obj\delay.o" lastModified="16af88fdba3"/>
-         <source file="..\obj\stm32f4xx_usart.o" lastModified="16af88fdca0"/>
-         <source file="..\obj\uart.o" lastModified="16af88fdd85"/>
-         <source file="..\obj\startup_stm32f4xx.o" lastModified="16af88fde01"/>
-         <source file="..\obj\LogicLayer.o" lastModified="16af88fdf14"/>
-         <source file="..\obj\main.o" lastModified="16af88fe000"/>
-         <source file="..\obj\stm32f4xx_rcc.o" lastModified="16af88fe0df"/>
-         <source file="..\obj\HSVtoRGB.o" lastModified="16af88fe18d"/>
-         <source file="..\obj\stm32f4xx_gpio.o" lastModified="16af88fe24a"/>
-         <source file="..\obj\system_stm32f4xx.o" lastModified="16af88fe2ea"/>
-         <source file="..\obj\syscalls.o" lastModified="16af88fe391"/>
-         <source file="..\obj\stm32f4xx_dma.o" lastModified="16af88fe450"/>
-         <source file="..\obj\lcd.o" lastModified="16af88fe54a"/>
-         <source file="..\obj\misc.o" lastModified="16af88fe5ec"/>
-         <source file="..\obj\stm32f4xx_tim.o" lastModified="16af88fe730"/>
+      <target file="libVGA_Core.a" lastModified="16af89235d0">
+         <source file="..\obj\delay.o" lastModified="16af892286b"/>
+         <source file="..\obj\stm32f4xx_usart.o" lastModified="16af8922969"/>
+         <source file="..\obj\uart.o" lastModified="16af8922a50"/>
+         <source file="..\obj\startup_stm32f4xx.o" lastModified="16af8922ada"/>
+         <source file="..\obj\LogicLayer.o" lastModified="16af8922bbd"/>
+         <source file="..\obj\main.o" lastModified="16af8922c7c"/>
+         <source file="..\obj\stm32f4xx_rcc.o" lastModified="16af8922d52"/>
+         <source file="..\obj\HSVtoRGB.o" lastModified="16af8922e02"/>
+         <source file="..\obj\stm32f4xx_gpio.o" lastModified="16af8922eb9"/>
+         <source file="..\obj\system_stm32f4xx.o" lastModified="16af8922f4e"/>
+         <source file="..\obj\syscalls.o" lastModified="16af8922ff3"/>
+         <source file="..\obj\stm32f4xx_dma.o" lastModified="16af89230b3"/>
+         <source file="..\obj\lcd.o" lastModified="16af892318e"/>
+         <source file="..\obj\misc.o" lastModified="16af892322a"/>
+         <source file="..\obj\stm32f4xx_tim.o" lastModified="16af8923370"/>
       </target>
    </processor>
 </history>

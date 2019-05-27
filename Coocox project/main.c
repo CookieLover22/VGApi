@@ -20,31 +20,21 @@ int main(void)
 {
 	SystemInit(); // System speed to 168MHz
 
-	UB_VGA_Screen_Init(); // Init VGA-Screen
-
-
 	UART_init();
 	UART_INT_init();
 
 	DELAY_init();
-	LCD_init();
-
-	UART_puts("Ready to receive.");
-
-	LCD_clear();			// Start with a clear display
-	LCD_XY(0,0);			// Shift one spot
 
 	//Q initialiseren
 	front_to_logic_Q.Q_size = QLENGTH;
 	front_to_logic_Q.last_written_Q_member = 0;
 	front_to_logic_Q.last_read_Q_member = 0;
 
+	UART_puts("Ready to receive.");
 
 	UB_VGA_Screen_Init(); // Init VGA-Screen
 
-
 	UB_VGA_FillScreen(0);
-
 
 	int state = 0;
 	int error = 0;
