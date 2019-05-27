@@ -6,15 +6,15 @@
  * CPU      : STM32F4
  * IDE      : CooCox CoIDE 1.7.8
  * Module   : CMSIS_BOOT, M4_CMSIS_CORE
- * Function : Declarations for IO_draw.c drawing figures with UB_VGA_SetPixel()
+ * Function : Declaraties voor IO_draw.c met functies voor figuren tekenen met behulp van UB_VGA_SetPixel()
  */
 
 /**
  * @file IO_draw.h
  * @author Daniël Boon
  * @version V1.0
- * @date 22 May 2019
- * @brief File containing declarations fuctions for drawing figures with UB_VGA_SetPixel() in IO_draw.c
+ * @date 22 Mei 2019
+ * @brief Dit bestand bevat declaraties van de functies voor figuren tekenen met behulp van UB_VGA_SetPixel() in IO_draw.c
  */
 int API_draw_bitmap(int x_lup, int y_lup, int bm_nr);
 int API_draw_text (int x_lup, int y_lup, int color, char text[100], char *fontname, int fontsize, int fontsytle, int reserved);

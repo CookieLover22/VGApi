@@ -2,7 +2,7 @@
 // File     : main.h
 //--------------------------------------------------------------
 #define INTERLACELINES 1 //1 = no interlace
-#define QLENGTH 32
+#define QLENGTH 23
 
 //--------------------------------------------------------------
 #ifndef __STM32F4_UB_MAIN_H
@@ -41,6 +41,8 @@ Q_INFO front_to_logic_Q;
 // Error codes
 //--------------------------------------------------------------
 
+
+//! Deze enum houd bij welke nummers bij welke errors horen
 enum error
 {
 	//! Geeft aan dat er niks aan de hand is (is altijd 0)
@@ -59,17 +61,24 @@ enum error
 	OUT_OF_BOUNDS,
 	//! IO Layer --> Bitmap Nr not existing
 	UNDEFINED_BITMAP_NR,
+	//! IO Layer --> no Bold or Italic functionality availible
+	ONLY_FONTSTYLE_NORMAL_AVAILIBLE,
+	//! IO Layer --> Fontname not existing
+	UNDEFINED_FONTNAME,
 	//! IO Layer --> not 0 (normal), 1 (Italic), or 2 (Bold)
 	UNDEFINEDFONTSTYLE,
 	//! IO Layer --> Fontsize not existing
 	FONTSIZE_NOT_EXISTING,
 	//! IO Layer --> Filled not 0 or 1
 	FILLED_NOT_0_OR_1,
-	//! IO Layer --> Used Fontname not existing
-	UNDEFINED_FONTNAME
+	//! Herhaal functie kan niet zo ver terug kijken (wordt bepaald door define QLENGTH)
+	TOOFARBACKERROR
+
 };
+
 
 extern void HsvToRgb(float h, float S, float V, int* r, int* g, int* b);
 extern void dither (int x, int y, int *R, int *G, int *B, char * RGB);
 extern void ditherbuffercleaner();
+
 

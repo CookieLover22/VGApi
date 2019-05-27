@@ -6,15 +6,15 @@
  * CPU      : STM32F4
  * IDE      : CooCox CoIDE 1.7.8
  * Module   : CMSIS_BOOT, M4_CMSIS_CORE
- * Function : drawing figures with UB_VGA_SetPixel()
+ * Function : figuren tekenen met behulp van UB_VGA_SetPixel()
  */
 
 /**
  * @file	IO_draw.c
  * @author	Daniël Boon
  * @version	V1.0
- * @date	22 May 2019
- * @brief	File containing fuctions for drawing figures with UB_VGA_SetPixel()
+ * @date	22 Mei 2019
+ * @brief	Dit bestand bevat functies voor figuren tekenen met behulp van UB_VGA_SetPixel()
  */
 
 #include <math.h>
@@ -37,7 +37,7 @@
 
  //API_draw_bitmap
  /**
- * @brief Tekent bitmap vanaf x_lup (left up) en y_lup (left up).
+ * @brief Tekent bitmap vanaf x_lup (links boven; left up) en y_lup (links boven; left up).
  *
  * Bitmaps data zitten in 'bitmap.h', bestaande uit drie bitmaps:
  * 		- Pijl naar rechts (deze wordt gedraaid voor andere richtingen)
@@ -50,7 +50,7 @@
  * 			- NOERROR
  * 			- OUT_OF_BOUNDS
  * 			- UNDEFINED_BITMAP_NR
- * @param x_lup, y_lup Coördinaat om te starten met tekenen vanaf x_lup (left up) en y_lup (left up).
+ * @param x_lup, y_lup Coördinaat om te starten met tekenen vanaf x_lup (links boven; left up) en y_lup (links boven; left up).
  *
  * @param bm_nr beschikbare bitmaps:
  * 		- bm_nr 0 --> Pijl naar rechts
@@ -131,7 +131,7 @@ int API_draw_bitmap(int x_lup, int y_lup, int bm_nr)
 
  //draw_lineX
  /**
- * @brief Deze functie is onderdeel van de 'Bresenham's line algorithm' die gebruikt wordt in API_draw_line.
+ * @brief Deze functie is onderdeel van de "Bresenham's line algorithm" die gebruikt wordt in API_draw_line.
  *
  * @warning Gelieve deze functie niet oproepen voor lijnen tekenen anders dan de functie API_draw_line,
  * met de reden dat de grootste errorhandling door API_draw_line gedaan wordt.
@@ -267,7 +267,7 @@ int draw_lineY (int x_1, int y_1, int x_2, int y_2, int color, int weight, int r
 
 //API_draw_line
 /**
- * @brief Deze functie maakt gebruik van de 'Bresenham's line algorithm' met gebtuik van functie drawlineX of drawlineY
+ * @brief Deze functie maakt gebruik van de "Bresenham's line algorithm" met gebtuik van functie drawlineX of drawlineY
  *
  * @note 	Mogelijk optreedbare errors:
  * 			- NOERROR
@@ -276,9 +276,9 @@ int draw_lineY (int x_1, int y_1, int x_2, int y_2, int color, int weight, int r
  *
  * @param x_1,y_1,x_2,y_2 Functie voor lijnen tekenen tussen coördinaten (x_1,y_1) en (x_2,y_2)
  *
- * @param color Color is in 8bit kleur (0 tot 255; 0x00 tot 0xFF)
+ * @param color Color is 8bit kleur (0 tot 255; 0x00 tot 0xFF)
  *
- * @param weight Weight is het aantal pixels breedte voor de lijn (is weight een negatieve waarde, wordt deze positief gemaakt)
+ * @param weight Weight is het aantal pixels breedte voor de lijn (is weight een negatieve waarde, dan wordt deze positief gemaakt)
  *
  * @param reserved De variabele reserved heeft geen functionaliteit en wordt genegeerd
  *
@@ -648,7 +648,7 @@ int API_draw_text (int x_lup, int y_lup, int color, char *text, char *fontname, 
 
  //drawCircle
  /**
- * @brief Deze functie is onderdeel van de 'Bresenham's circle algorithm' die gebruikt wordt in API_draw_circle.
+ * @brief Deze functie is onderdeel van de "Bresenham's circle algorithm" die gebruikt wordt in API_draw_circle.
  *
  * @warning Gelieve deze functie niet oproepen voor cicels tekenen anders dan de functie API_draw_circle,
  * met de reden dat de errorhandling door API_draw_circle gedaan wordt.
@@ -673,7 +673,7 @@ void drawCircle(int xc, int yc, int x, int y, int color)
 
  //API_draw_circle
  /**
- * @brief Deze functie maakt gebruik van de 'Bresenham's circle algorithm' met gebtuik van functie drawCircle
+ * @brief Deze functie maakt gebruik van de "Bresenham's circle algorithm" met gebtuik van functie drawCircle
  *
  * @note 	Mogelijk optreedbare errors:
  * 			- NOERROR
@@ -682,7 +682,7 @@ void drawCircle(int xc, int yc, int x, int y, int color)
  *
  * @param xc,yc Coördinaten van middelpunt circel
  *
- * @param r r is de straal van de circel
+ * @param r r is de straal van de circel in aantal pixels
  *
  * @param color Color is in 8bit kleur (0 tot 255; 0x00 tot 0xFF)
  */
@@ -725,7 +725,7 @@ int API_draw_circle (int xc, int yc, int r, int color, int reserved)
  *
  * @param color Color is in 8bit kleur (0 tot 255; 0x00 tot 0xFF)
  *
- * @param reserved Reserved is de dikte van de lijnen die getekend moeten worden
+ * @param reserved Reserved is de dikte van de lijnen in aantal pixels die getekend moeten worden
  */
 int API_draw_figure (int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x_4, int y_4, int x_5, int y_5, int color, int reserved)
 {

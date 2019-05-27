@@ -32,3 +32,4 @@ void DELAY_init(void);
 void DELAY_us(unsigned int x);
 void DELAY_ms(unsigned int x);
 void DELAY_s(unsigned int x);
+void DELAY_screens(volatile unsigned int time);

@@ -163,6 +163,43 @@ void UART_INT_init(void)
 	NVIC_Init(&NVIC_InitStructure);
 }
 
+
+//haalt spaties vooraf en achteraf weg. courtesy of Dave Gray
+// Stores the trimmed input string into the given output buffer, which must be
+// large enough to store the result.  If it is too small, the output is
+// truncated.
+size_t trimwhitespace(char *out, size_t len, const char *str)
+{
+  if(len == 0)
+    return 0;
+
+  const char *end;
+  size_t out_size;
+
+  // Trim leading space
+  while(*str == ' ') str++;
+
+  if(*str == 0)  // All spaces?
+  {
+    *out = 0;
+    return 1;
+  }
+
+  // Trim trailing space
+  end = str + strlen(str) - 1;
+  while(end > str && *end == ' ') end--;
+  end++;
+
+  // Set output size to minimum of trimmed string length and buffer size minus 1
+  out_size = (end - str) < len-1 ? (end - str) : len-1;
+
+  // Copy trimmed string and add null terminator
+  memcpy(out, str, out_size);
+  out[out_size] = 0;
+
+  return out_size;
+}
+
 /*!
 *	@brief Deze functie zorgt voor de Frontlayer functionaliteit. Indien een commando via de UART binnenkomt wordt bij elk ontvangen character van het commando deze interrupt handler geactiveerd. Deze functie zorgt er dan voor dat het commando d.m.v. een structure in de commando queue wordt geplaatst.
 *
@@ -188,11 +225,16 @@ void USART2_IRQHandler(void)
 
 		if(c <= 13) // end of string character received
 		{
+			if (!Arg_cnt && !Char_cnt) return;
 			received.arg[Arg_cnt].text[Char_cnt] = '\0';
+
+			//spatie padding weg halen
+			trimwhitespace(received.arg[Arg_cnt].text, ARGLENGTH, received.arg[Arg_cnt].text);
+
 			Arg_cnt = 0;
 			Char_cnt = 0;
 			int error_code = API_Qwriter(&front_to_logic_Q,&received);
-			UART_puts("\nQueued\n");
+			//UART_puts("\nQueued\n");
 			if(error_code == FULLQ) UART_puts("FULLQ");
 		}
 		else if(c == ',') // end of argument character received
@@ -200,6 +242,10 @@ void USART2_IRQHandler(void)
 
 			c = '\0';
 			received.arg[Arg_cnt].text[Char_cnt] = c;
+
+			//spatie padding weg halen
+			trimwhitespace(received.arg[Arg_cnt].text, ARGLENGTH, received.arg[Arg_cnt].text);
+
 			if (Arg_cnt >= ARGAMOUNT-1) {UART_puts("com full"); return;}
 			Arg_cnt++;
 			Char_cnt = 0;

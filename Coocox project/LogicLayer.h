@@ -1,9 +1,12 @@
-#define ARGAMOUNT 10
-#define ARGLENGTH 50
+#define ARGAMOUNT 12
+#define ARGLENGTH 69
 
 //==========================
 //variabelen
 
+//Elk argument is een union van een string en een int zodat
+//de strings die getallen zijn omgezet kunnen worden in ints
+//zonder extra geheugen te gebruiken
 union Argument
 {
 	char text[ARGLENGTH];
@@ -21,7 +24,6 @@ typedef struct
 } COMMAND;
 
 /*!Dit is de struct met info over de Queue. Deze wordt teruggegeven door de API_Qinit functie
- *
  */
 typedef struct
 {
@@ -47,3 +49,4 @@ int API_Qreader			(Q_INFO * readQ,  COMMAND * readCommand);
 int API_Qreader_stealth	(Q_INFO * readQ,  COMMAND * readCommand);
 int LOGIC_functionpicker(COMMAND * command_struct);
 int API_perform			(Q_INFO * performQ);
+void LOGIC_errorhandler(int error);
