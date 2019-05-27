@@ -1,12 +1,12 @@
-/*
-*    Auteur: Mauricio Paulusma
+/**@file Uart.c
+* @author Mauricio Paulusma
 *
-*    Beschrijving: Deze file definieert functies voor de Frontlayer van het VGApi project
+* Deze file definieert functies voor de Frontlayer van het VGApi project
 *
-*    Gebruik: Om de functie te activeren en te gebruiken, volg de volgende stappen:
+* Gebruik: Om de frontlayer te activeren en te gebruiken, volg de volgende stappen:
 *
-*           1. Roep de functie UART_init(); aan
-*           2. Roep de functie UART_INT_init(); aan
+*          1. Roep de functie UART_init(); aan
+*          2. Roep de functie UART_INT_init(); aan
 *
 */
 

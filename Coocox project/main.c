@@ -1,4 +1,9 @@
-
+/**@file Main.c
+*	@author Daniel Boon, Kaya Hartwig en Mauricio Paulusma
+*
+*	Dit is de main.c file van het VGApi project. In deze file worden de verschillende layers (Front/logic en I/O layer) geinitialiseerd.
+*
+*/
 #include <main.h>
 #include "uart.h"
 
