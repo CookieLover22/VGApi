@@ -13,7 +13,7 @@ void LOGIC_errorhandler(int error)
 	case FULLQ: 							UART_puts("FULLQ\n"); break;
 	case COMMANDERROR: 						UART_puts("COMMANDERROR\n"); break;
 	case UNDEFINEDCOLOR: 					UART_puts("UNDEFINEDCOLOR\n"); break;
-	case OUT_OF_BAUNCE: 					UART_puts("OUT_OF_BOWNZZ\n"); break;
+	case OUT_OF_BOUNDS: 					UART_puts("OUT_OF_BOWNZZ\n"); break;
 	case UNDEFINED_BITMAP_NR: 				UART_puts("UNDEFINED_BITMAP_NR\n"); break;
 	case ONLY_FONTSTYLE_NORMAL_AVAILIBLE: 	UART_puts("ONLY_FONTSTYLE_NORMAL_AVAILIBLE\n"); break;
 	case UNDEFINED_FONTNAME: 				UART_puts("UNDEFINED_FONTNAME\n"); break;
