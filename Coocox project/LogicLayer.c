@@ -35,33 +35,6 @@ void LOGIC_errorhandler(int error)
 	UART_puts("\n");
 }
 
-
-/*! Deze functie genereert de Queue die gebruikt kan worden.
- *  Het aantal leden van deze Queue wordt meegegeven en de
- *  functie geeft het adres van de Queue terug.
- */
-
-/*
-int API_Qinit(Q_INFO * initQ, int Qsize)
-{
-	if(Qsize < 1) return QSIZEERROR;
-
-	COMMAND initCommand[Qsize];
-	//LCD_putint(sizeof(initCommand));
-	void * command_pointer = malloc(sizeof(initCommand));
-
-	//UART_puts("\naddr:");
-	//UART_putint((int)command_pointer);
-
-	initQ->Q_size = Qsize;
-	initQ->last_written_Q_member = 0;
-	initQ->last_read_Q_member = 0;
-	initQ->Q_members = command_pointer;
-
-	return NOERROR;
-}
-*/
-
 /*!Deze functie schrijft een nieuw lid in de Q en returnt een errorcode.
  * Het adres van de Q (van API_Qinit()) wordt meegegeven aan de functie.
  * Ook wordt de COMMAND struct die in de Q moet komen meegegeven
@@ -97,6 +70,7 @@ int API_Qreader(Q_INFO * readQ, COMMAND * readCommand)
 
 	return NOERROR;
 }
+
 /*!Deze functie leest het oudste lid naar de Q en returnt een errorcode.
  * Het adres van de Q (van API_Qinit()) wordt meegegeven aan de functie.
  * Deze functie verwijderd niet het zojuist gelezen lid.
@@ -134,6 +108,12 @@ int LOGIC_colorpicker(char * color_string, int *color_num)
 	return UNDEFINEDCOLOR;
 }
 
+/*!Deze functie ontvangt een command struct, kijkt welke taak
+ * er uitgevoerd moet worden en roept de bijbehorende functie
+ * uit de IO layer aan.
+ * Voor het doorsturen worden de strings met getallen omgezet
+ * naar integers.
+ */
 int LOGIC_functionpicker(COMMAND *command_struct)
 {
 	int error = 0;

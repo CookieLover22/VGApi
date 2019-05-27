@@ -4,6 +4,9 @@
 //==========================
 //variabelen
 
+//Elk argument is een union van een string en een int zodat
+//de strings die getallen zijn omgezet kunnen worden in ints
+//zonder extra geheugen te gebruiken
 union Argument
 {
 	char text[ARGLENGTH];
