@@ -71,9 +71,12 @@ void DELAY_s(volatile unsigned int time)
 int state;
 
 
-/*! Deze variatie op de delay_ms functie loopt synchroon met het Vsync signaal.
- *  Hierdoor zijn er minder verstoringen in het scherm tijdens het wachten.
+/*!
  */
+/**
+* @brief Deze variatie op de delay_ms functie loopt synchroon met het Vsync signaal. Hierdoor zijn er minder verstoringen in het scherm tijdens het wachten.
+* @param time dit geeft aan hoe veel ms er moet worden gewacht
+*/
 void DELAY_screens(volatile unsigned int time)
 {
     volatile unsigned int i = 0;
