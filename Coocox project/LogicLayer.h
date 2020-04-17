@@ -1,18 +1,29 @@
+#define ARGAMOUNT 12
+#define ARGLENGTH 69
 
 //==========================
 //variabelen
+
+//Elk argument is een union van een string en een int zodat
+//de strings die getallen zijn omgezet kunnen worden in ints
+//zonder extra geheugen te gebruiken
+union Argument
+{
+	char text[ARGLENGTH];
+	int  num;
+};
 
 /*!Dit is de uart struct. De UART Queue die de front en de logic layer verbind
  * bevat structs van dit type
  */
 typedef struct
 {
-	char arg[8][20];
+	union Argument arg [ARGAMOUNT];
+	//char arg[ARGAMOUNT][ARGLENGTH];
 
-} UART_command;
+} COMMAND;
 
 /*!Dit is de struct met info over de Queue. Deze wordt teruggegeven door de API_Qinit functie
- *
  */
 typedef struct
 {
@@ -25,14 +36,17 @@ typedef struct
 	 */
 	int last_read_Q_member;
 
-	UART_command* Q_members;
+	COMMAND Q_members[QLENGTH];
 
-} UART_Q_info;
+} Q_INFO;
 
 
 //==========================
 //functieprototypes
-int API_Qinit			(UART_Q_info * initQ, int Qsize);
-int API_Qwriter			(UART_Q_info * writeQ, UART_command * writeCommand);
-int API_Qreader			(UART_Q_info * readQ,  UART_command * readCommand);
-int API_Qreader_stealth	(UART_Q_info * readQ,  UART_command * readCommand);
+//int API_Qinit			(Q_INFO * initQ, int Qsize);
+int API_Qwriter			(Q_INFO * writeQ, COMMAND * writeCommand);
+int API_Qreader			(Q_INFO * readQ,  COMMAND * readCommand);
+int API_Qreader_stealth	(Q_INFO * readQ,  COMMAND * readCommand);
+int LOGIC_functionpicker(COMMAND * command_struct);
+int API_perform			(Q_INFO * performQ);
+void LOGIC_errorhandler(int error);

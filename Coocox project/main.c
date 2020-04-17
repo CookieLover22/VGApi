@@ -1,37 +1,53 @@
-//--------------------------------------------------------------
-// File     : main.c
-// Datum    : 30.03.2016
-// Version  : 1.0
-// Autor    : UB
-// mods by	: J.F. van der Bent
-// CPU      : STM32F4
-// IDE      : CooCox CoIDE 1.7.x
-// Module   : CMSIS_BOOT, M4_CMSIS_CORE
-// Function : VGA_core DMA LIB 320x240, 8bit color
-//--------------------------------------------------------------
+/**@file Main.c
+*	@author Daniel Boon, Kaya Hartwig en Mauricio Paulusma
+*
+*	Dit is de main.c file van het VGApi project. In deze file worden de verschillende layers (Front/logic en I/O layer) geinitialiseerd.
+*
+*/
+#include <main.h>
+#include "uart.h"
 
-#include "main.h"
-#include "stm32_ub_vga_screen.h"
-#include <math.h>
+
 
 int main(void)
 {
-
-	//  uint32_t n;
-
 	SystemInit(); // System speed to 168MHz
+
+	UART_init();
+	UART_INT_init();
+
+	DELAY_init();
+
+	//Q initialiseren
+	front_to_logic_Q.Q_size = QLENGTH;
+	front_to_logic_Q.last_written_Q_member = 0;
+	front_to_logic_Q.last_read_Q_member = 0;
+
+	UART_puts("Ready to receive.");
 
 	UB_VGA_Screen_Init(); // Init VGA-Screen
 
-  UB_VGA_FillScreen(VGA_COL_BLACK);
-  UB_VGA_SetPixel(10,10,10);
-  UB_VGA_SetPixel(100,100,10);
+	UB_VGA_FillScreen(0);
 
+	int state = 0;
+	int error = 0;
+	while(1)
+	{
+		//het volgende state machientje zorgt ervoor dat de loop één keer doorlopen wordt tijdens Vsync
+		if( GPIO_ReadOutputDataBit(GPIOB, GPIO_Pin_12)) state = 0;
+		else
+		{
+			state ++;
+			if(state == 1)
+			{
+				error = API_perform(&front_to_logic_Q);
 
+				LOGIC_errorhandler(error);
+			}
+		}
+	}
 
-  while(1)
-  {
-	  // put the code here
-  }
 }
+
+
 
